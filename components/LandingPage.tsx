@@ -314,7 +314,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       <nav className="fixed top-0 left-0 w-full h-24 border-b border-[#F5F2EB]/5 bg-[#11100F]/60 backdrop-blur-2xl z-50 flex items-center justify-between px-8 md:px-20">
         <div className="flex items-center gap-4 relative z-10">
           <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C9A87C] to-[#E5CCAA] flex items-center justify-center text-[#11100F] font-serif italic text-2xl shadow-[0_0_30px_rgba(201,168,124,0.2)]">D</div>
-          <span className="font-serif italic text-2xl tracking-tight hidden sm:block">Davetasyon</span>
+          <div className="hidden sm:flex flex-col">
+            <span className="font-serif italic text-2xl tracking-tight leading-none">Davetasyon</span>
+            <span className="text-[9px] uppercase tracking-widest text-[#C9A87C] mt-1 ml-1 opacity-80">Davetiye Atölyesi</span>
+          </div>
         </div>
         <div className="flex items-center gap-12 relative z-10">
           <div className="hidden lg:flex items-center gap-10 text-[10px] uppercase tracking-[5px] font-bold text-[#F5F2EB]/40">
@@ -952,7 +955,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       {/* Footer */}
       <footer className="py-32 px-8 md:px-20 border-t border-[#F5F2EB]/5 text-center relative z-10 bg-[#11100F]">
         <div className="mb-16">
-          <div className="font-serif italic text-5xl mb-6 text-[#C9A87C]">Davetasyon</div>
+          <div className="flex flex-col items-center justify-center mb-6">
+            <div className="font-serif italic text-5xl text-[#C9A87C] leading-none mb-2">Davetasyon</div>
+            <div className="text-[12px] uppercase tracking-[0.4em] text-[#C9A87C]/80 font-medium">Davetiye Atölyesi</div>
+          </div>
           <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#F5F2EB]/30">Crafting Digital Legacies Since 2026</p>
         </div>
         <div className="flex justify-center flex-wrap gap-10 md:gap-16 mb-20 text-[10px] uppercase tracking-[0.3em] font-bold text-[#F5F2EB]/40">

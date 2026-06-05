@@ -336,7 +336,8 @@ Kurallar:
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-white font-serif text-sm font-medium">Davetasyon</h3>
+                  <h3 className="text-white font-serif text-sm font-medium leading-none mb-1">Davetasyon</h3>
+                  <span className="text-white/60 text-[9px] block mb-1">Davetiye Atölyesi</span>
                   <p className="text-[#d4af37] text-[10px] uppercase tracking-wider">
                     {language === 'tr' ? 'Dijital Asistan' : 'Digital Assistant'}
                   </p>
