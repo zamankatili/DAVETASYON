@@ -4,6 +4,7 @@ import BackgroundMusic from './BackgroundMusic';
 import { Chatbot } from './Chatbot';
 import { OrderFormModal } from './OrderFormModal';
 import { StyleQuizModal } from './StyleQuizModal';
+import { SavingsCalculator } from './SavingsCalculator';
 
 interface LandingPageProps {
   onSelect: (template: 'sunnet' | 'babyshower' | 'wedding' | 'engagement' | 'birthday' | 'kina' | 'graduation' | 'aurora' | 'darkluxury' | 'classicenvelope' | 'memorybox' | 'aeterna') => void;
@@ -23,11 +24,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       ctaPrimary: "Kendi Hikayenizi Yazın",
       ctaSecondary: "Tasarım Koleksiyonunu Keşfedin",
       orderFormBtn: "Size Özel Tasarlayalım",
-      exclusiveTitle: "Sadece Sizin Mutluluğunuza Odaklıyız",
+      exclusiveTitle: "Neden Davetasyon?",
       exclusiveItems: [
-        { title: "Aşkınız Fabrikasyon Olamaz", desc: "Sizi standart kutulara sığdırmıyoruz. Yalnızca ikinizin ruhunu, ortak zevklerinizi ve o büyük günün tarifsiz heyecanını yansıtan, ilmek ilmek dokunmuş bir sanat eseri vadediyoruz." },
-        { title: "Misafirlerinizi Seçkin Hissettirin", desc: "Sevdiklerinizi sıradan, kuru bir mesajla çağırmayın. Onları, ekrana yansıyan sinematik bir zarf, ruhlarını okşayan bir ezgi ve kalplerine dokunan size özel kelimelerle, daha gelmeden büyüleyin." },
-        { title: "Tatlı Telaşlar Yorgunluğa Dönüşmesin", desc: "Lütfen arkanıza yaslanın. 'Kimler geliyor, masalar nasıl olacak?' gibi soruları nazik ve akıllı asistanımız sizin adınıza takip etsin. Size sadece o eşsiz anı doyasıya yaşamak kalsın." }
+        { title: "Hafta Sonlarınızı ve Yakıtınızı Harcamayın", desc: "Klasik davetiyeler kapı kapı gezmeyi, kargo masraflarını ve bitmek bilmeyen bir zaman maliyetini beraberinde getirir. Davetasyon ile dünyanın öbür ucundaki misafirinize bile 1 saniyede ulaşır, lojistik kâbusunu sıfıra indirirsiniz." },
+        { title: "Telefonunuzun Kilitlenmesine İzin Vermeyin", desc: "\"Mekanda otopark var mı?\", \"Kıyafet konsepti nedir?\" gibi onlarca soruyla o en özel gününüzde yorulmayın. Bırakın yapay zeka asistanımız tüm bu soruları yanıtlasın, siz sadece anın tadını çıkarın." },
+        { title: "Matbaa Stresine ve Değişikliklere Son Verin", desc: "Etkinlik detaylarında bir değişiklik mi oldu? Kağıt davetiyede bu bir felakettir. Davetasyon'da ise sadece bir esneklik. Bilgilerinizi anında güncelleyin, davetiyeniz yaşayan bir organizma gibi kendini yenilesin." }
       ],
       stats: [
         { label: "Kazandırılan Zaman (Saat)", value: "10k+" },
@@ -112,11 +113,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       ctaPrimary: "Write Your Own Story",
       ctaSecondary: "Explore Our Dream Gallery",
       orderFormBtn: "Let Us Design For You",
-      exclusiveTitle: "Focused Solely on Your Happiness",
+      exclusiveTitle: "Why Davetasyon?",
       exclusiveItems: [
-        { title: "Your Love Cannot Be Fabricated", desc: "We don't box you into standard templates. We promise a delicately woven work of art that reflects only your soul, your shared tastes, and the indescribable excitement of that big day." },
-        { title: "Make Your Guests Feel Elite", desc: "Don't invite your loved ones with a dry, ordinary message. Enchant them even before they arrive with a cinematic envelope opening on their screen, a melody that strokes their souls, and loving words tailored just for them." },
-        { title: "Don't Let Sweet Rush Turn to Exhaustion", desc: "Please lean back. Let our gentle and smart digital assistant answer questions like 'Who is coming, how are the tables?' for you. All that's left for you is to live this miraculous moment to the fullest." }
+        { title: "Don't Waste Your Weekends and Fuel", desc: "Classic invitations bring along door-to-door visits, shipping costs, and endless time consumption. With Davetasyon, you reach your guests on the other side of the world in 1 second, reducing the logistics nightmare to zero." },
+        { title: "Don't Let Your Phone Get Swamped", desc: "Don't get exhausted on your most special day with dozens of questions like 'Is there parking at the venue?', 'What's the dress code?'. Let our smart AI assistant answer all these questions, while you just enjoy the moment." },
+        { title: "End Printing Stress and Fear of Changes", desc: "Did the event details change? In a paper invitation, this is a disaster. In Davetasyon, it's just flexibility. Update your info instantly, and let your invitation renew itself like a living organism." }
       ],
       stats: [
         { label: "Time Saved (Hours)", value: "10k+" },
@@ -313,7 +314,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       <nav className="fixed top-0 left-0 w-full h-24 border-b border-[#F5F2EB]/5 bg-[#11100F]/60 backdrop-blur-2xl z-50 flex items-center justify-between px-8 md:px-20">
         <div className="flex items-center gap-4 relative z-10">
           <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C9A87C] to-[#E5CCAA] flex items-center justify-center text-[#11100F] font-serif italic text-2xl shadow-[0_0_30px_rgba(201,168,124,0.2)]">D</div>
-          <span className="font-serif italic text-2xl tracking-tight hidden sm:block">Davetiye Atölyesi</span>
+          <span className="font-serif italic text-2xl tracking-tight hidden sm:block">Davetasyon</span>
         </div>
         <div className="flex items-center gap-12 relative z-10">
           <div className="hidden lg:flex items-center gap-10 text-[10px] uppercase tracking-[5px] font-bold text-[#F5F2EB]/40">
@@ -696,6 +697,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
         </div>
       </section>
 
+      {/* Savings Calculator Section */}
+      <SavingsCalculator language={language} />
+
       {/* Packages Section */}
       <section id="packages" className="py-40 px-8 md:px-20 bg-[#11100F] relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto">
@@ -788,31 +792,141 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { tr: "Özel Tasarımlar", en: "Custom Designs", icon: "✨" },
-              { tr: "AI Mesaj", en: "AI Message", icon: "🤖" },
-              { tr: "Müzik", en: "Music", icon: "🎵" },
-              { tr: "Etkinlik Konumu ve Yol Tarifi", en: "Event Location & Directions", icon: "📍" },
-              { tr: "Hava Durumu Bilgisi", en: "Weather Information", icon: "⛅" },
-              { tr: "Takvime ve Hatırlatıcılara Ekle", en: "Add to Calendar & Reminders", icon: "📅" },
-              { tr: "Online Davet Takip Paneli", en: "Online RSVP Tracking Panel", icon: "📊" },
-              { tr: "Fotoğraf Galerisi", en: "Photo Gallery", icon: "📸" },
-              { tr: "Dijital Anı Kutusu (Davetli Albümü)", en: "Digital Memory Box (Guest Album)", icon: "🎞️" },
-              { tr: "Mekan & Konaklama Rehberi", en: "Venue & Accommodation Guide", icon: "🏨" },
-              { tr: "Çoklu Dil Desteği ile Uluslararası Konuk Deneyimi", en: "Multi-language Support for International Guests", icon: "🌍" }
+              {
+                tr: "Tek Tıkla Navigasyon",
+                en: "One-Click Navigation",
+                descTr: "Misafirleriniz mekan ararken kaybolmasın. Tek tıkla harita ve yol tarifi entegrasyonu.",
+                descEn: "Ensure guests never get lost with one-click map and directions integration.",
+                visual: (
+                  <>
+                    <div className="absolute inset-x-0 bottom-0 h-40 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center opacity-20 group-hover:opacity-40 transition-opacity duration-700">
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#1A1817] to-transparent"></div>
+                    </div>
+                    <div className="absolute bottom-6 left-6 right-6 z-10">
+                      <div className="w-full bg-black/40 backdrop-blur-md rounded-2xl border border-white/5 p-4 flex gap-4 items-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-2xl">
+                        <div className="w-10 h-10 rounded-full bg-[#10B981]/20 flex items-center justify-center text-[#10B981]">
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-pulse"></span>
+                        </div>
+                        <div className="flex-1 space-y-2">
+                          <div className="h-2 bg-white/20 rounded-full w-1/3"></div>
+                          <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
+                            <div className="w-2/3 h-full bg-[#10B981] rounded-full"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )
+              },
+              {
+                tr: "Arka Plan Müziği",
+                en: "Background Music",
+                descTr: "Davetiyenize ruh katan, o günü yansıtan, eşsiz ve özel seçim dinlendirici müzikler.",
+                descEn: "Custom selected music that adds soul and atmosphere to your invitation.",
+                visual: (
+                  <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-gradient-to-br from-[#C9A87C]/10 to-transparent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-700">
+                    <div className="w-40 h-40 rounded-full border border-white/10 flex items-center justify-center relative shadow-2xl">
+                        <div className="absolute inset-0 rounded-full border-2 border-[#C9A87C]/30 border-t-transparent animate-[spin_4s_linear_infinite]"></div>
+                        <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10">
+                          <svg className="w-8 h-8 text-[#C9A87C] translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                    </div>
+                  </div>
+                )
+              },
+              {
+                tr: "Akıllı Karşılama AI",
+                en: "Smart Welcome AI",
+                descTr: "Mekan, otopark veya kıyafet gibi soruları anında yanıtlayan şık asistanınız.",
+                descEn: "Your elegant assistant instantly answering questions about parking & dress codes.",
+                visual: (
+                  <div className="absolute -bottom-4 -right-4 w-72 h-64 bg-gradient-to-tl from-[#11100F] to-transparent rounded-full pt-16 pl-10">
+                    <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl rounded-tr-none p-4 w-52 mb-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <div className="h-2 w-24 bg-white/30 rounded-full mb-3"></div>
+                      <div className="h-2 w-32 bg-white/10 rounded-full"></div>
+                    </div>
+                    <div className="bg-[#C9A87C]/10 backdrop-blur-lg border border-[#C9A87C]/30 rounded-2xl rounded-tl-none p-4 w-40 ml-auto shadow-[0_10px_30px_rgba(0,0,0,0.5)] transform translate-y-8 group-hover:translate-y-2 transition-transform duration-500 delay-100">
+                      <div className="h-2 w-20 bg-[#C9A87C]/60 rounded-full"></div>
+                    </div>
+                  </div>
+                )
+              },
+              {
+                tr: "Dijital Anı Kutusu",
+                en: "Digital Memory Box",
+                descTr: "O güzel geceye dair tüm fotoğrafları toplayan gizli ve interaktif bir bulut albüm.",
+                descEn: "An interactive guest album collecting all event photos into one private cloud.",
+                visual: (
+                  <div className="absolute inset-x-0 bottom-0 h-48 flex justify-center items-end pb-6 pointer-events-none">
+                    <div className="w-28 h-36 bg-[#F5F2EB] flex flex-col p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform -rotate-12 translate-x-8 translate-y-8 group-hover:translate-y-2 transition-transform duration-700 z-10 border border-[#ddd]">
+                        <div className="flex-1 bg-black/10 bg-[url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=300')] bg-cover bg-center"></div>
+                        <div className="h-8 flex justify-center items-center"><div className="w-8 h-1 bg-[#1A1817]/10 rounded-full"></div></div>
+                    </div>
+                    <div className="w-28 h-36 bg-[#F5F2EB] flex flex-col p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform rotate-6 -translate-x-4 translate-y-12 group-hover:translate-y-6 transition-transform duration-700 z-0 border border-[#ddd]">
+                        <div className="flex-1 bg-black/10 bg-[url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=300')] bg-cover bg-center grayscale"></div>
+                        <div className="h-8 flex justify-center items-center"><div className="w-8 h-1 bg-[#1A1817]/10 rounded-full"></div></div>
+                    </div>
+                  </div>
+                )
+              },
+              {
+                tr: "Takvim & Hatırlatıcılar",
+                en: "Calendar & Reminders",
+                descTr: "Misafirlerinizin takvimlerine tek tıkla entegre olan şık davet hatırlatıcıları.",
+                descEn: "Elegant, one-click add to calendar reminders seamlessly integrated.",
+                visual: (
+                  <div className="absolute right-6 bottom-0 overflow-hidden shadow-2xl">
+                    <div className="w-36 bg-black/40 backdrop-blur-xl border border-white/10 rounded-t-2xl overflow-hidden transform translate-y-12 group-hover:translate-y-4 transition-transform duration-500">
+                        <div className="bg-[#EF4444] text-white text-[10px] font-bold text-center py-2 uppercase tracking-[0.2em]">Save the Date</div>
+                        <div className="py-6 text-center border-b border-white/5">
+                          <span className="text-5xl font-serif text-[#F5F2EB]">24</span>
+                        </div>
+                        <div className="py-3 text-center text-[10px] text-white/50 uppercase tracking-widest">Eylül / Sept</div>
+                    </div>
+                  </div>
+                )
+              },
+              {
+                tr: "Uluslararası Konuklar",
+                en: "International Guests",
+                descTr: "Uluslararası misafirleriniz için bariyerleri kaldıran dikişsiz çoklu dil sistemleri.",
+                descEn: "Seamless multi-language integrations lifting barriers for global guests.",
+                visual: (
+                  <div className="absolute inset-0 flex items-end justify-end p-8">
+                      <div className="flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <div className="px-5 py-2.5 bg-[#C9A87C] text-black text-xs font-bold rounded-xl shadow-[0_10px_30px_rgba(201,168,124,0.3)]">EN</div>
+                        <div className="px-5 py-2.5 bg-black/40 backdrop-blur-md border border-white/10 text-white/50 text-xs font-bold rounded-xl">TR</div>
+                        <div className="px-5 py-2.5 bg-black/40 backdrop-blur-md border border-white/10 text-white/50 text-xs font-bold rounded-xl">FR</div>
+                      </div>
+                  </div>
+                )
+              }
             ].map((feature, i) => (
               <motion.div 
                 key={i} 
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-                className="p-8 rounded-[2.5rem] border border-[#F5F2EB]/5 bg-[#1A1817] hover:border-[#C9A87C]/30 hover:bg-[#F5F2EB]/5 transition-all duration-500 flex items-start gap-6 group"
+                transition={{ duration: 0.7, delay: i * 0.1 }}
+                className="relative h-[280px] p-8 rounded-[2.5rem] border border-[#F5F2EB]/5 bg-[#1A1817] hover:border-[#C9A87C]/30 transition-all duration-700 overflow-hidden group shadow-lg"
               >
-                <div className="text-3xl grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100 transition-all duration-500">{feature.icon}</div>
-                <div>
-                  <h4 className="text-[15px] font-medium text-[#F5F2EB]/90 group-hover:text-[#C9A87C] transition-colors">{language === 'tr' ? feature.tr : feature.en}</h4>
+                {/* Text Content */}
+                <div className="relative z-20">
+                  <h4 className="text-[17px] md:text-xl font-medium text-[#F5F2EB]/90 mb-3 group-hover:text-[#C9A87C] transition-colors">
+                    {language === 'tr' ? feature.tr : feature.en}
+                  </h4>
+                  <p className="text-sm font-light text-[#F5F2EB]/50 max-w-[85%] leading-relaxed">
+                    {language === 'tr' ? feature.descTr : feature.descEn}
+                  </p>
+                </div>
+                
+                {/* Visual Representation */}
+                <div className="absolute inset-0 pointer-events-none rounded-[2.5rem]">
+                   {feature.visual}
                 </div>
               </motion.div>
             ))}
@@ -838,7 +952,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       {/* Footer */}
       <footer className="py-32 px-8 md:px-20 border-t border-[#F5F2EB]/5 text-center relative z-10 bg-[#11100F]">
         <div className="mb-16">
-          <div className="font-serif italic text-5xl mb-6 text-[#C9A87C]">Davetiye Atölyesi</div>
+          <div className="font-serif italic text-5xl mb-6 text-[#C9A87C]">Davetasyon</div>
           <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#F5F2EB]/30">Crafting Digital Legacies Since 2026</p>
         </div>
         <div className="flex justify-center flex-wrap gap-10 md:gap-16 mb-20 text-[10px] uppercase tracking-[0.3em] font-bold text-[#F5F2EB]/40">
@@ -847,7 +961,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
           <span className="hover:text-[#C9A87C] transition-colors cursor-pointer">Pinterest</span>
         </div>
         <div className="text-[9px] uppercase tracking-[0.3em] font-medium text-[#F5F2EB]/20">
-          © 2026 Davetiye Atölyesi | All Rights Reserved
+          © 2026 Davetasyon | All Rights Reserved
         </div>
       </footer>
       <BackgroundMusic url="https://www.chosic.com/wp-content/uploads/2021/04/Rain-and-Pianos-Relaxing-Piano-Music.mp3" />

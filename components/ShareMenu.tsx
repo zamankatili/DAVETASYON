@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export const ShareMenu: React.FC<{ url?: string; title?: string; text?: string; language: 'tr' | 'en' }> = ({
   url = window.location.href,
-  title = "Dijital Davetiye Atölyesi",
+  title = "Davetasyon",
   text = "Bu muhteşem davetiyeyi incele!",
   language
 }) => {

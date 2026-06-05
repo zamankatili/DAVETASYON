@@ -110,7 +110,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
       
       const isEventGuest = !!eventContext;
       
-      const salesPromptTr = `Sen 'Davetiye Atölyesi'nin lüks, samimi ve profesyonel dijital asistanısın. Müşterilere rüya gibi bir dijital davetiye deneyimi sunmak için buradasın.
+      const salesPromptTr = `Sen 'Davetasyon'un lüks, samimi ve profesyonel dijital asistanısın. Müşterilere rüya gibi bir dijital davetiye deneyimi sunmak için buradasın.
 Kurallar:
 1. Mümkün olduğunca KISA ve ÖZ cevaplar ver. Asla uzun paragraflar yazma. 1-2 cümle yeterli. Açıklayıcı ve nazik ol.
 2. ETKİLEŞİMİ KORU: Her cevabının sonuna mutlaka müşteriyi sohbette tutacak bir açık uçlu soru ekle (örn: Hangi konsept ilginizi çekiyor? Etkinliğiniz ne zaman?).
@@ -127,7 +127,7 @@ Kurallar:
 6. Sipariş ve Detaylar: Detaylandırma sonrası müşteriyi her zaman WhatsApp iletişimine yönlendir ("Detayları konuşmak isterseniz WhatsApp hattımıza yazabilirsiniz.").
 7. Sadece dijital davetiye ve etkinlik sorularına cevap ver. Başka konuları kibarca reddet.`;
 
-      const salesPromptEn = `You are the luxury, friendly, and professional digital assistant of 'Davetiye Atölyesi' (Invitation Atelier). You are here to offer customers a dream-like digital invitation experience.
+      const salesPromptEn = `You are the luxury, friendly, and professional digital assistant of 'Davetasyon'. You are here to offer customers a dream-like digital invitation experience.
 Rules:
 1. Keep answers as SHORT and CONCISE as possible. Never write long paragraphs. 1-2 sentences are enough. Be explanatory and polite.
 2. MAINTAIN INTERACTION: Always add an open-ended question at the end to keep the customer engaged (e.g., Which concept interests you? When is your event?).
@@ -170,11 +170,11 @@ Kurallar:
       
       const initialGreetingTr = isEventGuest 
         ? `Merhaba! 👋 ${eventContext?.title} için sanal asistanınızım. Etkinlikle ilgili sormak istediğiniz bir şey var mı? (Giyim kodu, ulaşım, çocuk vb.)`
-        : "Merhaba! 👋 Davetiye Atölyesi'ne hoş geldiniz. Hayalinizdeki etkinlik ne zaman?";
+        : "Merhaba! 👋 Davetasyon'a hoş geldiniz. Hayalinizdeki etkinlik ne zaman?";
       
       const initialGreetingEn = isEventGuest
         ? `Hello! 👋 I am your virtual concierge for ${eventContext?.title}. Do you have any questions regarding the event?`
-        : "Hello! 👋 Welcome to Invitation Atelier. When is your dream event?";
+        : "Hello! 👋 Welcome to Davetasyon. When is your dream event?";
 
       const greeting = language === 'tr' ? initialGreetingTr : initialGreetingEn;
       // Add initial greeting
@@ -336,7 +336,7 @@ Kurallar:
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-white font-serif text-sm font-medium">Davetiye Atölyesi</h3>
+                  <h3 className="text-white font-serif text-sm font-medium">Davetasyon</h3>
                   <p className="text-[#d4af37] text-[10px] uppercase tracking-wider">
                     {language === 'tr' ? 'Dijital Asistan' : 'Digital Assistant'}
                   </p>
