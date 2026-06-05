@@ -1,0 +1,7 @@
+{
+  "name": "Davetiye Atölyesi | Lüks Dijital Davetiyeler",
+  "description": "Özel anlarınızı en şık dijital davetiyelerle kutlayın. Hemen seçin, özelleştirin ve AI destekli asistan onayıyla misafirlerinizle paylaşın.",
+  "requestFramePermissions": [
+    "clipboard-write"
+  ]
+}

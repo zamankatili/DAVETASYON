@@ -1,0 +1,102 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ===============================================================
+    // PROJECT ETERNAL: SaaS Data Model & Rules
+    // ===============================================================
+    //
+    // Collection: events
+    // Document ID: auto-generated (eventId)
+    // Fields: hostId, title, templateId, aiContext, venue, createdAt
+    //
+    // Subcollection: events/{eventId}/rsvps
+    // Document ID: auto-generated
+    // Fields: name, status, count, note, createdAt
+    //
+    // Collection: users
+    // Document ID: user UID
+    // Fields: email, role, createdAt
+    //
+    // ===============================================================
+
+    // Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(hostId) {
+      return isAuthenticated() && request.auth.uid == hostId;
+    }
+
+    // Admins can be specified internally. 
+    function isAdmin() {
+      return isAuthenticated() &&
+        (
+          (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin') ||
+          (request.auth.token.email == "zamankatilii@gmail.com" && request.auth.token.email_verified == true)
+        );
+    }
+
+    function isValidEvent(data) {
+      return data.keys().hasAll(['hostId', 'title', 'templateId', 'createdAt']) &&
+             data.hostId == request.auth.uid &&
+             data.title is string && data.title.size() > 0 && data.title.size() <= 100 &&
+             data.templateId is string && data.templateId.size() > 0 && data.templateId.size() <= 50 &&
+             data.createdAt is timestamp;
+    }
+
+    function isValidRSVP(data) {
+      return data.keys().hasAll(['name', 'status', 'count', 'createdAt']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.status in ['yes', 'no'] &&
+             data.count is number && data.count >= 1 && data.count <= 10 &&
+             data.createdAt is timestamp;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /events/{eventId} {
+      // Anyone can read event details (guests need to see the invitation)
+      allow read: if true;
+      
+      // Only authenticated users can create events, and hostId must match their UID
+      allow create: if isAuthenticated() && isValidEvent(request.resource.data);
+      
+      // Only the host (or admin) can update/delete their event
+      allow update, delete: if isOwner(resource.data.hostId) || isAdmin();
+
+      // --- RSVPs Subcollection ---
+      match /rsvps/{rsvpId} {
+        // Guests (unauthenticated) can submit an RSVP
+        allow create: if exists(/databases/$(database)/documents/events/$(eventId)) && isValidRSVP(request.resource.data);
+        
+        // Only the Host of the *parent event* or an admin can read the RSVPs
+        allow read: if isAdmin() || (isAuthenticated() && get(/databases/$(database)/documents/events/$(eventId)).data.hostId == request.auth.uid);
+        
+        // Host or admin can delete/update
+        allow update, delete: if isAdmin() || (isAuthenticated() && get(/databases/$(database)/documents/events/$(eventId)).data.hostId == request.auth.uid);
+      }
+    }
+
+    match /users/{userId} {
+      allow read: if isAuthenticated() && request.auth.uid == userId || isAdmin();
+      allow create: if isAuthenticated() && request.auth.uid == userId && 
+                    request.resource.data.keys().hasOnly(['email', 'role', 'createdAt']) && 
+                    request.resource.data.role == 'user';
+      allow update: if isAdmin();
+    }
+  }
+}
+

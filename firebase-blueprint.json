@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "Event": {
+      "title": "Event",
+      "description": "A customized digital invitation event created by a host.",
+      "type": "object",
+      "properties": {
+        "hostId": { "type": "string", "description": "UID of the user who owns this event" },
+        "title": { "type": "string", "description": "e.g., Berna & Melih Wedding" },
+        "templateId": { "type": "string", "description": "The ID of the UI template chosen (e.g., darkluxury, aurora)" },
+        "eventDate": { "type": "timestamp" },
+        "venue": { 
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "address": { "type": "string" }
+          }
+        },
+        "aiContext": { "type": "string", "description": "Rules for the AI Concierge (e.g., 'No kids allowed, parking is free')" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["hostId", "title", "templateId", "createdAt"]
+    },
+    "RSVP": {
+      "title": "RSVP",
+      "description": "A guest's response to an invitation.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Guest's full name" },
+        "status": { "type": "string", "enum": ["yes", "no"], "description": "Attendance status" },
+        "count": { "type": "number", "description": "Number of guests attending" },
+        "note": { "type": "string", "description": "Optional note for the host" },
+        "createdAt": { "type": "timestamp", "description": "When the RSVP was submitted" }
+      },
+      "required": ["name", "status", "count", "createdAt"]
+    },
+    "User": {
+      "title": "User",
+      "description": "App user/admin",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "user"] },
+        "createdAt": { "type": "timestamp" }
+      }
+    }
+  },
+  "firestore": {
+    "/events/{eventId}": {
+      "schema": { "$ref": "#/entities/Event" },
+      "description": "Collection of all events/invitations."
+    },
+    "/events/{eventId}/rsvps/{rsvpId}": {
+      "schema": { "$ref": "#/entities/RSVP" },
+      "description": "Subcollection of RSVPs specifically for one event. This guarantees strict data isolation."
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Collection of users for role management."
+    }
+  }
+}

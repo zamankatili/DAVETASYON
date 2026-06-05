@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://davetiyem.com/sitemap.xml
