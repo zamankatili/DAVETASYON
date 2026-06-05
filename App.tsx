@@ -23,6 +23,7 @@ const AeternaTemplate = React.lazy(() => import('./components/AeternaTemplate'))
 const App: React.FC = () => {
   const [language, setLanguage] = useState<'tr' | 'en'>('tr');
   const [isMuted, setIsMuted] = useState(true);
+  const [userKilledAudio, setUserKilledAudio] = useState(false);
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [orderConcept, setOrderConcept] = useState('');
   const [currentEventTemplate, setCurrentEventTemplate] = useState<string | null>(null);
@@ -110,38 +111,39 @@ const App: React.FC = () => {
 
   // Ortam sesi başlatma (ilk etkileşimde)
   useEffect(() => {
+    if (userKilledAudio) return; // Kullanıcı bilerek kapattıysa zorlama
+    
     const interactionEvents = ['click', 'pointerdown', 'touchstart', 'keydown'];
     
     const startAmbient = async () => {
-      if (ambientAudioRef.current) {
+      if (ambientAudioRef.current && ambientAudioRef.current.paused && ambientAudioRef.current.src) {
         try {
           ambientAudioRef.current.volume = 0.2;
-          // Eğer müzik çalmıyorsa ve sistem sessizde değilse çalmayı dene
-          if (ambientAudioRef.current.paused && ambientAudioRef.current.src) {
-             ambientAudioRef.current.muted = false;
-             await ambientAudioRef.current.play();
-             setIsMuted(false);
-          }
-          // Yalnızca başarılı olursa dinleyicileri temizle
+          ambientAudioRef.current.muted = false;
+          await ambientAudioRef.current.play();
+          setIsMuted(false);
+          // Oynatma başarılı olunca dinleyicileri kaldır (kutuplaşmayı önlemek için)
           interactionEvents.forEach(e => window.removeEventListener(e, startAmbient));
         } catch (error) {
-          // Tarayıcı autoplay engellediyse (kırmızı hata yerine uyarı ver, dinleyiciler kalsın)
           console.warn("Tarayıcı otomatik ses oynatmayı engelledi, geçerli bir tıklama/dokunma bekleniyor...");
           setIsMuted(true);
-          if (ambientAudioRef.current) ambientAudioRef.current.muted = true;
         }
       }
     };
 
-    interactionEvents.forEach(e => window.addEventListener(e, startAmbient));
+    // Dinleyicileri ekle
+    interactionEvents.forEach(e => window.addEventListener(e, startAmbient, { passive: true }));
+    
+    // Cleanup
     return () => interactionEvents.forEach(e => window.removeEventListener(e, startAmbient));
-  }, []);
+  }, [userKilledAudio, currentKey]);
 
   const toggleMute = () => {
     if (ambientAudioRef.current) {
       const newMuted = !ambientAudioRef.current.muted;
       ambientAudioRef.current.muted = newMuted;
       setIsMuted(newMuted);
+      setUserKilledAudio(newMuted); // Kullanıcı kendi eliyle kapattı
       if (!newMuted) {
         ambientAudioRef.current.play().catch(() => {});
       } else {
