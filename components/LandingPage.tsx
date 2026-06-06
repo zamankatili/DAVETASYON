@@ -311,7 +311,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full h-24 border-b border-[#F5F2EB]/5 bg-[#11100F]/60 backdrop-blur-2xl z-50 flex items-center justify-between px-8 md:px-20">
+      <nav className="fixed top-0 left-0 w-full h-[72px] sm:h-24 border-b border-[#F5F2EB]/5 bg-[#11100F]/60 backdrop-blur-2xl z-50 flex items-center justify-between px-4 sm:px-8 md:px-20">
         <div className="flex items-center gap-4 relative z-10">
           <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C9A87C] to-[#E5CCAA] flex items-center justify-center text-[#11100F] font-serif italic text-2xl shadow-[0_0_30px_rgba(201,168,124,0.2)]">D</div>
           <div className="hidden sm:flex flex-col">
@@ -319,7 +319,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
             <span className="text-[9px] uppercase tracking-widest text-[#C9A87C] mt-1 ml-1 opacity-80">Davetiye Atölyesi</span>
           </div>
         </div>
-        <div className="flex items-center gap-12 relative z-10">
+        <div className="flex items-center gap-4 sm:gap-12 relative z-10">
           <div className="hidden lg:flex items-center gap-10 text-[10px] uppercase tracking-[5px] font-bold text-[#F5F2EB]/40">
             <span 
               onClick={() => document.getElementById('collections')?.scrollIntoView({ behavior: 'smooth' })}
@@ -354,8 +354,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-24 px-8 md:px-20 z-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <section className="relative min-h-screen flex flex-col justify-center pt-28 pb-16 px-4 sm:px-8 md:px-20 z-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -375,16 +375,16 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
             <p className="text-lg md:text-xl text-[#F5F2EB]/60 max-w-xl leading-relaxed mb-16 font-light">
               {t.heroSubtitle}
             </p>
-            <div className="flex flex-wrap items-center gap-6">
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
               <button 
                 onClick={() => document.getElementById('collections')?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-12 py-5 bg-[#C9A87C] text-[#11100F] text-[11px] uppercase tracking-[4px] font-bold rounded-full hover:bg-[#F5F2EB] transition-all duration-500 shadow-[0_15px_40px_rgba(201,168,124,0.2)] group flex items-center gap-4"
+                className="w-full sm:w-auto px-8 sm:px-12 py-5 bg-[#C9A87C] text-[#11100F] text-[10px] sm:text-[11px] uppercase tracking-[3px] sm:tracking-[4px] font-bold rounded-full hover:bg-[#F5F2EB] transition-all duration-500 shadow-[0_15px_40px_rgba(201,168,124,0.2)] group flex justify-center items-center gap-4"
               >
                 {t.ctaPrimary} <span className="block group-hover:translate-x-2 transition-transform">→</span>
               </button>
               <button 
                 onClick={() => setIsQuizOpen(true)}
-                className="group px-10 py-5 bg-[#F5F2EB]/5 border border-[#C9A87C]/30 text-[#C9A87C] text-[11px] uppercase tracking-[4px] font-bold rounded-full hover:bg-[#C9A87C] hover:text-[#11100F] transition-all duration-500 backdrop-blur-sm relative overflow-hidden flex items-center gap-3"
+                className="w-full sm:w-auto group px-8 sm:px-10 py-5 bg-[#F5F2EB]/5 border border-[#C9A87C]/30 text-[#C9A87C] text-[10px] sm:text-[11px] uppercase tracking-[3px] sm:tracking-[4px] font-bold rounded-full hover:bg-[#C9A87C] hover:text-[#11100F] transition-all duration-500 backdrop-blur-sm relative overflow-hidden flex justify-center items-center gap-3"
               >
                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[200%] group-hover:animate-[shimmer_2s_infinite]"></div>
                 ✨ {language === 'tr' ? 'Tarzını Keşfet (Quiz)' : 'Find Your Style (Quiz)'}
@@ -421,7 +421,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
               <motion.div 
                 animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-10 left-10 right-10 p-8 bg-[#11100F]/60 backdrop-blur-2xl border border-[#F5F2EB]/10 rounded-[2rem]"
+                className="absolute bottom-4 sm:bottom-10 left-4 sm:left-10 right-4 sm:right-10 p-5 sm:p-8 bg-[#11100F]/60 backdrop-blur-2xl border border-[#F5F2EB]/10 rounded-[1.5rem] sm:rounded-[2rem]"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#C9A87C]">Canlı Demo</div>
@@ -581,7 +581,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       </section>
 
       {/* Exclusive Features Section */}
-      <section id="exclusive" className="py-40 px-8 md:px-20 bg-[#F5F2EB] text-[#11100F] rounded-[4rem] md:rounded-[6rem] relative z-20 mx-4 md:mx-8 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
+      <section id="exclusive" className="py-24 sm:py-40 px-4 sm:px-8 md:px-20 bg-[#F5F2EB] text-[#11100F] rounded-[2rem] sm:rounded-[4rem] md:rounded-[6rem] relative z-20 mx-2 sm:mx-4 md:mx-8 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32 items-center">
             <div>
@@ -654,7 +654,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       </section>
 
       {/* Collections - Horizontal Scroll Style */}
-      <section id="collections" className="py-40 px-8 md:px-20 relative z-10">
+      <section id="collections" className="py-24 sm:py-40 px-4 sm:px-8 md:px-20 relative z-10">
         <div className="max-w-7xl mx-auto mb-24 flex flex-col md:flex-row justify-between items-end gap-8">
           <div className="max-w-2xl">
             <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#C9A87C] mb-6 block">The Collection</span>
@@ -704,7 +704,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       <SavingsCalculator language={language} />
 
       {/* Packages Section */}
-      <section id="packages" className="py-40 px-8 md:px-20 bg-[#11100F] relative z-10 overflow-hidden">
+      <section id="packages" className="py-24 sm:py-40 px-4 sm:px-8 md:px-20 bg-[#11100F] relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20 relative">
             
@@ -781,7 +781,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       </section>
 
       {/* Features Section */}
-      <section id="pricing" className="py-40 px-8 md:px-20 bg-[#161413]">
+      <section id="pricing" className="py-24 sm:py-40 px-4 sm:px-8 md:px-20 bg-[#161413]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-32">
             <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#C9A87C] mb-6 block">{t.pricingTitle}</span>
@@ -953,7 +953,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       </section>
 
       {/* Footer */}
-      <footer className="py-32 px-8 md:px-20 border-t border-[#F5F2EB]/5 text-center relative z-10 bg-[#11100F]">
+      <footer className="py-20 sm:py-32 px-4 sm:px-8 md:px-20 border-t border-[#F5F2EB]/5 text-center relative z-10 bg-[#11100F]">
         <div className="mb-16">
           <div className="flex flex-col items-center justify-center mb-6">
             <div className="font-serif italic text-5xl text-[#C9A87C] leading-none mb-2">Davetasyon</div>

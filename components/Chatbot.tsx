@@ -267,7 +267,7 @@ Kurallar:
             initial={{ opacity: 0, y: 10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            className="fixed bottom-24 sm:bottom-28 right-6 sm:right-[100px] z-[199] bg-[#0a0a0a]/60 backdrop-blur-xl border border-[#d4af37]/50 text-white px-5 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center gap-3 cursor-pointer"
+            className="fixed bottom-[90px] sm:bottom-8 right-6 sm:right-[90px] z-[199] bg-[#0a0a0a]/60 backdrop-blur-xl border border-[#d4af37]/50 text-white px-5 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center gap-3 cursor-pointer"
             onClick={() => {
               setIsOpen(true);
               setShowTooltip(false);
@@ -303,7 +303,7 @@ Kurallar:
           setIsOpen(true);
           setShowTooltip(false);
         }}
-        className={`fixed bottom-24 sm:bottom-28 right-6 z-[200] w-14 h-14 rounded-full bg-[#d4af37] text-black flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-110 transition-transform ${isOpen ? 'hidden' : 'flex'}`}
+        className={`fixed bottom-6 sm:bottom-6 right-6 z-[200] w-14 h-14 rounded-full bg-[#d4af37] text-black flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-110 transition-transform ${isOpen ? 'hidden' : 'flex'}`}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/>
@@ -320,7 +320,7 @@ Kurallar:
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 sm:bottom-28 right-6 z-[200] w-[350px] h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-[#0a0a0a]/30 backdrop-blur-xl border border-[#d4af37]/30 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden"
+            className="fixed bottom-6 sm:bottom-24 right-6 sm:right-6 z-[200] w-[350px] h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-[#0a0a0a]/30 backdrop-blur-xl border border-[#d4af37]/30 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-transparent border-b border-[#d4af37]/20 p-4 flex justify-between items-center">

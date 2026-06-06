@@ -223,7 +223,7 @@ const App: React.FC = () => {
 
       {/* Global Ses Kontrol Butonu & Share Butonu */}
       {currentKey !== 'dashboard' && (
-        <div className="fixed bottom-24 right-6 sm:bottom-6 sm:right-[100px] z-[200] flex flex-col sm:flex-row gap-3">
+        <div className="fixed bottom-6 left-6 sm:left-auto sm:bottom-6 sm:right-[100px] z-[200] flex flex-col sm:flex-row gap-3">
           <ShareMenu 
             language={language}
             title={seoData.title}
