@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../src/firebase';
 
 interface OrderFormModalProps {
   isOpen: boolean;
@@ -21,9 +23,14 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({ isOpen, onClose,
     invitationText: '',
     notes: '',
     music: '',
+    contact: '',
     wantsRSVP: false,
     wantsAI: false,
   });
+  const [acceptConsent, setAcceptConsent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Update concept when initialConcept changes
   useEffect(() => {
@@ -41,16 +48,52 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({ isOpen, onClose,
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const text = language === 'tr' 
-      ? `Merhaba, dijital davetiye siparişi vermek için formu doldurdum. Bilgilerim:\n\n*Temel Bilgiler*\nEtkinlik Türü: ${formData.eventType}\nİsimler: ${formData.names}\nTarih: ${formData.date}\nSaat: ${formData.time}\n\n*Mekan Detayları*\nMekan Adı: ${formData.venueName}\nAdres: ${formData.address}\nHarita Linki: ${formData.mapLink}\n\n*Tasarım & İçerik*\nKonsept/Renk: ${formData.concept}\nDavetiye Metni: ${formData.invitationText}\nÖzel Notlar: ${formData.notes}\n\n*Ekstra Özellikler*\nMüzik: ${formData.music}\nLCV Paneli İstiyor mu?: ${formData.wantsRSVP ? 'Evet' : 'Hayır'}\nAI Mesaj İstiyor mu?: ${formData.wantsAI ? 'Evet' : 'Hayır'}`
-      : `Hello, I have filled out the form to order a digital invitation. My details:\n\n*Basic Info*\nEvent Type: ${formData.eventType}\nNames: ${formData.names}\nDate: ${formData.date}\nTime: ${formData.time}\n\n*Venue Details*\nVenue Name: ${formData.venueName}\nAddress: ${formData.address}\nMap Link: ${formData.mapLink}\n\n*Design & Content*\nConcept/Colors: ${formData.concept}\nInvitation Text: ${formData.invitationText}\nSpecial Notes: ${formData.notes}\n\n*Extra Features*\nMusic: ${formData.music}\nWants RSVP Panel?: ${formData.wantsRSVP ? 'Yes' : 'No'}\nWants AI Message?: ${formData.wantsAI ? 'Yes' : 'No'}`;
+  // Reset başarı ekranını modal kapatıldığında sıfırla
+  useEffect(() => {
+    if (!isOpen) {
+      setSubmitted(false);
+      setSubmitError(null);
+      setIsSubmitting(false);
+    }
+  }, [isOpen]);
 
-    const encodedText = encodeURIComponent(text);
-    window.open(`https://wa.me/?text=${encodedText}`, '_blank');
-    onClose();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!acceptConsent || isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+    try {
+      // Sipariş talebini Firestore'a yaz — WhatsApp yoksa bile asla kaybolmaz
+      await addDoc(collection(db, 'orders'), {
+        eventType: formData.eventType.trim(),
+        names: formData.names.trim(),
+        date: formData.date,
+        time: formData.time,
+        venueName: formData.venueName.trim(),
+        address: formData.address.trim(),
+        mapLink: formData.mapLink.trim(),
+        concept: formData.concept.trim(),
+        invitationText: formData.invitationText.trim(),
+        notes: formData.notes.trim(),
+        music: formData.music.trim(),
+        contact: formData.contact.trim(),
+        wantsRSVP: formData.wantsRSVP,
+        wantsAI: formData.wantsAI,
+        language,
+        initialConcept: initialConcept || '',
+        status: 'new',
+        createdAt: serverTimestamp(),
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Sipariş kaydı hatası:', err);
+      setSubmitError(language === 'tr'
+        ? 'Talebiniz kaydedilemedi. Lütfen tekrar deneyin ya da daha sonra bize ulaşın.'
+        : 'Your request could not be saved. Please try again or contact us later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const t = {
@@ -74,7 +117,15 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({ isOpen, onClose,
       music: "İstenen Müzik (YouTube Linki veya Adı)",
       wantsRSVP: "LCV (Katılım Bildirimi) Paneli İstiyorum",
       wantsAI: "Yapay Zeka (AI) Karşılama Mesajı İstiyorum",
-      submit: "WhatsApp Üzerinden Gönder",
+      contactLabel: "İletişim (WhatsApp no veya e-posta)",
+      contactPlaceholder: "05__ ... veya ornek@eposta.com",
+      consent: "Bilgilerimin sipariş talebimin değerlendirilmesi amacıyla KVKK kapsamında işlenmesini kabul ediyorum.",
+      submit: "Sipariş Talebi Gönder",
+      submitting: "Gönderiliyor...",
+      successTitle: "Talebiniz güvenle alındı 🎉",
+      successDesc: "Ekibimiz 24 saat içinde size dönüş yapacaktır. Formunuzdaki tüm detaylar kaydedildi.",
+      close: "Kapat",
+      errorConsent: "Devam etmek için bilgilerinizin işlenmesini kabul etmelisiniz.",
       cancel: "İptal"
     },
     en: {
@@ -97,7 +148,15 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({ isOpen, onClose,
       music: "Desired Music (YouTube Link or Name)",
       wantsRSVP: "I want an RSVP Panel",
       wantsAI: "I want an AI Welcome Message",
-      submit: "Send via WhatsApp",
+      contactLabel: "Contact (WhatsApp no. or email)",
+      contactPlaceholder: "+90 5__ ... or you@email.com",
+      consent: "I consent to my data being processed under KVKK/GDPR for handling my order request.",
+      submit: "Send Order Request",
+      submitting: "Submitting...",
+      successTitle: "Your request is safely with us 🎉",
+      successDesc: "Our team will get back to you within 24 hours. Every detail of your form has been saved.",
+      close: "Close",
+      errorConsent: "Please consent to data processing to continue.",
       cancel: "Cancel"
     }
   }[language];
@@ -130,7 +189,25 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({ isOpen, onClose,
               </button>
             </div>
 
+            {submitted ? (
+              <div className="p-10 text-center">
+                <div className="w-20 h-20 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/40 flex items-center justify-center mx-auto mb-8">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#d4af37]"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <h3 className="text-2xl font-serif text-white mb-4">{t.successTitle}</h3>
+                <p className="text-white/60 text-sm leading-relaxed mb-10 max-w-sm mx-auto">{t.successDesc}</p>
+                <button onClick={onClose} className="px-12 py-4 rounded-full bg-[#d4af37] text-black hover:bg-white transition-colors font-medium tracking-wide">
+                  {t.close}
+                </button>
+              </div>
+            ) : (
             <form onSubmit={handleSubmit} className="p-6 space-y-8">
+              {/* Contact (WhatsApp yoksa bile size ulaşabilelim) */}
+              <div className="space-y-4">
+                <h3 className="text-[#d4af37] font-serif text-lg border-b border-[#d4af37]/20 pb-2">{t.contactLabel}</h3>
+                <input required type="text" name="contact" value={formData.contact} onChange={handleChange} placeholder={t.contactPlaceholder} className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50 transition-colors" />
+              </div>
+
               {/* Basic Info */}
               <div className="space-y-4">
                 <h3 className="text-[#d4af37] font-serif text-lg border-b border-[#d4af37]/20 pb-2">{t.basicInfo}</h3>
@@ -219,15 +296,28 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({ isOpen, onClose,
                 </div>
               </div>
 
-              <div className="pt-6 flex gap-4">
+              {/* KVKK Onayı */}
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <div className="relative flex items-center justify-center w-5 h-5 mt-0.5 rounded border border-white/20 bg-white/5 group-hover:border-[#d4af37]/50 transition-colors shrink-0">
+                  <input type="checkbox" checked={acceptConsent} onChange={(e) => setAcceptConsent(e.target.checked)} className="opacity-0 absolute inset-0 cursor-pointer" />
+                  {acceptConsent && <svg className="w-3.5 h-3.5 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>}
+                </div>
+                <span className="text-white/50 text-[11px] leading-relaxed">{t.consent}</span>
+              </label>
+
+              {submitError && <p className="text-red-400 text-xs">{submitError}</p>}
+              {!acceptConsent && <p className="text-white/20 text-[10px]">{t.errorConsent}</p>}
+
+              <div className="pt-2 flex gap-4">
                 <button type="button" onClick={onClose} className="flex-1 py-4 rounded-full border border-white/20 text-white hover:bg-white/5 transition-colors font-medium tracking-wide">
                   {t.cancel}
                 </button>
-                <button type="submit" className="flex-1 py-4 rounded-full bg-[#d4af37] text-black hover:bg-white transition-colors font-medium tracking-wide shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-                  {t.submit}
+                <button type="submit" disabled={!acceptConsent || isSubmitting} className="flex-1 py-4 rounded-full bg-[#d4af37] text-black hover:bg-white transition-colors font-medium tracking-wide shadow-[0_0_20px_rgba(212,175,55,0.3)] disabled:opacity-40 disabled:cursor-not-allowed">
+                  {isSubmitting ? t.submitting : t.submit}
                 </button>
               </div>
             </form>
+            )}
           </motion.div>
         </div>
       )}

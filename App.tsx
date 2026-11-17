@@ -19,6 +19,7 @@ const ClassicEnvelopeTemplate = React.lazy(() => import('./components/ClassicEnv
 const MemoryBoxTemplate = React.lazy(() => import('./components/MemoryBoxTemplate'));
 const HostDashboard = React.lazy(() => import('./components/HostDashboard'));
 const AeternaTemplate = React.lazy(() => import('./components/AeternaTemplate'));
+const LegalPages = React.lazy(() => import('./components/LegalPages'));
 
 const App: React.FC = () => {
   const [language, setLanguage] = useState<'tr' | 'en'>('tr');
@@ -297,6 +298,9 @@ const App: React.FC = () => {
           <Route path="/preview/memorybox" element={<MemoryBoxTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('memorybox')} />} />
           <Route path="/preview/aeterna" element={<AeternaTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('aeterna')} />} />
           
+          {/* Yasal sayfalar */}
+          <Route path="/yasal/:docId" element={<LegalPages />} />
+
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>

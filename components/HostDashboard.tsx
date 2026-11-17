@@ -3,7 +3,10 @@ import { collection, query, onSnapshot, orderBy, addDoc, serverTimestamp, doc, g
 import { db, auth, loginWithGoogle, logout } from '../src/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis } from 'recharts';
-import { Lock, Sparkles, TrendingUp, Users, CalendarDays, MapPin } from 'lucide-react';
+import { Lock, Sparkles, TrendingUp, Users, CalendarDays, MapPin, Clock, ShoppingBag, QrCode } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
+
+export const ADMIN_EMAIL = 'zamankatilii@gmail.com';
 
 interface RSVP {
   id: string;
@@ -31,6 +34,18 @@ interface Capsule {
   unlocksAt: any;
 }
 
+interface OrderItem {
+  id: string;
+  names: string;
+  eventType: string;
+  contact: string;
+  concept?: string;
+  date?: string;
+  venueName?: string;
+  status?: string;
+  createdAt: any;
+}
+
 const COLORS = ['#C9A87C', '#EF4444', '#10B981'];
 
 const HostDashboard: React.FC = () => {
@@ -39,9 +54,36 @@ const HostDashboard: React.FC = () => {
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
   const [rsvps, setRsvps] = useState<RSVP[]>([]);
   const [capsules, setCapsules] = useState<Capsule[]>([]);
+  const [orders, setOrders] = useState<OrderItem[]>([]);
+  const [ordersError, setOrdersError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'overview' | 'guests' | 'capsules'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'guests' | 'capsules' | 'orders'>('overview');
+  const [showQR, setShowQR] = useState(false);
+  const isAdmin = user?.email === ADMIN_EMAIL;
+
+  const eventLink = selectedEventId ? `${window.location.origin}/event/${selectedEventId}` : '';
+  const downloadQR = () => {
+    const svg = document.getElementById('event-qr-svg');
+    if (!svg) return;
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 360;
+      canvas.height = 360;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      ctx.fillStyle = '#0A0A0A';
+      ctx.fillRect(0, 0, 360, 360);
+      ctx.drawImage(img, 0, 0, 360, 360);
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = 'davetasyon-qr.png';
+      a.click();
+    };
+    img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+  };
 
   useEffect(() => {
     const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
@@ -51,6 +93,7 @@ const HostDashboard: React.FC = () => {
         setEvents([]);
         setRsvps([]);
         setCapsules([]);
+        setOrders([]);
         setSelectedEventId(null);
       }
     });
@@ -85,6 +128,31 @@ const HostDashboard: React.FC = () => {
 
     return () => unsubscribe();
   }, [user, selectedEventId]);
+
+  // Admin: sipariş taleplerini dinle (sadece admin e-postası rules'a takılır)
+  useEffect(() => {
+    if (!isAdmin) {
+      setOrders([]);
+      return;
+    }
+    const q = query(collection(db, 'orders'), orderBy('createdAt', 'desc'));
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const data: OrderItem[] = [];
+        snapshot.forEach((docSnap) => {
+          data.push({ id: docSnap.id, ...(docSnap.data() as Omit<OrderItem, 'id'>) });
+        });
+        setOrders(data);
+        setOrdersError(null);
+      },
+      (err) => {
+        console.error('Siparişler okunamadı:', err);
+        setOrdersError('Siparişler okunamadı (admin yetkisi yoksa normaldir).');
+      }
+    );
+    return () => unsubscribe();
+  }, [isAdmin]);
 
   // Fetch RSVPs and Capsules for selected event
   useEffect(() => {
@@ -288,10 +356,16 @@ const HostDashboard: React.FC = () => {
                   </div>
 
                   <div className="flex gap-3">
-                    <button 
+                    <button
+                      onClick={() => setShowQR(v => !v)}
+                      className="px-6 py-3 border border-white/10 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-white/5 transition-all text-white/70 flex items-center gap-2"
+                      title="Davetiye linki QR'ı"
+                    >
+                      <QrCode className="w-4 h-4" /> QR
+                    </button>
+                    <button
                       onClick={() => {
-                        const link = `${window.location.origin}/event/${selectedEventId}`;
-                        navigator.clipboard.writeText(link);
+                        navigator.clipboard.writeText(eventLink);
                         alert("📡 Yayın frekansı kopyalandı!");
                       }}
                       className="px-6 py-3 border border-white/10 rounded-full text-[10px] uppercase tracking-[0.2em] hover:bg-white/5 transition-all text-white/70"
@@ -309,6 +383,25 @@ const HostDashboard: React.FC = () => {
                   </div>
                 </div>
 
+                {/* QR Panel */}
+                {showQR && (
+                  <div className="bg-[#111111] border border-white/10 rounded-[2rem] p-6 flex flex-col sm:flex-row items-center gap-6 relative overflow-hidden">
+                    <div className="bg-[#0A0A0A] p-4 rounded-2xl border border-[#C9A87C]/20 shrink-0">
+                      <QRCodeSVG id="event-qr-svg" value={eventLink} size={170} bgColor="#0A0A0A" fgColor="#F5F2EB" />
+                    </div>
+                    <div className="text-center sm:text-left">
+                      <h3 className="text-lg font-serif italic text-white mb-2">Kapıdaki QR Karşılama</h3>
+                      <p className="text-white/50 text-xs leading-relaxed mb-4 max-w-sm">Bu QR'ı çıktı alıp karşılama masasına ve davetli masalarına koyabilirsiniz; misafirler telefonuyla okutup davetiyeye, LCV'ye ve Anı Kutusu'na ulaşır.</p>
+                      <button
+                        onClick={downloadQR}
+                        className="px-6 py-2.5 bg-[#C9A87C] text-black rounded-full text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#F5F2EB] transition-all"
+                      >
+                        PNG İndir (360px)
+                      </button>
+                    </div>
+                  </div>
+                )}
+
                 {/* Tabs */}
                 <div className="flex gap-2 border-b border-white/5 pb-0">
                   <button 
@@ -323,12 +416,20 @@ const HostDashboard: React.FC = () => {
                   >
                     Davetli Listesi ({rsvps.length})
                   </button>
-                  <button 
+                  <button
                     onClick={() => setActiveTab('capsules')}
                     className={`px-8 py-4 text-[10px] uppercase tracking-[0.2em] font-bold border-b-2 transition-all ${activeTab === 'capsules' ? 'text-[#C9A87C] border-[#C9A87C]' : 'text-white/30 border-transparent hover:text-white/70'}`}
                   >
                     Zaman Kapsülleri ({capsules.length})
                   </button>
+                  {isAdmin && (
+                    <button
+                      onClick={() => setActiveTab('orders')}
+                      className={`px-8 py-4 text-[10px] uppercase tracking-[0.2em] font-bold border-b-2 transition-all flex items-center gap-2 ${activeTab === 'orders' ? 'text-[#C9A87C] border-[#C9A87C]' : 'text-white/30 border-transparent hover:text-white/70'}`}
+                    >
+                      <ShoppingBag className="w-3.5 h-3.5" /> Sipariş Talepleri ({orders.length})
+                    </button>
+                  )}
                 </div>
 
                 {/* CONTENT AREA */}
@@ -376,8 +477,12 @@ const HostDashboard: React.FC = () => {
                           <Sparkles className="w-10 h-10 text-[#C9A87C]" />
                         </div>
                         <div>
-                          <h3 className="text-xl font-serif italic text-[#C9A87C] mb-2">Aeterna Sezgisel Analizi</h3>
-                          <p className="text-white/60 font-light leading-relaxed text-sm max-w-3xl">Sistemimizin gelişmiş yapay zekası, mevcut ivmeyi (günde ortalama {(dailyData[0]?.count || 0) + (dailyData[1]?.count || 0)} yanıt) baz alarak önümüzdeki 7 gün içinde tam kapasiteye (%85+ katılım onayı) ulaşacağınızı öngörüyor. Son günlerdeki katılım grafiğiniz istikrarlı bir rezonans gösteriyor. İkram planlamasını %10 opsiyonlu yapmanız önerilir.</p>
+                          <h3 className="text-xl font-serif italic text-[#C9A87C] mb-2">Katılım Özeti</h3>
+                          <p className="text-white/60 font-light leading-relaxed text-sm max-w-3xl">
+                            {rsvps.length === 0
+                              ? 'Henüz yanıt yok. Davetli listenizi ve davetiye linkinizi paylaştığınızda yanıtlar burada anında toplanır.'
+                              : `${rsvps.length} yanıtın ${rsvps.filter(r => r.status === 'yes').length}'i onay, ${totalNotAttending}'i ret. Güncel onay oranınız: %%${rsvps.length > 0 ? Math.round((rsvps.filter(r => r.status === 'yes').length / rsvps.length) * 100) : 0}. Günlük ortalama onaylı kişi: ${dailyData.length > 0 ? Math.round(dailyData.reduce((sum, d) => sum + d.count, 0) / dailyData.length) : 0}.`}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -494,7 +599,7 @@ const HostDashboard: React.FC = () => {
                         <Lock className="w-6 h-6 text-[#d4af37]" />
                         Sonsuzluk Kapsülleri
                       </h3>
-                      <p className="text-white/50 text-sm font-light">Bu mesajlar geleceğe mühürlenmiştir. Şifreleme algoritmaları belirtilen tarihe kadar içeriklerin bütünlüğünü korur.</p>
+                      <p className="text-white/50 text-sm font-light">Bu mesajlar geleceğe mühürlenmiş birer hatıradır. İçerikler yalnızca davetiye sahibi (ve admin) tarafından görülebilir; 10 yıl sonra tekrar açılmak üzere saklanır.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8">
                       {capsules.map((capsule) => (
@@ -533,6 +638,58 @@ const HostDashboard: React.FC = () => {
                            <p className="text-white/30 text-sm font-light italic">Zaman çizgisinde henüz mühürlenmiş bir kapsül bulunmuyor.</p>
                         </div>
                       )}
+                    </div>
+                  </div>
+                )}
+
+                {/* ORDERS TAB (sadece admin) */}
+                {activeTab === 'orders' && isAdmin && (
+                  <div className="bg-white/[0.02] border border-white/5 rounded-[2rem] overflow-hidden animate-in fade-in duration-500">
+                    <div className="p-8 border-b border-white/10 bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A]">
+                      <h3 className="text-2xl font-serif italic text-white mb-2 flex items-center gap-3">
+                        <ShoppingBag className="w-6 h-6 text-[#C9A87C]" />
+                        Sipariş Talepleri
+                      </h3>
+                      <p className="text-white/50 text-sm font-light">
+                        Sitedeki sipariş formundan gelen talepler. Kişisel verileri yalnızca bu ekrandan (ve Firebase konsolundan) admin görsün.
+                        {ordersError && <span className="block text-red-400/80 text-xs mt-2">{ordersError}</span>}
+                      </p>
+                    </div>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left border-collapse">
+                        <thead>
+                          <tr className="bg-white/[0.02] border-b border-white/10 text-[10px] uppercase tracking-[0.2em] text-white/40">
+                            <th className="py-5 px-6 font-bold">Müşteri</th>
+                            <th className="py-5 px-6 font-bold">Etkinlik / Konsept</th>
+                            <th className="py-5 px-6 font-bold">İletişim</th>
+                            <th className="py-5 px-6 font-bold">Tarih</th>
+                            <th className="py-5 px-6 font-bold text-right">Talep Zamanı</th>
+                          </tr>
+                        </thead>
+                        <tbody className="text-sm">
+                          {orders.map((o) => (
+                            <tr key={o.id} className="border-b border-white/5 hover:bg-white/[0.05] transition-colors">
+                              <td className="py-5 px-6 text-white/90 font-medium">{o.names}</td>
+                              <td className="py-5 px-6 text-white/60">
+                                <span className="block">{o.eventType}</span>
+                                {o.concept && <span className="block text-xs text-white/35">{o.concept}</span>}
+                              </td>
+                              <td className="py-5 px-6 text-[#C9A87C]/80">{o.contact}</td>
+                              <td className="py-5 px-6 text-white/50">{o.date || '—'}</td>
+                              <td className="py-5 px-6 text-white/40 text-xs text-right whitespace-nowrap">
+                                {o.createdAt?.toDate ? new Intl.DateTimeFormat('tr-TR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).format(o.createdAt.toDate()) : 'Şimdi'}
+                              </td>
+                            </tr>
+                          ))}
+                          {orders.length === 0 && (
+                            <tr>
+                              <td colSpan={5} className="py-16 text-center text-white/30 text-xs italic">
+                                Henüz sipariş talebi yok — site çalıştığında burada listelenecek.
+                              </td>
+                            </tr>
+                          )}
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 )}

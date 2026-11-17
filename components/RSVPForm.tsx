@@ -65,11 +65,7 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ language, themeColor, eventId, onSu
 
     try {
       // If eventId is provided, save to the specific subcollection
-      const collectionRef = eventId 
-        ? collection(db, 'events', eventId, 'rsvps')
-        : collection(db, 'rsvps'); // Fallback for backward compatibility or demo testing
-
-      await addDoc(collectionRef, {
+      await addDoc(collection(db, 'events', eventId as string, 'rsvps'), {
         name,
         status,
         count: status === 'yes' ? count : 1,
@@ -89,6 +85,22 @@ const RSVPForm: React.FC<RSVPFormProps> = ({ language, themeColor, eventId, onSu
   };
 
   const isLight = theme === 'light';
+
+  // Önizleme modunda (yayında olmayan davetiye) LCV toplanamaz —
+  // kök 'rsvps' koleksiyonu rules tarafından reddedilir. Bunun yerine dürüst bir bildirim göster.
+  if (!eventId) {
+    return (
+      <div className={`w-full max-w-md mx-auto p-8 rounded-3xl border ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'} backdrop-blur-md shadow-xl text-center`}>
+        <h3 className="text-xl font-serif italic mb-3" style={{ color: themeColor }}>LCV</h3>
+        <p className={`${isLight ? 'text-black/50' : 'text-white/40'} text-xs uppercase tracking-widest mb-6`}>{language === 'tr' ? 'Önizleme Modu' : 'Preview Mode'}</p>
+        <p className={`${isLight ? 'text-black/60' : 'text-white/50'} text-sm leading-relaxed`}>
+          {language === 'tr'
+            ? 'Bu bir önizlemedir. LCV yanıtları yalnızca davetiyeniz canlıya alındığında toplanır.'
+            : 'This is a preview. RSVP responses are only collected once your invitation goes live.'}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className={`w-full max-w-md mx-auto p-8 rounded-3xl border ${isLight ? 'border-black/10 bg-black/5' : 'border-white/10 bg-white/5'} backdrop-blur-md shadow-xl`}>

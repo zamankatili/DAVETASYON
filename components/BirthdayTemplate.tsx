@@ -6,7 +6,6 @@ import ConceptAnimation from './ConceptAnimation';
 import RSVPForm from './RSVPForm';
 import LocationMap from './LocationMap';
 import SpiritualCorner from './SpiritualCorner';
-import BackgroundMusic from './BackgroundMusic';
 import { translations } from '../src/constants/translations';
 import { Chatbot } from './Chatbot';
 
@@ -245,7 +244,6 @@ const BirthdayTemplate: React.FC<BirthdayTemplateProps> = ({ onBack, language, o
         .rotate-x-180 { transform: rotateX(180deg); }
         .rotate-x-0 { transform: rotateX(0deg); }
       `}</style>
-      <BackgroundMusic url="https://www.chosic.com/wp-content/uploads/2021/04/Soft-Piano-Music.mp3" />
     </div>
   );
 };

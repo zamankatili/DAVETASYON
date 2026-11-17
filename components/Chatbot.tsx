@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GoogleGenAI } from '@google/genai';
 import Markdown from 'react-markdown';
 
 interface Message {
@@ -26,7 +25,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const chatRef = useRef<any>(null);
+  // Sohbet sunucuda yürütülür (/api/gemini) — API anahtarı tarayıcıya asla gelmez.
   const synthRef = useRef<SpeechSynthesis | null>(null);
 
   useEffect(() => {
@@ -100,108 +99,34 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
   }, [isOpen]);
 
   const initChat = () => {
-    try {
-      // The platform injects the Gemini API key into process.env.GEMINI_API_KEY
-      const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) {
-        console.error("Gemini API Key is missing.");
-        return;
-      }
-      
-      const isEventGuest = !!eventContext;
-      
-      const salesPromptTr = `Sen 'Davetasyon'un lüks, samimi ve profesyonel dijital asistanısın. Müşterilere rüya gibi bir dijital davetiye deneyimi sunmak için buradasın.
-Kurallar:
-1. Mümkün olduğunca KISA ve ÖZ cevaplar ver. Asla uzun paragraflar yazma. 1-2 cümle yeterli. Açıklayıcı ve nazik ol.
-2. ETKİLEŞİMİ KORU: Her cevabının sonuna mutlaka müşteriyi sohbette tutacak bir açık uçlu soru ekle (örn: Hangi konsept ilginizi çekiyor? Etkinliğiniz ne zaman?).
-3. Ürünlerimiz / Konseptlerimiz:
-  - Özel Premium Serisi: Aeterna (Başyapıt - Zaman kapsüllü), Dijital Anı Kutusu (Kamerayla anı yükleme), Kurumsal Gala (Dark Luxury), Kuzey Işıkları (Aurora), Klasik Zarf.
-  - Tören Serisi: Düğün & Evlilik (Elite), Nişan & Söz (Spring), Kına Gecesi (Traditional).
-  - Özel Günler: Sünnet Merasimi, Baby Shower, Doğum Günü, Mezuniyet Balosu.
-4. Temel Sistem Özelliklerimiz: Dinamik LCV, Yapay Zeka Asistanı, Merkez Komuta (Host Dashboard), Müzik Entegrasyonu.
-5. Paketler ve Başlangıç Fiyatlarımız:
-  - Zarif Başlangıç: 2.450 ₺ (Standart müzik, LCV, Geri Sayım)
-  - İmza Deneyimi: 3.450 ₺ (En Çok Tercih Edilen - Çift dil, Yapay zeka asistanı, özel müzik)
-  - Haute Couture: 14.900 ₺ (Tamamen özel tasarım, size özel alan adı)
-  - Dijital Anı Kutusu (Davetiyeden Bağımsız): 2.250 ₺ (Davetiyeye ek alımlarda sadece 1.450 ₺)
-6. Sipariş ve Detaylar: Detaylandırma sonrası müşteriyi her zaman WhatsApp iletişimine yönlendir ("Detayları konuşmak isterseniz WhatsApp hattımıza yazabilirsiniz.").
-7. Sadece dijital davetiye ve etkinlik sorularına cevap ver. Başka konuları kibarca reddet.`;
-
-      const salesPromptEn = `You are the luxury, friendly, and professional digital assistant of 'Davetasyon'. You are here to offer customers a dream-like digital invitation experience.
-Rules:
-1. Keep answers as SHORT and CONCISE as possible. Never write long paragraphs. 1-2 sentences are enough. Be explanatory and polite.
-2. MAINTAIN INTERACTION: Always add an open-ended question at the end to keep the customer engaged (e.g., Which concept interests you? When is your event?).
-3. Our Products / Concepts:
-  - Premium Series: Aeterna (Masterpiece - Time capsule), Digital Memory Box (QR photo uploads), Corporate Gala (Dark Luxury), Northern Lights (Aurora), Classic Envelope.
-  - Ceremony Series: Wedding & Marriage (Elite), Engagement (Spring), Henna Night (Traditional).
-  - Special Events: Circumcision Ceremony, Baby Shower, Birthday, Graduation Prom.
-4. Core Platform Features: Dynamic RSVP, AI Assistant, Command Center (Host Dashboard), Atmospheric Music Integration.
-5. Packages and Starting Prices:
-  - Classic Elegance: $99 (Standard music, RSVP, Countdown)
-  - Signature Experience: $149 (Most Popular - Dual language, AI assistant, custom music)
-  - Haute Couture: $490 (Fully custom design, custom domain)
-  - Digital Memory Box (Standalone): $79 (If added to an invitation, only $49)
-6. Orders and Details: Always direct the customer to WhatsApp for final details ("If you want to discuss the details, you can write to our WhatsApp line.").
-7. Only answer questions related to digital invitations and events. Politely decline other topics.`;
-
-      const guestPromptTr = `Sen '${eventContext?.title || 'Bu Harika Etkinlik'}' için özel bir Davet / Misafir Karşılama Asistanısın (Concierge).
-Görevin: Etkinliğe katılacak misafirlerin sorularını nazikçe, kısa ve öz yanıtlamak.
-Etkinlik Bilgileri: 
-Mekan: ${eventContext?.venue?.name || 'Bilinmiyor'}, ${eventContext?.venue?.address || 'Bilinmiyor'}.
-Özel Kurallar/Notlar (Bunu dikkate al!): ${eventContext?.aiContext || 'Ek kural yok.'}
-Kurallar:
-1. Sen etkinlik sahibini (davet edeni) temsil ediyorsun. 
-2. Çok KISA ve NET cevaplar ver. 
-3. Etkinlik dışı soru sorulursa kibarca davete odaklan.
-4. Otopark, çocuk getirme, kıyafet kodu gibi soruları 'Özel Kurallar' bölümüne göre cevapla. Eğer orada yazmıyorsa 'Bu konuda kesin bir bilgim yok, dilerseniz LCV formuna not olarak yazabilirsiniz' de.`;
-
-      const guestPromptEn = `You are the exclusive Guest Concierge for '${eventContext?.title}'. Use the provided AI Context to answer guest questions compactly and politely. Context: ${eventContext?.aiContext}`;
-
-      const sysInstructionTr = isEventGuest ? guestPromptTr : salesPromptTr;
-      const sysInstructionEn = isEventGuest ? guestPromptEn : salesPromptEn;
-
-      const ai = new GoogleGenAI({ apiKey });
-      chatRef.current = ai.chats.create({
-        model: "gemini-3-flash-preview",
-        config: {
-          systemInstruction: language === 'tr' ? sysInstructionTr : sysInstructionEn
-        }
-      });
-      
-      const initialGreetingTr = isEventGuest 
-        ? `Merhaba! 👋 ${eventContext?.title} için sanal asistanınızım. Etkinlikle ilgili sormak istediğiniz bir şey var mı? (Giyim kodu, ulaşım, çocuk vb.)`
-        : "Merhaba! 👋 Davetasyon'a hoş geldiniz. Hayalinizdeki etkinlik ne zaman?";
-      
-      const initialGreetingEn = isEventGuest
-        ? `Hello! 👋 I am your virtual concierge for ${eventContext?.title}. Do you have any questions regarding the event?`
-        : "Hello! 👋 Welcome to Davetasyon. When is your dream event?";
-
-      const greeting = language === 'tr' ? initialGreetingTr : initialGreetingEn;
-      // Add initial greeting
-      setMessages([{
-        id: Date.now().toString(),
-        text: greeting,
-        sender: 'bot'
-      }]);
-      speak(greeting);
-    } catch (error) {
-      console.error("Failed to initialize chat:", error);
-    }
+    const isEventGuest = !!eventContext;
+    const initialGreetingTr = isEventGuest
+      ? `Merhaba! 👋 ${eventContext?.title || 'Bu etkinlik'} için sanal asistanınızım. Size nasıl yardımcı olabilirim? (Giyim kodu, ulaşım, çocuk vb.)`
+      : "Merhaba! 👋 Davetasyon'a hoş geldiniz. Hayalinizdeki etkinlik ne zaman?";
+    const initialGreetingEn = isEventGuest
+      ? `Hello! 👋 I am your virtual concierge for ${eventContext?.title || 'this event'}. How can I help you?`
+      : "Hello! 👋 Welcome to Davetasyon. When is your dream event?";
+    const greeting = language === 'tr' ? initialGreetingTr : initialGreetingEn;
+    setMessages([{
+      id: Date.now().toString(),
+      text: greeting,
+      sender: 'bot'
+    }]);
+    speak(greeting);
   };
 
+  // Dil değişince sohbeti sıfırla
   useEffect(() => {
-    if (isOpen && !chatRef.current) {
-      initChat();
-    }
-  }, [isOpen, language]);
-
-  // Re-init if language changes
-  useEffect(() => {
-    if (isOpen) {
-      chatRef.current = null;
-      initChat();
-    }
+    setMessages([]);
   }, [language]);
+
+  // Chat penceresi açıldığında ve sohbet henüz boşken karşılama mesajını bas
+  useEffect(() => {
+    if (isOpen && messages.length === 0) {
+      initChat();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, language, messages.length]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -226,23 +151,30 @@ Kurallar:
     setIsLoading(true);
 
     try {
-      if (!chatRef.current) initChat();
-      const response = await chatRef.current.sendMessage({ message: userMsg });
-      
-      const responseText = response.text || '';
-      setMessages(prev => [...prev, { 
-        id: (Date.now() + 1).toString(), 
-        text: responseText, 
-        sender: 'bot' 
+      const history = [...messages, { id: 'pending', text: userMsg, sender: 'user' as const }]
+        .map((m) => ({ role: m.sender === 'user' ? 'user' : 'model' as const, text: m.text }));
+      const res = await fetch('/api/gemini', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mode: 'chat', language, eventContext, history }),
+      });
+      const data = await res.json();
+      const responseText = data?.text || (language === 'tr'
+        ? 'Şu an yanıt üretemiyorum, lütfen birkaç saniye sonra tekrar deneyin.'
+        : 'I cannot produce a reply right now, please try again in a few seconds.');
+      setMessages(prev => [...prev, {
+        id: (Date.now() + 1).toString(),
+        text: responseText,
+        sender: 'bot'
       }]);
       playNotificationSound();
       speak(responseText);
     } catch (error) {
       console.error("Chat error:", error);
-      setMessages(prev => [...prev, { 
-        id: (Date.now() + 1).toString(), 
-        text: language === 'tr' ? "Üzgünüm, şu anda bir bağlantı sorunu yaşıyorum. Lütfen daha sonra tekrar deneyin veya doğrudan WhatsApp üzerinden bize ulaşın." : "I'm sorry, I'm experiencing a connection issue right now. Please try again later or contact us directly via WhatsApp.", 
-        sender: 'bot' 
+      setMessages(prev => [...prev, {
+        id: (Date.now() + 1).toString(),
+        text: language === 'tr' ? "Üzgünüm, şu anda bir bağlantı sorunu yaşıyorum. Lütfen daha sonra tekrar deneyin." : "I'm sorry, I'm experiencing a connection issue right now. Please try again later.",
+        sender: 'bot'
       }]);
     } finally {
       setIsLoading(false);
