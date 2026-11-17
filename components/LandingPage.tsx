@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import BackgroundMusic from './BackgroundMusic';
 import { Chatbot } from './Chatbot';
 import { OrderFormModal } from './OrderFormModal';
 import { StyleQuizModal } from './StyleQuizModal';
@@ -31,11 +30,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
         { title: "Matbaa Stresine ve Değişikliklere Son Verin", desc: "Etkinlik detaylarında bir değişiklik mi oldu? Kağıt davetiyede bu bir felakettir. Davetasyon'da ise sadece bir esneklik. Bilgilerinizi anında güncelleyin, davetiyeniz yaşayan bir organizma gibi kendini yenilesin." }
       ],
       stats: [
-        { label: "Kazandırılan Zaman (Saat)", value: "10k+" },
-        { label: "Ağırlanan Değerli Konuk", value: "150k+" },
-        { label: "Paylaşılan Eşsiz Hikaye", value: "2.4k+" }
+        { label: "Tek Link, Tüm Detaylar", value: "1" },
+        { label: "Kağıt İsrafı", value: "0" },
+        { label: "LCV Takibi", value: "24/7" }
       ],
-      urgency: "Size hak ettiğiniz kaliteyi ve kusursuz vakti ayırabilmek için bu ay sadece 12 özel çiftimizin hikayesini kabul ediyoruz.",
+      urgency: "Her hikayeye hak ettiği özeni ayırabilmek için ayda sınırlı sayıda özel proje kabul ediyoruz.",
       pricingTitle: "Düşünülmüş Detaylar",
       pricingSubtitle: "Hayatınızı Kolaylaştıran Çözümler",
       packagesTitle: "Size Özel Paketler",
@@ -120,11 +119,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
         { title: "End Printing Stress and Fear of Changes", desc: "Did the event details change? In a paper invitation, this is a disaster. In Davetasyon, it's just flexibility. Update your info instantly, and let your invitation renew itself like a living organism." }
       ],
       stats: [
-        { label: "Time Saved (Hours)", value: "10k+" },
-        { label: "Honored Guests", value: "150k+" },
-        { label: "Unique Stories Shared", value: "2.4k+" }
+        { label: "One Link, Everything", value: "1" },
+        { label: "Paper Waste", value: "0" },
+        { label: "RSVP Tracking", value: "24/7" }
       ],
-      urgency: "To give you the quality and flawless time you deserve, we only accept the stories of 12 special couples this month.",
+      urgency: "To give every story the attention it deserves, we take on a limited number of bespoke projects each month.",
       pricingTitle: "Thoughtful Details",
       pricingSubtitle: "Solutions That Make Your Life Easier",
       packagesTitle: "Tailored Packages",
@@ -742,13 +741,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
               >
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-[#C9A87C] text-[#11100F] text-[10px] uppercase tracking-[0.3em] font-bold rounded-full shadow-[0_0_20px_rgba(201,168,124,0.3)] whitespace-nowrap">
-                    En Çok Tercih Edilen
+                    Davetasyon Seçimi
                   </div>
                 )}
                 <div className="mb-6">
                   <h3 className={`text-3xl font-serif italic mb-4 ${pkg.popular ? 'text-[#C9A87C]' : 'text-[#F5F2EB]'}`}>{pkg.name}</h3>
                   <div className="flex flex-col mb-6">
-                    <span className="text-[#F5F2EB]/20 text-5xl md:text-6xl font-serif italic line-through decoration-[#8c3a3a]/40 mb-2">{pkg.originalPrice}</span>
                     <div className="flex items-baseline gap-3">
                       <span className={`text-2xl md:text-3xl font-serif italic font-medium ${pkg.popular ? 'text-[#C9A87C]' : 'text-[#F5F2EB]'}`}>{pkg.price}</span>
                       <span className="text-[#F5F2EB]/40 text-[10px] uppercase tracking-[0.2em] leading-none">{pkg.priceNote}</span>
@@ -936,11 +934,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
           </div>
 
           <div className="mt-24 text-center flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button 
-              onClick={() => window.open(`https://wa.me/?text=Merhaba, dijital davetiye özellikleri hakkında bilgi almak istiyorum.`, '_blank')}
+            <button
+              onClick={() => document.getElementById('collections')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-12 py-5 bg-[#C9A87C] text-[#11100F] text-[11px] uppercase tracking-[0.3em] font-bold hover:bg-[#F5F2EB] transition-all duration-500 rounded-full w-full sm:w-auto shadow-xl"
             >
-              {language === 'tr' ? 'Bizimle İletişime Geçin' : 'Contact Us'}
+              {language === 'tr' ? 'Koleksiyonu İnceleyin' : 'Explore The Collection'}
             </button>
             <button 
               onClick={onOrderModalOpen}
@@ -961,16 +959,22 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
           </div>
           <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#F5F2EB]/30">Crafting Digital Legacies Since 2026</p>
         </div>
-        <div className="flex justify-center flex-wrap gap-10 md:gap-16 mb-20 text-[10px] uppercase tracking-[0.3em] font-bold text-[#F5F2EB]/40">
+        <div className="flex justify-center flex-wrap gap-10 md:gap-16 mb-10 text-[10px] uppercase tracking-[0.3em] font-bold text-[#F5F2EB]/40">
           <span className="hover:text-[#C9A87C] transition-colors cursor-pointer">Instagram</span>
           <span className="hover:text-[#C9A87C] transition-colors cursor-pointer">WhatsApp</span>
           <span className="hover:text-[#C9A87C] transition-colors cursor-pointer">Pinterest</span>
         </div>
+        <div className="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-8 text-[9px] uppercase tracking-[0.2em] text-[#F5F2EB]/30">
+          <a href="/yasal/kvkk" className="hover:text-[#C9A87C] transition-colors">KVKK</a>
+          <a href="/yasal/cerez" className="hover:text-[#C9A87C] transition-colors">Çerez Politikası</a>
+          <a href="/yasal/mesafeli-satis" className="hover:text-[#C9A87C] transition-colors">Mesafeli Satış</a>
+          <a href="/yasal/iade" className="hover:text-[#C9A87C] transition-colors">İade & Teslimat</a>
+          <a href="/yasal/on-bilgilendirme" className="hover:text-[#C9A87C] transition-colors">Ön Bilgilendirme</a>
+        </div>
         <div className="text-[9px] uppercase tracking-[0.3em] font-medium text-[#F5F2EB]/20">
-          © 2026 Davetasyon | All Rights Reserved
+          © 2026 Davetasyon | Tüm Hakları Saklıdır
         </div>
       </footer>
-      <BackgroundMusic url="https://www.chosic.com/wp-content/uploads/2021/04/Rain-and-Pianos-Relaxing-Piano-Music.mp3" />
       <Chatbot language={language} />
       <StyleQuizModal 
         isOpen={isQuizOpen} 

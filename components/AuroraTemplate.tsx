@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SpiritualCorner from './SpiritualCorner';
-import BackgroundMusic from './BackgroundMusic';
 import RSVPForm from './RSVPForm';
 import { Chatbot } from './Chatbot';
 
@@ -333,7 +332,6 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
         </button>
       )}
 
-      {hasEntered && <BackgroundMusic url="https://cdn.pixabay.com/audio/2022/02/07/audio_672202111a.mp3" />}
     </div>
   );
 };

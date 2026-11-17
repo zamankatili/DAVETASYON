@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, ImagePlus, Heart, HandHeart, Sparkles, X, CheckCircle2 } from 'lucide-react';
+import { ref, uploadBytes } from 'firebase/storage';
+import { storage } from '../src/firebase';
 
 export default function MemoryBoxTemplate({ 
   language, 
@@ -22,6 +24,9 @@ export default function MemoryBoxTemplate({
   const [showModal, setShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [uploadState, setUploadState] = useState<'idle' | 'uploading' | 'success'>('idle');
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
+  const galleryInputRef = useRef<HTMLInputElement>(null);
 
   const photos = [
     { url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80', cols: 2 },
@@ -33,10 +38,27 @@ export default function MemoryBoxTemplate({
     { url: 'https://images.unsplash.com/photo-1509927083803-4bd519298ac4?auto=format&fit=crop&w=800&q=80', cols: 2 },
   ];
 
-  const handleUpload = () => {
+  const MAX_FILE_SIZE = 15 * 1024 * 1024; // 15 MB
+
+  const handleFileSelected = async (file: File | undefined) => {
+    if (!file) return;
+    setUploadError(null);
+
+    if (!/^(image|video)\//.test(file.type)) {
+      setUploadError(language === 'tr' ? 'Lütfen sadece fotoğraf veya video yükleyin.' : 'Please upload only photos or videos.');
+      return;
+    }
+    if (file.size > MAX_FILE_SIZE) {
+      setUploadError(language === 'tr' ? 'Dosya 15 MB sınırını aşıyor.' : 'File exceeds the 15 MB limit.');
+      return;
+    }
+
     setUploadState('uploading');
-    // Simulate network delay
-    setTimeout(() => {
+    try {
+      const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const path = `memorybox/${eventId || 'genel'}/${Date.now()}_${safeName}`;
+      const storageRef = ref(storage, path);
+      await uploadBytes(storageRef, file, { contentType: file.type });
       setUploadState('success');
       setTimeout(() => {
         setShowModal(false);
@@ -44,7 +66,13 @@ export default function MemoryBoxTemplate({
         setShowToast(true);
         setTimeout(() => setShowToast(false), 4000);
       }, 1800);
-    }, 2500);
+    } catch (error) {
+      console.error('Anı yükleme hatası:', error);
+      setUploadState('idle');
+      setUploadError(language === 'tr'
+        ? 'Yükleme başarısız oldu. Lütfen tekrar deneyin (Storage kuralları deploy edilmiş olmalı).'
+        : 'Upload failed. Please try again (Storage rules must be deployed).');
+    }
   };
 
   return (
@@ -113,11 +141,11 @@ export default function MemoryBoxTemplate({
       <div className="flex justify-center items-center gap-12 py-8 border-y border-[#F5F2EB]/5 bg-[#F5F2EB]/[0.01] text-[11px] tracking-[0.2em] uppercase font-medium relative z-10">
         <div className="flex items-center gap-3 text-[#F5F2EB]/50 hover:text-[#F5F2EB]/80 transition-colors">
           <ImagePlus className="w-5 h-5 text-[#F5F2EB]/40" />
-          <span>{language === 'tr' ? '124 Gülümseme' : '124 Smiles'}</span>
+          <span>{language === 'tr' ? 'Fotoğraf & Video' : 'Photos & Videos'}</span>
         </div>
         <div className="flex items-center gap-3 text-[#F5F2EB]/50 hover:text-[#C9A87C] transition-colors">
           <Heart className="w-5 h-5 text-[#C9A87C]/70" />
-          <span>{language === 'tr' ? '86 Kalp' : '86 Hearts'}</span>
+          <span>{language === 'tr' ? 'Tek Linkten Yükle' : 'One-Link Upload'}</span>
         </div>
       </div>
 
@@ -204,15 +232,34 @@ export default function MemoryBoxTemplate({
                     </p>
                   </div>
                   <div className="space-y-4">
-                    <button onClick={handleUpload} className="w-full py-4 bg-[#F5F2EB]/90 hover:bg-[#F5F2EB] text-[#11100F] rounded-[1.5rem] font-medium tracking-wide flex items-center justify-center gap-3 transition-colors shadow-lg">
+                    {uploadError && (
+                      <p className="text-red-400 text-xs text-center bg-red-400/10 border border-red-400/20 rounded-xl px-4 py-3">{uploadError}</p>
+                    )}
+                    <button onClick={() => cameraInputRef.current?.click()} className="w-full py-4 bg-[#F5F2EB]/90 hover:bg-[#F5F2EB] text-[#11100F] rounded-[1.5rem] font-medium tracking-wide flex items-center justify-center gap-3 transition-colors shadow-lg">
                       <Camera className="w-5 h-5" />
                       {language === 'tr' ? 'Kamerayı Aç, Gülümse!' : 'Open Camera, Say Cheese!'}
                     </button>
-                    <button onClick={handleUpload} className="w-full py-4 bg-[#F5F2EB]/5 text-[#F5F2EB]/90 hover:text-[#F5F2EB] rounded-[1.5rem] font-medium tracking-wide flex items-center justify-center gap-3 hover:bg-[#F5F2EB]/10 transition-colors border border-[#F5F2EB]/10">
+                    <button onClick={() => galleryInputRef.current?.click()} className="w-full py-4 bg-[#F5F2EB]/5 text-[#F5F2EB]/90 hover:text-[#F5F2EB] rounded-[1.5rem] font-medium tracking-wide flex items-center justify-center gap-3 hover:bg-[#F5F2EB]/10 transition-colors border border-[#F5F2EB]/10">
                       <ImagePlus className="w-5 h-5" />
                       {language === 'tr' ? 'Fotoğraf Arşivinden Seç' : 'Choose from Photo Archive'}
                     </button>
                   </div>
+                  {/* Gerçek dosya girişleri — kamera ve arşiv */}
+                  <input
+                    ref={cameraInputRef}
+                    type="file"
+                    accept="image/*,video/*"
+                    capture="environment"
+                    className="hidden"
+                    onChange={(e) => { handleFileSelected(e.target.files?.[0]); e.target.value=''; }}
+                  />
+                  <input
+                    ref={galleryInputRef}
+                    type="file"
+                    accept="image/*,video/*"
+                    className="hidden"
+                    onChange={(e) => { handleFileSelected(e.target.files?.[0]); e.target.value=''; }}
+                  />
                 </>
               )}
 

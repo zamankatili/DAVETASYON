@@ -1,0 +1,25 @@
+rules_version = '2';
+
+// Davetasyon — Anı Kutusu Storage kuralları
+// Deploy: firebase deploy --only storage
+// (Firebase Console'da Storage'ı aktif ettikten sonra)
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Anı Kutusu yüklemeleri: herkes (davetiye linkine sahip misafirler) fotoğraf/video bırakabilir
+    match /memorybox/{eventId}/{fileName} {
+      // Yükleme: sadece görsel/video, maksimum 15 MB
+      allow create: if request.resource.size < 15 * 1024 * 1024
+                    && request.resource.contentType.matches('image/.*|video/.*');
+      // Okuma: galeriyi görüntülemek için gerekli (link tahmin edilemez hedefler)
+      allow read: if true;
+      // Kimse silemez / güncelleyemez — anı bütünlüğü
+      allow update, delete: if false;
+    }
+
+    // Diğer her şey kapalı
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

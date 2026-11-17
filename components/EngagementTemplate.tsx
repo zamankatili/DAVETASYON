@@ -5,7 +5,6 @@ import ConceptAnimation from './ConceptAnimation';
 import RSVPForm from './RSVPForm';
 import LocationMap from './LocationMap';
 import SpiritualCorner from './SpiritualCorner';
-import BackgroundMusic from './BackgroundMusic';
 import { translations } from '../src/constants/translations';
 
 interface EngagementTemplateProps {
@@ -188,7 +187,6 @@ const EngagementTemplate: React.FC<EngagementTemplateProps> = ({ onBack, languag
         .rotate-x-180 { transform: rotateX(180deg); }
         .rotate-x-0 { transform: rotateX(0deg); }
       `}</style>
-      <BackgroundMusic url="https://www.chosic.com/wp-content/uploads/2021/07/Pachelbel-Canon-in-D.mp3" />
     </div>
   );
 };

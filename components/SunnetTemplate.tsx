@@ -5,7 +5,6 @@ import ConceptAnimation from './ConceptAnimation';
 import RSVPForm from './RSVPForm';
 import LocationMap from './LocationMap';
 import SpiritualCorner from './SpiritualCorner';
-import BackgroundMusic from './BackgroundMusic';
 import { translations } from '../src/constants/translations';
 import { Chatbot } from './Chatbot';
 
@@ -245,7 +244,6 @@ const SunnetTemplate: React.FC<SunnetTemplateProps> = ({ onBack, language, onOrd
         .font-cinzel { font-family: 'Cinzel', serif; }
         .text-shadow-glow { text-shadow: 0 0 20px rgba(247, 224, 139, 0.5); }
       `}</style>
-      <BackgroundMusic url="https://www.chosic.com/wp-content/uploads/2021/04/Soft-Piano-Music.mp3" />
     </div>
   );
 };

@@ -5,7 +5,6 @@ import ConceptAnimation from './ConceptAnimation';
 import RSVPForm from './RSVPForm';
 import LocationMap from './LocationMap';
 import SpiritualCorner from './SpiritualCorner';
-import BackgroundMusic from './BackgroundMusic';
 import EventTimeline from './EventTimeline';
 import WeatherWidget from './WeatherWidget';
 import CalendarButton from './CalendarButton';
@@ -284,7 +283,6 @@ const WeddingTemplate: React.FC<WeddingTemplateProps> = ({ onBack, language, onO
         .rotate-x-180 { transform: rotateX(180deg); }
         .rotate-x-0 { transform: rotateX(0deg); }
       `}</style>
-      <BackgroundMusic url="https://www.chosic.com/wp-content/uploads/2021/07/Pachelbel-Canon-in-D.mp3" />
     </div>
   );
 };
