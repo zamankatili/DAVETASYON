@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Davetasyon — Palet Karşılaştırması</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:#0b0b0a;
+    color:#e9e5dc;
+    font-family:'Montserrat',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ---------- page chrome ---------- */
+  .wrap{max-width:1560px;margin:0 auto;padding:56px 28px 96px}
+  .page-head{margin-bottom:44px}
+  .page-head .kicker{
+    font-size:10px;letter-spacing:.42em;text-transform:uppercase;
+    color:#C9A87C;font-weight:600;margin:0 0 14px
+  }
+  .page-head h1{
+    font-family:'Cinzel',serif;font-weight:400;
+    font-size:clamp(28px,4vw,46px);line-height:1.1;margin:0 0 16px;color:#f5f2eb
+  }
+  .page-head p{max-width:780px;color:#9a948a;font-size:14px;line-height:1.75;margin:0}
+  .page-head p b{color:#d9d3c7;font-weight:500}
+
+  .legend{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;font-size:11px;color:#8c867c}
+  .legend span{display:flex;align-items:center;gap:8px}
+  .legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+  /* ---------- palette grid ---------- */
+  .grid{
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;
+    align-items:start
+  }
+  @media(max-width:1320px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+
+  /* ---------- palette token sets ---------- */
+  .pal{
+    --bg:#0F0E0C; --surface:#171614; --surface2:#1F1D1A;
+    --line:rgba(247,243,234,.09);
+    --text:#F7F3EA; --muted:#B9B2A6;
+    --gold:#C9A87C; --gold-light:#E3C9A4; --gold-deep:#7E6340;
+    --pos:#7D9A6E; --neg:#C0756C; --warn:#A79E8F;
+    --price:#C9A87C; /* fiyat/CTA aksanı — "Bugün"de farklı olacak */
+    --headfont:'Cinzel',serif;
+    --btn-text:#141210;
+    border-radius:20px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.07);
+    background:var(--bg);
+    display:flex;flex-direction:column;
+    box-shadow:0 30px 70px -30px rgba(0,0,0,.8);
+  }
+  .pal[data-p="today"]{
+    --bg:#11100F; --surface:#1A1817; --surface2:#1A1A1A;
+    --text:#F5F2EB; --muted:rgba(245,242,235,.55);
+    --gold:#C9A87C; --price:#D4AF37;
+    --gold-light:#E5CCAA; --gold-deep:#B0936B;
+    --headfont:Georgia,'Times New Roman',serif;
+    border:10px solid #020617;      /* eski body rengi: soğuk lacivert */
+    border-radius:22px;
+  }
+  .pal[data-p="a"]{ /* Midnight Brass */ }
+  .pal[data-p="b"]{ /* Ivory Paper */
+    --bg:#FAF7F0; --surface:#FFFFFF; --surface2:#F2EDE3;
+    --line:rgba(26,24,21,.10);
+    --text:#1A1815; --muted:#6B6459;
+    --gold:#7E6340; --gold-light:#9C7C4E; --gold-deep:#5E4A30;
+    --pos:#5C7D4F; --neg:#A85B52; --warn:#8A8275;
+    --price:#1A1815;
+    --btn-text:#FAF7F0;
+    box-shadow:0 30px 70px -30px rgba(60,45,25,.35);
+  }
+  .pal[data-p="c"]{ /* Noir & Sage */
+    --bg:#111110; --surface:#191917; --surface2:#22221F;
+    --line:rgba(244,241,234,.09);
+    --text:#F4F1EA; --muted:#ACA79B;
+    --gold:#8A9A7B; --gold-light:#A9B79A; --gold-deep:#5F6B54;
+    --pos:#7F9A76; --neg:#B47A70; --warn:#9E9A8E;
+    --price:#A9B79A;
+    --btn-text:#0F110E;
+  }
+
+  /* ---------- label bar ---------- */
+  .tag{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:14px 18px;border-bottom:1px solid var(--line);
+    background:var(--surface);
+    font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;
+    color:var(--muted)
+  }
+  .tag b{color:var(--text);letter-spacing:.18em;font-weight:600}
+  .tag em{
+    font-style:normal;font-size:9px;letter-spacing:.14em;padding:4px 9px;border-radius:999px;
+    border:1px solid var(--line);color:var(--muted);white-space:nowrap
+  }
+  .tag em.ok{color:var(--pos);border-color:color-mix(in srgb,var(--pos) 40%,transparent)}
+  .tag em.bad{color:var(--neg);border-color:color-mix(in srgb,var(--neg) 40%,transparent)}
+
+  /* ---------- mini site ---------- */
+  .site{padding:26px 22px 22px;display:flex;flex-direction:column;gap:22px;flex:1}
+  .brandrow{display:flex;align-items:center;justify-content:space-between}
+  .brand{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.34em;
+    color:var(--text);font-weight:600
+  }
+  .brand span{color:var(--gold)}
+  .mininav{display:flex;gap:14px;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+  .hero h2{
+    font-family:var(--headfont);font-weight:400;font-style:italic;
+    font-size:clamp(22px,2.05vw,30px);line-height:1.22;margin:0 0 12px;color:var(--text);
+    letter-spacing:-.01em
+  }
+  .hero p{font-size:11.5px;line-height:1.75;color:var(--muted);margin:0 0 18px;font-weight:300}
+  .ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .btn{
+    font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:600;padding:12px 20px;border-radius:999px;border:1px solid transparent;
+    background:var(--gold);color:var(--btn-text);cursor:pointer
+  }
+  .pal[data-p="b"] .btn,.pal[data-p="c"] .btn{background:var(--text);color:var(--btn-text)}
+  .pal[data-p="today"] .btn{background:var(--gold);color:#141210}
+  .link{
+    font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+    border-bottom:1px solid var(--line);padding-bottom:3px
+  }
+
+  /* ---------- price card ---------- */
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:20px 18px;position:relative;overflow:hidden
+  }
+  .card::after{
+    content:"";position:absolute;inset:0 0 auto 0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55
+  }
+  .card .pick{
+    font-size:8px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);
+    font-weight:700;margin-bottom:12px;display:block
+  }
+  .card .pname{font-family:var(--headfont);font-style:italic;font-size:17px;color:var(--text);margin:0 0 10px}
+  .card .prow{display:flex;align-items:baseline;gap:8px;margin-bottom:14px}
+  .card .price{font-family:var(--headfont);font-size:30px;color:var(--price);line-height:1}
+  .card .per{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .feat{list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:8px}
+  .feat li{font-size:10.5px;color:var(--muted);display:flex;gap:8px;line-height:1.4;font-weight:300}
+  .feat li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);margin-top:6px;flex:none}
+  .card .btn{width:100%;text-align:center;padding:11px}
+
+  /* ---------- status chips ---------- */
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{
+    display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;
+    font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+    border:1px solid var(--line);background:var(--surface2);color:var(--muted)
+  }
+  .chip i{width:6px;height:6px;border-radius:50%;display:inline-block}
+  .chip.yes i{background:var(--pos)} .chip.no i{background:var(--neg)} .chip.wait i{background:var(--warn)}
+
+  /* ---------- swatches ---------- */
+  .sw{display:flex;gap:6px;padding:0 22px 16px;margin-top:auto}
+  .sw > div{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
+  .sw i{
+    display:block;height:30px;border-radius:6px;border:1px solid rgba(255,255,255,.12)
+  }
+  .sw span{
+    font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:7px;letter-spacing:.04em;
+    color:var(--muted);text-align:center;opacity:.9;overflow:hidden;text-overflow:ellipsis
+  }
+
+  /* ---------- note ---------- */
+  .note{
+    padding:14px 18px;border-top:1px solid var(--line);background:var(--surface);
+    font-size:9.5px;line-height:1.7;color:var(--muted)
+  }
+  .note b{color:var(--text);font-weight:600}
+  .note .x{color:var(--neg);font-weight:600}
+  .note .v{color:var(--pos);font-weight:600}
+
+  /* ---------- typography strip ---------- */
+  .section{margin-top:74px}
+  .section > .kicker{
+    font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:#C9A87C;
+    font-weight:600;margin:0 0 12px
+  }
+  .section h3{
+    font-family:'Cinzel',serif;font-weight:400;font-size:24px;margin:0 0 26px;color:#f5f2eb
+  }
+  .typegrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  @media(max-width:1080px){.typegrid{grid-template-columns:1fr}}
+  .typebox{
+    border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:28px 26px 24px;
+    background:#12110f;position:relative
+  }
+  .typebox.b{background:#161513}
+  .typebox .lbl{
+    font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:#8c867c;margin-bottom:18px;
+    display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap
+  }
+  .typebox .lbl span:last-child{color:#C9A87C}
+  .typebox .lbl .warnlbl{color:#C0756C}
+  .type-g{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:400;
+    font-size:clamp(26px,2.4vw,34px);line-height:1.2;color:#F5F2EB;margin:0 0 12px}
+  .type-c{font-family:'Cinzel',serif;font-style:italic;font-weight:400;
+    font-size:clamp(24px,2.2vw,31px);line-height:1.22;color:#F5F2EB;margin:0 0 12px;letter-spacing:-.01em}
+  .type-cm{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;
+    font-size:clamp(28px,2.6vw,37px);line-height:1.16;color:#F5F2EB;margin:0 0 12px;letter-spacing:-.005em}
+  .typebox small{font-size:9.5px;color:#8c867c;line-height:1.75;display:block}
+  .typebox small b{color:#c9c2b5;font-weight:600}
+  .verdict{
+    margin-top:22px;padding:18px 22px;border-radius:14px;border:1px solid rgba(201,168,124,.25);
+    background:rgba(201,168,124,.06);font-size:11.5px;line-height:1.75;color:#cfc8ba
+  }
+  .verdict b{color:#e8dfcd}
+
+  /* ---------- accent calibration ---------- */
+  .acc{width:100%;border-collapse:collapse;font-size:11px}
+  .acc th{
+    text-align:left;font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:#7d776e;font-weight:600;padding:0 10px 12px;border-bottom:1px solid rgba(255,255,255,.07)
+  }
+  .acc td{padding:11px 10px;border-bottom:1px solid rgba(255,255,255,.05);color:#b6b0a5}
+  .acc td.n{color:#e9e5dc;font-weight:500;width:22%}
+  .acc .pair{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .dot{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.16);display:inline-block}
+  .hex{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:9.5px;color:#8c867c;letter-spacing:.02em}
+  .arrow{color:#5c574f;font-size:11px}
+  .acc tr:hover td{background:rgba(255,255,255,.02)}
+
+  footer{margin-top:70px;padding-top:24px;border-top:1px solid rgba(255,255,255,.07);
+    font-size:10px;color:#6f6a63;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page-head">
+    <p class="kicker">Davetasyon · Tasarım İncelemesi</p>
+    <h1>Renk Paleti Karşılaştırması</h1>
+    <p>
+      Aynı bölüm — hero + paket kartı + LCV rozetleri — dört farklı paletle.
+      Soldaki <b>“Bugün”</b> mevcut sitenin gerçek hâli (Georgia başlık, iki ayrı altın, soğuk lacivert kenar).
+      Diğer üçü önerilen yönler; üçünde de tipografi <b>Cinzel</b>.
+    </p>
+    <div class="legend">
+      <span><i style="background:#C0756C"></i> sorunlu</span>
+      <span><i style="background:#7D9A6E"></i> AA uyumlu (≥4.5:1)</span>
+      <span><i style="background:#C9A87C"></i> marka altını</span>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- ================= BUGÜN ================= -->
+    <section class="pal" data-p="today">
+      <div class="tag"><b>Bugün</b><em class="bad">2 altın · lacivert kenar</em></div>
+      <div class="site">
+        <div class="brandrow">
+          <div class="brand">DAVETA<span>SYON</span></div>
+          <div class="mininav"><span>Koleksiyon</span><span>Paketler</span></div>
+        </div>
+        <div class="hero">
+          <h2>Bırakın, Aşkınız Kalplara Sığmasın.</h2>
+          <p>Her hikaye, parmak izi gibi tamamen size özeldir. Organizasyonu ve LCV takibini biz omuzlayalım; siz gecenin keyfine odaklanın.</p>
+          <div class="ctas">
+            <button class="btn">Kendi Hikayenizi Yazın</button>
+            <span class="link">Koleksiyon</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="pick">En Çok Tercih Edilen</span>
+          <p class="pname">İmza Deneyimi</p>
+          <div class="prow"><span class="price">3.450 ₺</span><span class="per">/ tek ödeme</span></div>
+          <ul class="feat">
+            <li>Üç içe geçen büyüleyici hikaye</li>
+            <li>Akıllı LCV asistanı</li>
+            <li>Özel arka plan müziği</li>
+          </ul>
+          <button class="btn">Bu Paketi Seç</button>
+        </div>
+        <div class="chips">
+          <span class="chip yes"><i></i>Katılıyor 128</span>
+          <span class="chip no"><i></i>Katılmıyor 14</span>
+          <span class="chip wait"><i></i>Bekliyor 37</span>
+        </div>
+      </div>
+      <div class="sw">
+        <div><i style="background:#C9A87C"></i><span>C9A87C</span></div>
+        <div><i style="background:#D4AF37"></i><span>D4AF37</span></div>
+        <div><i style="background:#F5F2EB"></i><span>F5F2EB</span></div>
+        <div><i style="background:#11100F"></i><span>11100F</span></div>
+        <div><i style="background:#020617"></i><span>020617</span></div>
+      </div>
+      <div class="note">
+        <span class="x">Sorun:</span> hero altını <b>#C9A87C</b>, kart altını <b>#D4AF37</b> — aralarındaki fark yalnızca 1.07:1, yani “iki ton” değil <b>tutarsızlık</b> olarak okunuyor.
+        Dış çerçeve <b>#020617</b> = eski lacivert; mobilde overscroll’de mavi şerit olarak görünüyor.
+        Başlık <b>Georgia</b> çünkü <code>font-serif</code> Cinzel’e bağlı değil.
+      </div>
+    </section>
+
+    <!-- ================= A ================= -->
+    <section class="pal" data-p="a">
+      <div class="tag"><b>A · Midnight Brass</b><em class="ok">önerilen</em></div>
+      <div class="site">
+        <div class="brandrow">
+          <div class="brand">DAVETA<span>SYON</span></div>
+          <div class="mininav"><span>Koleksiyon</span><span>Paketler</span></div>
+        </div>
+        <div class="hero">
+          <h2>Bırakın, Aşkınız Kalplara Sığmasın.</h2>
+          <p>Her hikaye, parmak izi gibi tamamen size özeldir. Organizasyonu ve LCV takibini biz omuzlayalım; siz gecenin keyfine odaklanın.</p>
+          <div class="ctas">
+            <button class="btn">Kendi Hikayenizi Yazın</button>
+            <span class="link">Koleksiyon</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="pick">Davetasyon Seçimi</span>
+          <p class="pname">İmza Deneyimi</p>
+          <div class="prow"><span class="price">3.450 ₺</span><span class="per">/ tek ödeme</span></div>
+          <ul class="feat">
+            <li>Üç içe geçen büyüleyici hikaye</li>
+            <li>Akıllı LCV asistanı</li>
+            <li>Özel arka plan müziği</li>
+          </ul>
+          <button class="btn">Bu Paketi Seç</button>
+        </div>
+        <div class="chips">
+          <span class="chip yes"><i></i>Katılıyor 128</span>
+          <span class="chip no"><i></i>Katılmıyor 14</span>
+          <span class="chip wait"><i></i>Bekliyor 37</span>
+        </div>
+      </div>
+      <div class="sw">
+        <div><i style="background:#0F0E0C"></i><span>0F0E0C</span></div>
+        <div><i style="background:#171614"></i><span>171614</span></div>
+        <div><i style="background:#C9A87C"></i><span>C9A87C</span></div>
+        <div><i style="background:#E3C9A4"></i><span>E3C9A4</span></div>
+        <div><i style="background:#F7F3EA"></i><span>F7F3EA</span></div>
+      </div>
+      <div class="note">
+        <span class="v">Tek altın</span> <b>#C9A87C</b> her yerde. Zemin sıcak siyah <b>#0F0E0C</b> → kenar/overscroll sorunu biter.
+        Metin <b>17:1</b>, altın <b>8.6:1</b>. En az risk, mevcut tasarıma en yakın.
+      </div>
+    </section>
+
+    <!-- ================= B ================= -->
+    <section class="pal" data-p="b">
+      <div class="tag"><b>B · Ivory Paper</b><em>ayrışmacı</em></div>
+      <div class="site">
+        <div class="brandrow">
+          <div class="brand">DAVETA<span>SYON</span></div>
+          <div class="mininav"><span>Koleksiyon</span><span>Paketler</span></div>
+        </div>
+        <div class="hero">
+          <h2>Bırakın, Aşkınız Kalplara Sığmasın.</h2>
+          <p>Her hikaye, parmak izi gibi tamamen size özeldir. Organizasyonu ve LCV takibini biz omuzlayalım; siz gecenin keyfine odaklanın.</p>
+          <div class="ctas">
+            <button class="btn">Kendi Hikayenizi Yazın</button>
+            <span class="link">Koleksiyon</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="pick">Davetasyon Seçimi</span>
+          <p class="pname">İmza Deneyimi</p>
+          <div class="prow"><span class="price">3.450 ₺</span><span class="per">/ tek ödeme</span></div>
+          <ul class="feat">
+            <li>Üç içe geçen büyüleyici hikaye</li>
+            <li>Akıllı LCV asistanı</li>
+            <li>Özel arka plan müziği</li>
+          </ul>
+          <button class="btn">Bu Paketi Seç</button>
+        </div>
+        <div class="chips">
+          <span class="chip yes"><i></i>Katılıyor 128</span>
+          <span class="chip no"><i></i>Katılmıyor 14</span>
+          <span class="chip wait"><i></i>Bekliyor 37</span>
+        </div>
+      </div>
+      <div class="sw">
+        <div><i style="background:#FAF7F0"></i><span>FAF7F0</span></div>
+        <div><i style="background:#F2EDE3"></i><span>F2EDE3</span></div>
+        <div><i style="background:#7E6340"></i><span>7E6340</span></div>
+        <div><i style="background:#1A1815"></i><span>1A1815</span></div>
+        <div><i style="background:#9C7C4E"></i><span>9C7C4E</span></div>
+      </div>
+      <div class="note">
+        Rakiplerin <b>hepsi</b> siyah+altın. Fildişi zemin anında ayrıştırır ve yaşlı misafir için gün ışığında en okunaklısı.
+        Altın metin <b>#7E6340</b> (fildişinde 5.1:1). <span class="x">Maliyet:</span> 9 şablonun yeniden tasarımı.
+      </div>
+    </section>
+
+    <!-- ================= C ================= -->
+    <section class="pal" data-p="c">
+      <div class="tag"><b>C · Noir &amp; Sage</b><em>editöryel</em></div>
+      <div class="site">
+        <div class="brandrow">
+          <div class="brand">DAVETA<span>SYON</span></div>
+          <div class="mininav"><span>Koleksiyon</span><span>Paketler</span></div>
+        </div>
+        <div class="hero">
+          <h2>Bırakın, Aşkınız Kalplara Sığmasın.</h2>
+          <p>Her hikaye, parmak izi gibi tamamen size özeldir. Organizasyonu ve LCV takibini biz omuzlayalım; siz gecenin keyfine odaklanın.</p>
+          <div class="ctas">
+            <button class="btn">Kendi Hikayenizi Yazın</button>
+            <span class="link">Koleksiyon</span>
+          </div>
+        </div>
+        <div class="card">
+          <span class="pick">Davetasyon Seçimi</span>
+          <p class="pname">İmza Deneyimi</p>
+          <div class="prow"><span class="price">3.450 ₺</span><span class="per">/ tek ödeme</span></div>
+          <ul class="feat">
+            <li>Üç içe geçen büyüleyici hikaye</li>
+            <li>Akıllı LCV asistanı</li>
+            <li>Özel arka plan müziği</li>
+          </ul>
+          <button class="btn">Bu Paketi Seç</button>
+        </div>
+        <div class="chips">
+          <span class="chip yes"><i></i>Katılıyor 128</span>
+          <span class="chip no"><i></i>Katılmıyor 14</span>
+          <span class="chip wait"><i></i>Bekliyor 37</span>
+        </div>
+      </div>
+      <div class="sw">
+        <div><i style="background:#111110"></i><span>111110</span></div>
+        <div><i style="background:#22221F"></i><span>22221F</span></div>
+        <div><i style="background:#8A9A7B"></i><span>8A9A7B</span></div>
+        <div><i style="background:#A9B79A"></i><span>A9B79A</span></div>
+        <div><i style="background:#F4F1EA"></i><span>F4F1EA</span></div>
+      </div>
+      <div class="note">
+        Altın yok → daha “tasarım stüdyosu”, daha az “düğün salonu”. Adaçayı <b>#8A9A7B</b> tazelik ve sükûnet verir.
+        <span class="x">Risk:</span> TR düğün pazarı altını lüks sinyali olarak bekliyor; premium pakette fiyatı taşımayabilir.
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================= TYPOGRAPHY ================= -->
+  <section class="section">
+    <p class="kicker">İkinci konu</p>
+    <h3>Tipografi: başlıklar aslında hangi fontla çıkıyor?</h3>
+    <div class="typegrid">
+      <div class="typebox">
+        <div class="lbl"><span>Bugün — <code>font-serif</code></span><span>Georgia</span></div>
+        <p class="type-g">Bırakın, Aşkınız<br>Kalplara Sığmasın.</p>
+        <small><b>Gerçek italic.</b> 109 yerde <code>font-serif</code> kullanılıyor ve Tailwind’in varsayılanı Georgia. Cinzel dosyada yüklü ama yalnızca 15 yerde devrede.</small>
+      </div>
+      <div class="typebox b">
+        <div class="lbl"><span>Seçenek 1 — Cinzel</span><span class="warnlbl">italik yok</span></div>
+        <p class="type-c">Bırakın, Aşkınız<br>Kalplara Sığmasın.</p>
+        <small><b>Faux italic:</b> Cinzel’in italiki yok, tarayıcı harfleri yapay eğiyor. Ayrıca küçük harfleri small-cap gibi okunuyor → uzun başlıkta “yazılmış” değil “kazınmış” hissi. Marka/etiket için ideal, hero için değil.</small>
+      </div>
+      <div class="typebox">
+        <div class="lbl"><span>Seçenek 2 — Cormorant Garamond Italic</span><span style="color:#7D9A6E">önerilen</span></div>
+        <p class="type-cm">Bırakın, Aşkınız<br>Kalplara Sığmasın.</p>
+        <small><b>Gerçek italic</b>, yüksek kontrast, ince gövde. Davetiye / kitap kapağı hissi. Uzun başlıkta en okunur ve en “pahalı” duran seçenek.</small>
+      </div>
+    </div>
+    <div class="verdict">
+      <b>Önerim — hibrit:</b> <b>Cinzel</b> marka adı, üst etiketler ve fiyat gibi <i>kısa</i> yerlerde (bugünkü 15 kullanım zaten böyle);
+      <b>Cormorant Garamond Italic</b> hero ve bölüm başlıkları gibi <i>uzun</i> metinlerde.
+      Böylece 109 yerdeki yapay eğiklik sorunu da biter, Cinzel’in small-cap etkisi de sadece “rozet” alanlarında kalır — orada zaten güzel duruyor.
+      <br><br><b>Not:</b> “Cinzel’e bağla” dediğinde bunu uygulayacaktım; ekran görüntüsünde yapay eğikliği görünce önce sana sormak istedim.
+    </div>
+  </section>
+
+  <!-- ================= ACCENTS ================= -->
+  <section class="section">
+    <p class="kicker">Üçüncü konu</p>
+    <h3>Şablon aksan kalibrasyonu</h3>
+    <table class="acc">
+      <thead>
+        <tr><th>Şablon</th><th>Bugün</th><th></th><th>Öneri</th><th>Neden</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="n">Düğün</td>
+          <td><span class="pair"><span class="dot" style="background:#D4AF37"></span><span class="hex">D4AF37</span></span></td>
+          <td class="arrow">→</td>
+          <td><span class="pair"><span class="dot" style="background:#C9A87C"></span><span class="hex">C9A87C</span></span></td>
+          <td>Marka altınıyla aynı; şablon “aynı evden” hissi verir</td>
+        </tr>
+        <tr>
+          <td class="n">Nişan</td>
+          <td><span class="pair"><span class="dot" style="background:#FF85A2"></span><span class="hex">FF85A2</span></span></td>
+          <td class="arrow">→</td>
+          <td><span class="pair"><span class="dot" style="background:#D9A0A8"></span><span class="hex">D9A0A8</span></span></td>
+          <td>Gri zeminde 3.85:1 → AA’yı geçmiyor; pudra gül hem okunur hem daha zarif</td>
+        </tr>
+        <tr>
+          <td class="n">Kına</td>
+          <td><span class="pair"><span class="dot" style="background:#8B0000"></span><span class="hex">8B0000</span><span class="dot" style="background:#F7E08B"></span><span class="hex">F7E08B</span></span></td>
+          <td class="arrow">→</td>
+          <td><span class="pair"><span class="dot" style="background:#7E2A33"></span><span class="hex">7E2A33</span><span class="dot" style="background:#C9A87C"></span><span class="hex">C9A87C</span></span></td>
+          <td>Bordo korunur, soluk sarı yerine marka altını</td>
+        </tr>
+        <tr>
+          <td class="n">Sünnet</td>
+          <td><span class="pair"><span class="dot" style="background:#F7E08B"></span><span class="hex">F7E08B</span></span></td>
+          <td class="arrow">→</td>
+          <td><span class="pair"><span class="dot" style="background:#DFB65E"></span><span class="hex">DFB65E</span></span></td>
+          <td>Sarı hacmi azalır, “royal” altına döner; göz yormaz</td>
+        </tr>
+        <tr>
+          <td class="n">Baby Shower</td>
+          <td><span class="pair"><span class="dot" style="background:#5A5A40"></span><span class="hex">5A5A40</span></span></td>
+          <td class="arrow">→</td>
+          <td><span class="pair"><span class="dot" style="background:#7D8467"></span><span class="hex">7D8467</span></span></td>
+          <td>Çok koyu zeytin hüzünlü duruyor; açılmış adaçayı sıcak</td>
+        </tr>
+        <tr>
+          <td class="n">Doğum Günü</td>
+          <td><span class="pair"><span class="dot" style="background:#38BDF8"></span><span class="hex">38BDF8</span></span></td>
+          <td class="arrow">→</td>
+          <td><span class="pair"><span class="dot" style="background:#E0956F"></span><span class="hex">E0956F</span></span></td>
+          <td>Gök mavisi “teknoloji” hissi veriyor; kayısı sıcak ve davetkâr</td>
+        </tr>
+        <tr>
+          <td class="n">Mezuniyet</td>
+          <td><span class="pair"><span class="dot" style="background:#BC13FE"></span><span class="hex">BC13FE</span><span class="dot" style="background:#00F3FF"></span><span class="hex">00F3FF</span></span></td>
+          <td class="arrow">→</td>
+          <td><span class="pair"><span class="dot" style="background:#8B7BD8"></span><span class="hex">8B7BD8</span><span class="dot" style="background:#C9A87C"></span><span class="hex">C9A87C</span></span></td>
+          <td>Neon mor/siyan = oyun-arcade; derin menekşe + pirinç lüks kalır</td>
+        </tr>
+        <tr>
+          <td class="n">Aurora</td>
+          <td><span class="pair"><span class="dot" style="background:#2DD4BF"></span><span class="hex">2DD4BF</span></span></td>
+          <td class="arrow">→</td>
+          <td><span class="pair"><span class="dot" style="background:#45BFAE"></span><span class="hex">45BFAE</span></span></td>
+          <td>Zaten iyi; sadece doygunluk %8 düşürülür, palete oturur</td>
+        </tr>
+        <tr>
+          <td class="n">Anı Kutusu</td>
+          <td><span class="pair"><span class="dot" style="background:#C9A87C"></span><span class="hex">C9A87C</span></span></td>
+          <td class="arrow">→</td>
+          <td><span class="pair"><span class="dot" style="background:#C9A87C"></span><span class="hex">C9A87C</span></span></td>
+          <td>Değişiklik yok — zaten tutarlı</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    Bu dosya yalnızca karar vermek için hazırlanmış bağımsız bir önizlemedir (<code>design/palette-preview.html</code>).
+    Uygulamanın hiçbir dosyası değiştirilmedi. Onay verdiğinde Kademe 1 + 2 uygulanır.
+  </footer>
+</div>
+</body>
+</html>

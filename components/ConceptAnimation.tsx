@@ -7,7 +7,7 @@ interface ConceptAnimationProps {
 
 const ConceptAnimation: React.FC<ConceptAnimationProps> = ({ type }) => {
   if (type === 'graduation') {
-    const confettiColors = ['#ffd700', '#c0c0c0', '#ffffff', '#1e90ff', '#000080'];
+    const confettiColors = ['#C9A87C', '#E3C9A4', '#F7F3EA', '#7D9A6E', '#C0756C'];
     return (
       <div className="fixed inset-0 pointer-events-none z-[150] overflow-hidden">
         {/* Confetti */}

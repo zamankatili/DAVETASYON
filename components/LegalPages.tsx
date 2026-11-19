@@ -145,26 +145,26 @@ export const LegalPages: React.FC = () => {
   }
 
   return (
-    <main className="min-h-screen bg-[#11100F] text-[#F5F2EB] px-6 py-16 md:px-12">
+    <main className="min-h-screen bg-[#0F0E0C] text-[#F7F3EA] px-6 py-16 md:px-12">
       <div className="max-w-3xl mx-auto">
-        <Link to="/" className="text-[#C9A87C] text-[10px] uppercase tracking-[0.3em] font-bold hover:text-[#F5F2EB] transition-colors">
+        <Link to="/" className="text-[#C9A87C] text-[10px] uppercase tracking-[0.3em] font-bold hover:text-[#F7F3EA] transition-colors">
           ← Ana Sayfaya Dön
         </Link>
         <h1 className="text-4xl md:text-5xl font-serif italic mt-8 mb-4 text-[#C9A87C]">{doc.title}</h1>
-        <p className="text-white/40 text-xs uppercase tracking-widest mb-10">Davetasyon — Güncelleme: Kasım 2026</p>
-        <div className="bg-yellow-500/10 border border-yellow-500/30 text-yellow-200/80 text-xs rounded-xl px-4 py-3 mb-10 leading-relaxed">
+        <p className="text-ivory/40 text-xs uppercase tracking-widest mb-10">Davetasyon — Güncelleme: Kasım 2026</p>
+        <div className="bg-[#C9A87C]/[0.08] border border-[#C9A87C]/30 text-[#E3C9A4]/90 text-xs rounded-xl px-4 py-3 mb-10 leading-relaxed">
           Bu metin genel bir şablondur; köşe parantezli alanlar satış öncesinde işletme bilgileriyle doldurulacaktır.
           Hukuki danışmanlık yerine geçmez.
         </div>
         {doc.sections.map((s) => (
-          <section key={s.heading} className="mb-8">
-            <h2 className="text-lg font-semibold text-white mb-2">{s.heading}</h2>
-            <p className="text-white/60 text-sm leading-relaxed">{s.body}</p>
+          <section key={s.heading} className="mb-9">
+            <h2 className="font-serif italic text-2xl text-ivory mb-3">{s.heading}</h2>
+            <p className="text-ivory/65 text-sm md:text-[15px] leading-relaxed font-light">{s.body}</p>
           </section>
         ))}
-        <nav className="mt-14 pt-8 border-t border-white/10 flex flex-wrap gap-4 text-[10px] uppercase tracking-[0.2em] font-bold">
+        <nav className="mt-14 pt-8 border-t border-ivory/10 flex flex-wrap gap-4 text-[10px] uppercase tracking-[0.2em] font-bold">
           {ORDER.map((key) => (
-            <Link key={key} to={`/yasal/${key}`} className={`transition-colors ${key === docId ? 'text-[#C9A87C]' : 'text-white/30 hover:text-white'}`}>
+            <Link key={key} to={`/yasal/${key}`} className={`transition-colors ${key === docId ? 'text-[#C9A87C]' : 'text-ivory/30 hover:text-ivory'}`}>
               {DOCS[key].title}
             </Link>
           ))}

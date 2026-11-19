@@ -51,7 +51,7 @@ export default function EventViewer() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#050505] text-[#C9A87C]">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#0F0E0C] text-[#C9A87C]">
         <div className="w-16 h-16 border-4 border-[#C9A87C]/20 border-t-[#C9A87C] rounded-full animate-spin mb-8"></div>
         <p className="text-[10px] tracking-[0.4em] uppercase font-serif">Davetiye Yükleniyor...</p>
       </div>
@@ -60,14 +60,14 @@ export default function EventViewer() {
 
   if (error || !eventData) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#050505] text-white p-8 text-center">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#0F0E0C] text-ivory p-8 text-center">
         <h1 className="text-4xl font-serif italic text-[#C9A87C] mb-4">Davetiye Bulunamadı</h1>
-        <p className="text-white/50 max-w-md mx-auto leading-relaxed mb-8">
+        <p className="text-ivory/50 max-w-md mx-auto leading-relaxed mb-8">
           Bu bağlantı geçersiz olabilir veya davetiye sahibi tarafından kaldırılmış olabilir.
         </p>
         <button 
           onClick={() => navigate('/')}
-          className="px-8 py-3 bg-white/10 hover:bg-white/20 transition-colors rounded-full text-xs uppercase tracking-widest font-bold"
+          className="px-8 py-3 bg-ivory/10 hover:bg-ivory/20 transition-colors rounded-full text-xs uppercase tracking-widest font-bold"
         >
           Ana Sayfaya Dön
         </button>
@@ -78,7 +78,7 @@ export default function EventViewer() {
   const TemplateComponent = templates[eventData.templateId];
 
   if (!TemplateComponent) {
-    return <div className="text-white p-10 text-center">Şablon Bulunamadı ({eventData.templateId})</div>;
+    return <div className="text-ivory p-10 text-center">Şablon Bulunamadı ({eventData.templateId})</div>;
   }
 
   // Inject EventID into the template! 
