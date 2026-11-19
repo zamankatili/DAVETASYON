@@ -139,11 +139,11 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
           <div className="aspect-[3/4] relative rounded-t-full overflow-hidden border border-[#d4af37]/20 p-2">
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
-            <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800" alt="Memory" className="w-full h-full object-cover rounded-t-full grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]" />
+            <img src="/images/scene/rings-pearls.webp" alt="Memory" className="w-full h-full object-cover rounded-t-full grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]" />
           </div>
           <div className="aspect-[3/4] relative rounded-b-full overflow-hidden border border-[#d4af37]/20 p-2 md:mt-32">
             <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-transparent z-10"></div>
-            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=800" alt="Memory 2" className="w-full h-full object-cover rounded-b-full grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]" />
+            <img src="/images/scene/chairs-garden.webp" alt="Memory 2" className="w-full h-full object-cover rounded-b-full grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]" />
           </div>
         </div>
 

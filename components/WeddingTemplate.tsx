@@ -28,6 +28,12 @@ const WeddingTemplate: React.FC<WeddingTemplateProps> = ({ onBack, language, onO
   const [isOpening, setIsOpening] = useState(false);
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
 
+  const demoGallery = [
+    '/images/scene/rings-pearls.webp',
+    '/images/scene/chairs-garden.webp',
+    '/images/scene/wedding-bouquet.webp',
+  ];
+
   const t = translations[language].wedding;
   const themeColor = "#d4af37"; // Gold color for wedding
 
@@ -244,7 +250,7 @@ const WeddingTemplate: React.FC<WeddingTemplateProps> = ({ onBack, language, onO
                 <div className="grid grid-cols-3 gap-2">
                   {[1, 2, 3].map((i) => (
                     <div key={i} className="aspect-square bg-gray-100 overflow-hidden rounded-lg">
-                      <img src={`https://picsum.photos/seed/wedding-${i}/400/400`} alt="gallery" className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer" loading="lazy" />
+                      <img src={demoGallery[i - 1]} alt="gallery" className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer" loading="lazy" />
                     </div>
                   ))}
                 </div>
