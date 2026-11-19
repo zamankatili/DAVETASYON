@@ -273,9 +273,9 @@ const ModernEngagementTemplate: React.FC<ModernEngagementTemplateProps> = ({ lan
               <div className="mb-20">
                 <h2 className="text-2xl font-serif text-[#4a5d4e] mb-8 italic">{t.gallery}</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=400&h=400" alt="Gallery 1" className="w-full h-48 object-cover rounded-2xl shadow-sm hover:scale-105 transition-transform duration-500" loading="lazy" />
-                  <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&q=80&w=400&h=400" alt="Gallery 2" className="w-full h-48 object-cover rounded-2xl shadow-sm hover:scale-105 transition-transform duration-500" loading="lazy" />
-                  <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=400&h=400" alt="Gallery 3" className="w-full h-48 object-cover rounded-2xl shadow-sm hover:scale-105 transition-transform duration-500 col-span-2 md:col-span-1" loading="lazy" />
+                  <img src="/images/scene/rings-pearls.webp" alt="Gallery 1" className="w-full h-48 object-cover rounded-2xl shadow-sm hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  <img src="/images/scene/flowers-tulips.webp" alt="Gallery 2" className="w-full h-48 object-cover rounded-2xl shadow-sm hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  <img src="/images/scene/chairs-garden.webp" alt="Gallery 3" className="w-full h-48 object-cover rounded-2xl shadow-sm hover:scale-105 transition-transform duration-500 col-span-2 md:col-span-1" loading="lazy" />
                 </div>
               </div>
             )}

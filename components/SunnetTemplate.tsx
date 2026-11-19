@@ -99,7 +99,7 @@ const SunnetTemplate: React.FC<SunnetTemplateProps> = ({ onBack, language, onOrd
                   <div className="mb-4 md:mb-6">
                     <div className="w-32 h-32 md:w-44 md:h-44 mx-auto mb-4 rounded-full border-[3px] border-[#d4af37] p-1.5 backdrop-blur-sm shadow-[0_0_40px_rgba(212,175,55,0.3)] overflow-hidden relative group">
                       <div className="absolute inset-0 bg-gradient-to-tr from-[#d4af37]/10 to-transparent z-10 pointer-events-none"></div>
-                      <img src="https://picsum.photos/seed/royal-child/400/400" alt="Sünnet Kapak" className="w-full h-full object-cover rounded-full grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700" referrerPolicy="no-referrer" loading="lazy" />
+                      <img src="/images/covers/sunnet.webp" alt="Sünnet Kapak" style={{ objectPosition: '50% 18%' }} className="w-full h-full object-cover rounded-full grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700" referrerPolicy="no-referrer" loading="lazy" />
                     </div>
                     <h2 className="font-script text-5xl md:text-7xl text-[#f7e08b] mb-2 text-shadow-glow break-words">{eventContext?.title || t.names}</h2>
                     <div className="h-px w-16 bg-gradient-to-r from-transparent via-[#f7e08b]/40 to-transparent mx-auto mt-2"></div>

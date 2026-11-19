@@ -20,22 +20,22 @@ const quizQuestions = [
       {
         id: 'elegant',
         label: { tr: 'Zarif & Zamansız', en: 'Elegant & Timeless' },
-        image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=600'
+        image: '/images/covers/wedding.webp'
       },
       {
         id: 'luxury',
         label: { tr: 'Gösterişli & VIP', en: 'Glamorous & VIP' },
-        image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=600'
+        image: '/images/covers/darkluxury.webp'
       },
       {
         id: 'romantic',
         label: { tr: 'Doğal & Bahar Esintisi', en: 'Natural & Spring Breeze' },
-        image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&q=80&w=600'
+        image: '/images/covers/engagement.webp'
       },
       {
         id: 'fun',
         label: { tr: 'Eğlenceli & Enerjik', en: 'Fun & Energetic' },
-        image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&q=80&w=600'
+        image: '/images/covers/birthday.webp'
       }
     ]
   },
@@ -49,17 +49,17 @@ const quizQuestions = [
       {
         id: 'day',
         label: { tr: 'Güneşli Bir Gündüz', en: 'Sunny Daytime' },
-        image: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=600'
+        image: '/images/scene/day-garden.webp'
       },
       {
         id: 'sunset',
         label: { tr: 'Günbatımı Romantizmi', en: 'Sunset Romance' },
-        image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=600'
+        image: '/images/covers/aeterna.webp'
       },
       {
         id: 'night',
         label: { tr: 'Büyülü Bir Gece', en: 'Magical Night' },
-        image: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&q=80&w=600'
+        image: '/images/covers/aurora.webp'
       }
     ]
   },
@@ -73,22 +73,22 @@ const quizQuestions = [
       {
         id: 'minimal',
         label: { tr: 'Sade Tipografi ve Sanat', en: 'Clean Typography & Art' },
-        image: 'https://images.unsplash.com/photo-1507290439931-a861b5a38200?auto=format&fit=crop&q=80&w=600'
+        image: '/images/covers/classicenvelope.webp'
       },
       {
         id: 'gold',
         label: { tr: 'Altın Yansımalar ve Parıltı', en: 'Gold Reflections & Sparkle' },
-        image: 'https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&q=80&w=600'
+        image: '/images/covers/birthday.webp'
       },
       {
         id: 'floral',
         label: { tr: 'Çiçekler ve Doğa Motifleri', en: 'Flowers & Nature Motifs' },
-        image: 'https://images.unsplash.com/photo-1500366601446-5ecb8abf1b34?auto=format&fit=crop&q=80&w=600'
+        image: '/images/scene/flowers-tulips.webp'
       },
       {
         id: 'traditional',
         label: { tr: 'Kültürel & Geleneksel', en: 'Cultural & Traditional Textures' },
-        image: 'https://images.unsplash.com/photo-1590073844006-3a44a7f3ff91?auto=format&fit=crop&q=80&w=600'
+        image: '/images/covers/kina.webp'
       }
     ]
   }
@@ -182,42 +182,42 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
     aurora: {
       title: { tr: 'Kuzey Işıkları (Aurora)', en: 'Northern Lights' },
       desc: { tr: 'Seçimlerinize dayanarak önerdiğimiz bu tasarım, ihtişamı ve büyülü parıltıları seven ruhunuzu tam 12\'den vuracak. Unutulmaz bir geceye hazır olun.', en: 'Based on your choices, this design will hit your soul that loves grandeur and magical sparkles right on the mark. Get ready for an unforgettable night.' },
-      image: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&q=80&w=800'
+      image: '/images/covers/aurora.webp'
     },
     darkluxury: {
       title: { tr: 'Kurumsal Gala (Dark Luxury)', en: 'Corporate Gala' },
       desc: { tr: 'Fazlalıklardan arınmış, şık ve karanlık asalet. VIP hissiyatini, prestiji ve geceye yakışan ağırlığı bu lüks tasarımda bulacaksınız.', en: 'Free from excess, chic and dark nobility. You will find the VIP feeling, prestige, and the weight befitting the night in this luxury design.' },
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800'
+      image: '/images/covers/darkluxury.webp'
     },
     engagement: {
       title: { tr: 'Nişan & Bahar Esintisi', en: 'Engagement & Spring Breeze' },
       desc: { tr: 'Aradığınız o naif, doğayla iç içe ve sevgi dolu histi biliyoruz. Romantizmi ve çiçeklerin doğallığını bu tasarımda hissedeceksiniz.', en: 'We know that naive, nature-intertwined and affectionate feeling you are looking for. You will feel romance and the naturalness of flowers in this design.' },
-      image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&q=80&w=800'
+      image: '/images/covers/engagement.webp'
     },
     wedding: {
       title: { tr: 'Modern Düğün Zarafeti', en: 'Modern Wedding Elegance' },
       desc: { tr: 'Aklınızdaki durultu ve moderniteyi sezebiliyoruz. Zarif detaylar ve sanatsal dokunuşlarla sonsuz aşkınızın en mükemmel dijital yansıması.', en: 'We can sense the clarity and modernity in your mind. The most perfect digital reflection of your eternal love with elegant details and artistic touches.' },
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800'
+      image: '/images/covers/wedding.webp'
     },
     classicenvelope: {
       title: { tr: 'Zarif Klasik Zarf', en: 'Elegant Classic Envelope' },
       desc: { tr: 'Asla modası geçmeyecek bir ruh haliniz var. Minimalizmin asaletini savunan, zamansız ve etkileyici bir klasik; kesinlikle tam size göre.', en: 'You have a mood that will never go out of style. A timeless and impressive classic that defends the nobility of minimalism; definitely meant for you.' },
-      image: 'https://images.unsplash.com/photo-1507290439931-a861b5a38200?auto=format&fit=crop&q=80&w=800'
+      image: '/images/covers/classicenvelope.webp'
     },
     birthday: {
       title: { tr: 'Eğlenceli Kutlama', en: 'Fun Celebration' },
       desc: { tr: 'İçinizdeki çocuğu ve partileme hissini duyabiliyoruz! Yüksek enerjinizi ve kutlama ruhunuzu ekrandan taşıran renkli bir deneyim.', en: 'We can hear your inner child and party feeling! A colorful experience that overflows your high energy and celebration spirit from the screen.' },
-      image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&q=80&w=800'
+      image: '/images/covers/birthday.webp'
     },
     kina: {
       title: { tr: 'Geleneksel Masal (Kına)', en: 'Traditional Tale (Henna)' },
       desc: { tr: 'Kültürün büyüleyici dokularını koruyan ancak gösterişten taviz vermeyen muazzam lüks bir seçim.', en: 'A tremendous luxury choice that preserves the enchanting textures of culture but does not compromise on ostentation.' },
-      image: 'https://images.unsplash.com/photo-1590073844006-3a44a7f3ff91?auto=format&fit=crop&q=80&w=800'
+      image: '/images/covers/kina.webp'
     },
     sunnet: {
       title: { tr: 'Dini & Geleneksel Merasim', en: 'Traditional Ceremony' },
       desc: { tr: 'Maneviyatı yüksek, köklerine sıkı sıkıya bağlı ve aileyi güçlü bir bağla bir araya getiren prestijli bir tasarım.', en: 'A prestigious design that has high spirituality, is tightly connected to its roots, and brings the family together with a strong bond.' },
-      image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=800'
+      image: '/images/covers/sunnet.webp'
     }
   };
 

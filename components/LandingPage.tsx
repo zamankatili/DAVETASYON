@@ -203,7 +203,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Dün, bugün ve yarını birleştiren; anılarınızı geleceğe mühürleyen yapay zeka destekli zaman ötesi bir deneyim.' : 'A timeless experience supported by AI that unites yesterday, today and tomorrow, sealing your memories into the future.',
       icon: '⏳',
       tag: 'Masterpiece',
-      image: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/aeterna.webp'
     },
     {
       id: 'memorybox',
@@ -211,7 +211,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Tüm sevdiklerinizin o gece çektiği fotoğrafları sizin için tek bir bulutta toplayan interaktif misafir kamerası.' : 'An interactive guest camera that securely collects all the photos taken by your loved ones that night in a private cloud.',
       icon: '📸',
       tag: 'New / Yeni',
-      image: 'https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/memorybox.webp'
     },
     {
       id: 'classicenvelope',
@@ -219,7 +219,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Zarif bir zarf animasyonu ile açılan, sade, şık ve zamansız bir düğün davetiyesi.' : 'A simple, elegant, and timeless wedding invitation that opens with a graceful envelope animation.',
       icon: '✉️',
       tag: 'Classic',
-      image: 'https://images.unsplash.com/photo-1507290439931-a861b5a38200?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/classicenvelope.webp'
     },
     {
       id: 'darkluxury',
@@ -227,7 +227,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Siyah ve altının buluştuğu, prestijli ve kurumsal etkinlikler için tasarlanmış VIP deneyim.' : 'A VIP experience designed for prestigious and corporate events where black and gold meet.',
       icon: '🏛️',
       tag: 'VIP',
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/darkluxury.webp'
     },
     {
       id: 'sunnet',
@@ -235,7 +235,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Geleneksel motiflerin manevi derinlik ve modern teknolojiyle harmanlandığı özel bir deneyim.' : 'A special experience blending traditional motifs with spiritual depth and modern technology.',
       icon: '🌙',
       tag: 'Couture',
-      image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/sunnet.webp'
     },
     {
       id: 'wedding',
@@ -243,7 +243,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Zarafet ve lüksün buluştuğu, sonsuz aşkınızı en şık şekilde duyuran dijital sanat eseri.' : 'A digital masterpiece where elegance and luxury meet, announcing your eternal love in the most stylish way.',
       icon: '💍',
       tag: 'Elite',
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/wedding.webp'
     },
     {
       id: 'babyshower',
@@ -251,7 +251,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Minik mucizenizin gelişini kutlayan, sıcak ve sevgi dolu tasarımlarla hazırlanan davetiyeler.' : 'Invitations prepared with warm and loving designs, celebrating the arrival of your little miracle.',
       icon: '👶',
       tag: 'Boutique',
-      image: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/babyshower.webp'
     },
     {
       id: 'engagement',
@@ -259,7 +259,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Baharın uyanışı, uçuşan kelebekler ve doğanın sesleriyle bezenmiş masalsı bir başlangıç.' : 'A fairytale beginning adorned with the awakening of spring, fluttering butterflies, and the sounds of nature.',
       icon: '🌸',
       tag: 'Spring',
-      image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/engagement.webp'
     },
     {
       id: 'birthday',
@@ -267,7 +267,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Eğlenceli, interaktif ve enerji dolu kutlamalar için tasarlanmış renkli dijital dünyalar.' : 'Colorful digital worlds designed for fun, interactive, and energetic celebrations.',
       icon: '🎈',
       tag: 'Fun',
-      image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/birthday.webp'
     },
     {
       id: 'kina',
@@ -275,7 +275,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Geleneksel kına gecesi ruhunu, modern ve lüks detaylarla harmanlayan büyüleyici bir davet.' : 'An enchanting invitation blending the traditional henna night spirit with modern and luxury details.',
       icon: '🌹',
       tag: 'Traditional',
-      image: 'https://images.unsplash.com/photo-1590073844006-3a44a7f3ff91?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/kina.webp'
     },
     {
       id: 'graduation',
@@ -283,7 +283,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Başarılarınızı kutladığınız, prestijli ve unutulmaz bir gece için tasarlanmış dijital bir anı.' : 'A digital memory designed for a prestigious and unforgettable night where you celebrate your achievements.',
       icon: '🎓',
       tag: 'Prestige',
-      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/graduation.webp'
     },
     {
       id: 'aurora',
@@ -291,7 +291,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       description: language === 'tr' ? 'Büyüleyici kuzey ışıkları altında, masalsı ve kozmik bir atmosferde gerçekleşecek etkinlikler için.' : 'For events taking place in a fairytale and cosmic atmosphere under the enchanting northern lights.',
       icon: '🌌',
       tag: 'Magical',
-      image: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&q=80&w=800&h=1000'
+      image: '/images/covers/aurora.webp'
     }
   ];
 
@@ -408,7 +408,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
           >
             <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border border-[#F7F3EA]/5 shadow-[0_20px_100px_rgba(0,0,0,0.8)]">
               <img 
-                src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200&h=1500" 
+                src="/images/scene/hero-table.webp" 
                 alt="Luxury Experience" 
                 className="w-full h-full object-cover grayscale-[0.3] sepia-[0.2] hover:grayscale-0 transition-all duration-[3s]"
                 referrerPolicy="no-referrer"
@@ -680,7 +680,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                   referrerPolicy="no-referrer"
                   loading="lazy"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = `https://picsum.photos/seed/${concept.id}/800/1000`;
+                    e.currentTarget.style.opacity = '0';
                   }}
                 />
                 <div className="absolute top-6 right-6 px-5 py-2 bg-[#0F0E0C]/60 backdrop-blur-md border border-[#F7F3EA]/10 rounded-full text-[9px] uppercase tracking-[0.3em] font-bold text-[#C9A87C]">
@@ -864,11 +864,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 visual: (
                   <div className="absolute inset-x-0 bottom-0 h-48 flex justify-center items-end pb-6 pointer-events-none">
                     <div className="w-28 h-36 bg-[#F7F3EA] flex flex-col p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform -rotate-12 translate-x-8 translate-y-8 group-hover:translate-y-2 transition-transform duration-700 z-10 border border-[#ddd]">
-                        <div className="flex-1 bg-ink/10 bg-[url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=300')] bg-cover bg-center"></div>
+                        <div className="flex-1 bg-ink/10 bg-[url('/images/scene/wedding-bouquet.webp')] bg-cover bg-center"></div>
                         <div className="h-8 flex justify-center items-center"><div className="w-8 h-1 bg-[#171614]/10 rounded-full"></div></div>
                     </div>
                     <div className="w-28 h-36 bg-[#F7F3EA] flex flex-col p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform rotate-6 -translate-x-4 translate-y-12 group-hover:translate-y-6 transition-transform duration-700 z-0 border border-[#ddd]">
-                        <div className="flex-1 bg-ink/10 bg-[url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=300')] bg-cover bg-center grayscale"></div>
+                        <div className="flex-1 bg-ink/10 bg-[url('/images/scene/hero-table.webp')] bg-cover bg-center grayscale"></div>
                         <div className="h-8 flex justify-center items-center"><div className="w-8 h-1 bg-[#171614]/10 rounded-full"></div></div>
                     </div>
                   </div>

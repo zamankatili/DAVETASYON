@@ -97,7 +97,7 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
       {/* Background Layer - Static image with dark overlay for performance */}
       <div 
         className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&q=80&w=1920&h=1080)' }}
+        style={{ backgroundImage: 'url(/images/scene/aurora-sky.webp)' }}
       />
       <div className="fixed inset-0 z-0 bg-[#020617]/85" />
 
