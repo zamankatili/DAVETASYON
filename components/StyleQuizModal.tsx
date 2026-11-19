@@ -231,17 +231,17 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[300] bg-[#050505]/98 backdrop-blur-2xl flex items-center justify-center overflow-x-hidden overflow-y-auto"
+          className="fixed inset-0 z-[300] bg-[#0F0E0C]/98 backdrop-blur-2xl flex items-center justify-center overflow-x-hidden overflow-y-auto"
         >
           {/* Background Ambient Glow */}
           <div className="fixed inset-0 pointer-events-none">
             <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-[#C9A87C]/5 blur-[150px]"></div>
-            <div className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-[#E5CCAA]/5 blur-[150px]"></div>
+            <div className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-[#E3C9A4]/5 blur-[150px]"></div>
           </div>
 
           <button 
             onClick={onClose}
-            className="fixed top-8 right-8 z-[310] p-3 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-white/10 transition-all font-sans text-sm tracking-widest uppercase flex items-center gap-2"
+            className="fixed top-8 right-8 z-[310] p-3 rounded-full bg-ivory/5 border border-ivory/10 text-ivory/50 hover:text-ivory hover:bg-ivory/10 transition-all font-sans text-sm tracking-widest uppercase flex items-center gap-2"
           >
             {language === 'tr' ? 'Kapat' : 'Close'}
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -258,15 +258,15 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
                 <div className="inline-block px-4 py-1 border border-[#C9A87C]/30 rounded-full text-[#C9A87C] text-[10px] uppercase tracking-[0.4em] mb-8 font-bold">
                   {language === 'tr' ? 'Karar Vermekte Zorlanıyor Musunuz?' : 'Having Trouble Deciding?'}
                 </div>
-                <h2 className="text-5xl md:text-7xl font-serif italic text-[#F5F2EB] mb-8 leading-tight">
+                <h2 className="text-5xl md:text-7xl font-serif italic text-[#F7F3EA] mb-8 leading-tight">
                   {language === 'tr' ? 'Gerçek Tarzınızı Birlikte Keşfedelim.' : 'Let\'s Discover Your True Style Together.'}
                 </h2>
-                <p className="text-[#F5F2EB]/50 text-lg md:text-xl font-light mb-12 leading-relaxed">
+                <p className="text-[#F7F3EA]/50 text-lg md:text-xl font-light mb-12 leading-relaxed">
                   {language === 'tr' ? 'Sadece 3 kısa görsel soru ile zihninizdeki soyut konsepti somutlaştırıyor ve size en mükemmel şaheseri öneriyoruz.' : 'With visual questions, we materialize the abstract concept in your mind and recommend the most perfect masterpiece for you.'}
                 </p>
                 <button 
                   onClick={() => setStep(1)}
-                  className="px-12 py-5 bg-[#C9A87C] text-[#11100F] text-xs uppercase tracking-[0.3em] font-bold rounded-full hover:bg-[#F5F2EB] transition-all duration-500 shadow-[0_10px_40px_rgba(201,168,124,0.3)] hover:-translate-y-1"
+                  className="px-12 py-5 bg-[#C9A87C] text-[#0F0E0C] text-xs uppercase tracking-[0.3em] font-bold rounded-full hover:bg-[#F7F3EA] transition-all duration-500 shadow-[0_10px_40px_rgba(201,168,124,0.3)] hover:-translate-y-1"
                 >
                   {language === 'tr' ? 'Testi Başlat' : 'Start Quiz'}
                 </button>
@@ -284,7 +284,7 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
                   <div className="text-[#C9A87C] text-[10px] uppercase tracking-[0.4em] font-bold mb-4">
                     {language === 'tr' ? `${step} / 3 Adım` : `Step ${step} / 3`}
                   </div>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-[#F5F2EB] leading-tight">
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-[#F7F3EA] leading-tight">
                     {currentQ.question[language]}
                   </h2>
                 </div>
@@ -296,7 +296,7 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handleSelect(currentQ.id, option.id)}
-                      className="group cursor-pointer relative rounded-3xl overflow-hidden aspect-[4/5] border border-white/5 bg-[#11100F] shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                      className="group cursor-pointer relative rounded-3xl overflow-hidden aspect-[4/5] border border-ivory/5 bg-[#0F0E0C] shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
                     >
                       <img 
                         src={option.image} 
@@ -304,12 +304,12 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
                         className="w-full h-full object-cover grayscale-[0.5] opacity-60 group-hover:grayscale-[0.1] group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" 
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-[#0F0E0C]/40 to-transparent"></div>
                       <div className="absolute bottom-0 left-0 w-full p-6 text-center transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                        <div className="w-8 h-8 rounded-full border border-white/20 mx-auto mb-4 flex items-center justify-center group-hover:bg-[#C9A87C] group-hover:border-[#C9A87C] transition-colors duration-500">
-                          <div className="w-1.5 h-1.5 rounded-full bg-transparent group-hover:bg-[#11100F] transition-colors duration-500"></div>
+                        <div className="w-8 h-8 rounded-full border border-ivory/20 mx-auto mb-4 flex items-center justify-center group-hover:bg-[#C9A87C] group-hover:border-[#C9A87C] transition-colors duration-500">
+                          <div className="w-1.5 h-1.5 rounded-full bg-transparent group-hover:bg-[#0F0E0C] transition-colors duration-500"></div>
                         </div>
-                        <h3 className="text-[#F5F2EB] font-serif italic text-xl md:text-2xl drop-shadow-lg">{option.label[language]}</h3>
+                        <h3 className="text-[#F7F3EA] font-serif italic text-xl md:text-2xl drop-shadow-lg">{option.label[language]}</h3>
                       </div>
                     </motion.div>
                   ))}
@@ -330,7 +330,7 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
                   />
                   <div className="absolute inset-0 flex items-center justify-center text-4xl">✨</div>
                 </div>
-                <h2 className="text-3xl md:text-5xl font-serif italic text-[#F5F2EB] mb-8 leading-relaxed">
+                <h2 className="text-3xl md:text-5xl font-serif italic text-[#F7F3EA] mb-8 leading-relaxed">
                   {language === 'tr' ? 'Hikayeniz Zihnimizde Şekilleniyor...' : 'Your Story is Forming in Our Minds...'}
                 </h2>
                 
@@ -346,7 +346,7 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
 
                 <button
                   onClick={() => calculateResult(answers)}
-                  className="px-10 py-5 bg-[#C9A87C] text-[#11100F] text-[10px] uppercase tracking-[0.3em] font-bold rounded-full hover:bg-[#F5F2EB] transition-all duration-500 shadow-[0_15px_30px_rgba(201,168,124,0.3)]"
+                  className="px-10 py-5 bg-[#C9A87C] text-[#0F0E0C] text-[10px] uppercase tracking-[0.3em] font-bold rounded-full hover:bg-[#F7F3EA] transition-all duration-500 shadow-[0_15px_30px_rgba(201,168,124,0.3)]"
                 >
                   {language === 'tr' ? 'Sanatsal Eşleşmeyi Gör' : 'View Artistic Match'}
                 </button>
@@ -365,18 +365,18 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
                   <h3 className="text-[#C9A87C] text-[10px] uppercase tracking-[0.4em] font-bold mb-2">
                     {language === 'tr' ? 'Sanatsal Analizimiz' : 'Our Artistic Analysis'}
                   </h3>
-                  <p className="text-[#F5F2EB]/90 text-xl md:text-2xl lg:text-3xl font-serif italic leading-relaxed px-4">
+                  <p className="text-[#F7F3EA]/90 text-xl md:text-2xl lg:text-3xl font-serif italic leading-relaxed px-4">
                     {poeticText[language]}
                   </p>
                 </div>
 
-                <div className="w-full max-w-6xl bg-[#11100F] border border-white/10 rounded-[3rem] p-8 md:p-12 lg:p-16 flex flex-col md:flex-row gap-12 lg:gap-20 items-center shadow-[0_30px_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
+                <div className="w-full max-w-6xl bg-[#0F0E0C] border border-ivory/10 rounded-[3rem] p-8 md:p-12 lg:p-16 flex flex-col md:flex-row gap-12 lg:gap-20 items-center shadow-[0_30px_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
                   {/* Result Glow background */}
                   <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-[#C9A87C]/5 to-transparent pointer-events-none" />
 
-                  <div className="w-full md:w-[45%] aspect-[4/5] relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl z-10 group bg-[#1A1817]">
+                  <div className="w-full md:w-[45%] aspect-[4/5] relative rounded-[2rem] overflow-hidden border border-ivory/10 shadow-2xl z-10 group bg-[#171614]">
                     <img src={resultData.image} alt="Recommendation" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] sepia-[0.1]" />
-                    <div className="absolute top-6 left-6 px-5 py-2 bg-black/60 backdrop-blur-md rounded-full border border-white/10 text-[9px] uppercase tracking-[0.3em] text-[#C9A87C] font-bold shadow-xl">
+                    <div className="absolute top-6 left-6 px-5 py-2 bg-ink/60 backdrop-blur-md rounded-full border border-ivory/10 text-[9px] uppercase tracking-[0.3em] text-[#C9A87C] font-bold shadow-xl">
                       {language === 'tr' ? '%100 Kusursuz Eşleşme' : '100% Perfect Match'}
                     </div>
                   </div>
@@ -385,10 +385,10 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
                     <div className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#C9A87C] mb-4">
                       {language === 'tr' ? 'İşte Masalınızın Başrolü:' : 'The Protagonist of Your Tale:'}
                     </div>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-[#F5F2EB] mb-8 leading-tight tracking-tight">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-[#F7F3EA] mb-8 leading-tight tracking-tight">
                       {resultData.title[language]}
                     </h2>
-                    <p className="text-[#F5F2EB]/60 text-base md:text-lg lg:text-xl font-light mb-12 leading-relaxed max-w-lg mx-auto md:mx-0">
+                    <p className="text-[#F7F3EA]/60 text-base md:text-lg lg:text-xl font-light mb-12 leading-relaxed max-w-lg mx-auto md:mx-0">
                       {resultData.desc[language]}
                     </p>
                     
@@ -398,7 +398,7 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
                           onClose();
                           onSelectTemplate(recommended);
                         }}
-                        className="w-full sm:w-auto px-10 py-5 bg-[#C9A87C] text-[#11100F] text-[10px] uppercase tracking-[0.3em] font-bold rounded-full hover:bg-[#F5F2EB] transition-all duration-500 shadow-[0_15px_30px_rgba(201,168,124,0.3)] flex items-center justify-center gap-3 group"
+                        className="w-full sm:w-auto px-10 py-5 bg-[#C9A87C] text-[#0F0E0C] text-[10px] uppercase tracking-[0.3em] font-bold rounded-full hover:bg-[#F7F3EA] transition-all duration-500 shadow-[0_15px_30px_rgba(201,168,124,0.3)] flex items-center justify-center gap-3 group"
                       >
                         {language === 'tr' ? 'Şaheseri Gör' : 'View Masterpiece'}
                         <span className="transform group-hover:translate-x-1 transition-transform">→</span>
@@ -408,7 +408,7 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
                           onClose();
                           onOrder(recommended);
                         }}
-                        className="w-full sm:w-auto px-10 py-5 border border-[#C9A87C]/30 text-[#C9A87C] text-[10px] uppercase tracking-[0.3em] font-bold rounded-full hover:bg-[#C9A87C] hover:text-[#11100F] transition-all duration-500"
+                        className="w-full sm:w-auto px-10 py-5 border border-[#C9A87C]/30 text-[#C9A87C] text-[10px] uppercase tracking-[0.3em] font-bold rounded-full hover:bg-[#C9A87C] hover:text-[#0F0E0C] transition-all duration-500"
                       >
                         {language === 'tr' ? 'Hemen Sana Uyarlayalım' : 'Adapt It For You Now'}
                       </button>
@@ -416,7 +416,7 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
                     
                     <button 
                       onClick={() => setStep(0)}
-                      className="mt-12 text-[10px] text-[#F5F2EB]/30 hover:text-[#C9A87C] uppercase tracking-[0.3em] font-bold transition-colors inline-block text-center md:text-left"
+                      className="mt-12 text-[10px] text-[#F7F3EA]/30 hover:text-[#C9A87C] uppercase tracking-[0.3em] font-bold transition-colors inline-block text-center md:text-left"
                     >
                       {language === 'tr' ? '↺ Testi Baştan Çöz' : '↺ Retake Quiz'}
                     </button>

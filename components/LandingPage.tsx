@@ -296,7 +296,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
   ];
 
   return (
-    <div className="min-h-screen bg-[#11100F] text-[#F5F2EB] font-sans selection:bg-[#C9A87C] selection:text-[#11100F] overflow-x-hidden relative">
+    <div className="min-h-screen bg-[#0F0E0C] text-[#F7F3EA] font-sans selection:bg-[#C9A87C] selection:text-[#0F0E0C] overflow-x-hidden relative">
       {/* Natural Canvas Noise Overlay */}
       <div 
         className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay"
@@ -310,44 +310,44 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full h-[72px] sm:h-24 border-b border-[#F5F2EB]/5 bg-[#11100F]/60 backdrop-blur-2xl z-50 flex items-center justify-between px-4 sm:px-8 md:px-20">
+      <nav className="fixed top-0 left-0 w-full h-[72px] sm:h-24 border-b border-[#F7F3EA]/5 bg-[#0F0E0C]/60 backdrop-blur-2xl z-50 flex items-center justify-between px-4 sm:px-8 md:px-20">
         <div className="flex items-center gap-4 relative z-10">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C9A87C] to-[#E5CCAA] flex items-center justify-center text-[#11100F] font-serif italic text-2xl shadow-[0_0_30px_rgba(201,168,124,0.2)]">D</div>
+          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C9A87C] to-[#E3C9A4] flex items-center justify-center text-[#0F0E0C] font-serif italic text-2xl shadow-[0_0_30px_rgba(201,168,124,0.2)]">D</div>
           <div className="hidden sm:flex flex-col">
             <span className="font-serif italic text-2xl tracking-tight leading-none">Davetasyon</span>
             <span className="text-[9px] uppercase tracking-widest text-[#C9A87C] mt-1 ml-1 opacity-80">Davetiye Atölyesi</span>
           </div>
         </div>
         <div className="flex items-center gap-4 sm:gap-12 relative z-10">
-          <div className="hidden lg:flex items-center gap-10 text-[10px] uppercase tracking-[5px] font-bold text-[#F5F2EB]/40">
+          <div className="hidden lg:flex items-center gap-10 text-[10px] uppercase tracking-[5px] font-bold text-[#F7F3EA]/40">
             <span 
               onClick={() => document.getElementById('collections')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-[#F5F2EB] border-b border-[#C9A87C] pb-1 cursor-pointer hover:opacity-80 transition-opacity"
+              className="text-[#F7F3EA] border-b border-[#C9A87C] pb-1 cursor-pointer hover:opacity-80 transition-opacity"
             >
               Atölye
             </span>
             <span 
               onClick={() => document.getElementById('exclusive')?.scrollIntoView({ behavior: 'smooth' })}
-              className="hover:text-[#F5F2EB] transition-colors cursor-pointer"
+              className="hover:text-[#F7F3EA] transition-colors cursor-pointer"
             >
               Süreç
             </span>
             <span 
               onClick={() => document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' })}
-              className="hover:text-[#F5F2EB] transition-colors cursor-pointer"
+              className="hover:text-[#F7F3EA] transition-colors cursor-pointer"
             >
               Özellikler
             </span>
             <button 
               onClick={onOrderModalOpen}
-              className="px-4 py-2 border border-[#C9A87C]/40 text-[#C9A87C] rounded-full hover:bg-[#C9A87C] hover:text-[#11100F] transition-colors"
+              className="px-4 py-2 border border-[#C9A87C]/40 text-[#C9A87C] rounded-full hover:bg-[#C9A87C] hover:text-[#0F0E0C] transition-colors"
             >
               {t.orderFormBtn}
             </button>
           </div>
-          <div className="flex items-center bg-[#F5F2EB]/5 rounded-full p-1 border border-[#F5F2EB]/10">
-            <button onClick={() => setLanguage('tr')} className={`px-4 py-1.5 text-[10px] font-bold rounded-full transition-all ${language === 'tr' ? 'bg-[#C9A87C] text-[#11100F]' : 'text-[#F5F2EB]/40 hover:text-[#F5F2EB]/60'}`}>TR</button>
-            <button onClick={() => setLanguage('en')} className={`px-4 py-1.5 text-[10px] font-bold rounded-full transition-all ${language === 'en' ? 'bg-[#C9A87C] text-[#11100F]' : 'text-[#F5F2EB]/40 hover:text-[#F5F2EB]/60'}`}>EN</button>
+          <div className="flex items-center bg-[#F7F3EA]/5 rounded-full p-1 border border-[#F7F3EA]/10">
+            <button onClick={() => setLanguage('tr')} className={`px-4 py-1.5 text-[10px] font-bold rounded-full transition-all ${language === 'tr' ? 'bg-[#C9A87C] text-[#0F0E0C]' : 'text-[#F7F3EA]/40 hover:text-[#F7F3EA]/60'}`}>TR</button>
+            <button onClick={() => setLanguage('en')} className={`px-4 py-1.5 text-[10px] font-bold rounded-full transition-all ${language === 'en' ? 'bg-[#C9A87C] text-[#0F0E0C]' : 'text-[#F7F3EA]/40 hover:text-[#F7F3EA]/60'}`}>EN</button>
           </div>
         </div>
       </nav>
@@ -360,7 +360,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-[#F5F2EB]/[0.02] border border-[#F5F2EB]/10 rounded-full mb-10 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-[#F7F3EA]/[0.02] border border-[#F7F3EA]/10 rounded-full mb-10 backdrop-blur-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C9A87C] animate-pulse"></span>
               <span className="text-[10px] uppercase tracking-[4px] font-bold text-[#C9A87C]">{t.heroTag}</span>
             </div>
@@ -371,30 +371,30 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 <>Leave <br /> <span className="text-[#C9A87C]">Ordinary</span> <br /> Behind.</>
               )}
             </h1>
-            <p className="text-lg md:text-xl text-[#F5F2EB]/60 max-w-xl leading-relaxed mb-16 font-light">
+            <p className="text-lg md:text-xl text-[#F7F3EA]/60 max-w-xl leading-relaxed mb-16 font-light">
               {t.heroSubtitle}
             </p>
-            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center gap-4 sm:gap-6 w-full sm:w-auto">
               <button 
                 onClick={() => document.getElementById('collections')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full sm:w-auto px-8 sm:px-12 py-5 bg-[#C9A87C] text-[#11100F] text-[10px] sm:text-[11px] uppercase tracking-[3px] sm:tracking-[4px] font-bold rounded-full hover:bg-[#F5F2EB] transition-all duration-500 shadow-[0_15px_40px_rgba(201,168,124,0.2)] group flex justify-center items-center gap-4"
+                className="w-full sm:w-auto whitespace-nowrap px-8 sm:px-12 py-5 bg-[#C9A87C] text-[#0F0E0C] text-[10px] sm:text-[11px] uppercase tracking-[3px] sm:tracking-[4px] font-bold rounded-full hover:bg-[#F7F3EA] transition-all duration-500 shadow-[0_15px_40px_rgba(201,168,124,0.2)] group flex justify-center items-center gap-4"
               >
                 {t.ctaPrimary} <span className="block group-hover:translate-x-2 transition-transform">→</span>
               </button>
               <button 
                 onClick={() => setIsQuizOpen(true)}
-                className="w-full sm:w-auto group px-8 sm:px-10 py-5 bg-[#F5F2EB]/5 border border-[#C9A87C]/30 text-[#C9A87C] text-[10px] sm:text-[11px] uppercase tracking-[3px] sm:tracking-[4px] font-bold rounded-full hover:bg-[#C9A87C] hover:text-[#11100F] transition-all duration-500 backdrop-blur-sm relative overflow-hidden flex justify-center items-center gap-3"
+                className="w-full sm:w-auto whitespace-nowrap group px-8 sm:px-10 py-5 bg-[#F7F3EA]/5 border border-[#C9A87C]/30 text-[#C9A87C] text-[10px] sm:text-[11px] uppercase tracking-[3px] sm:tracking-[4px] font-bold rounded-full hover:bg-[#C9A87C] hover:text-[#0F0E0C] transition-all duration-500 backdrop-blur-sm relative overflow-hidden flex justify-center items-center gap-3"
               >
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[200%] group-hover:animate-[shimmer_2s_infinite]"></div>
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-ivory/20 to-transparent -translate-x-[200%] group-hover:animate-[shimmer_2s_infinite]"></div>
                 ✨ {language === 'tr' ? 'Tarzını Keşfet (Quiz)' : 'Find Your Style (Quiz)'}
               </button>
             </div>
             
-            <div className="mt-20 grid grid-cols-3 gap-12 border-t border-[#F5F2EB]/10 pt-12">
+            <div className="mt-20 grid grid-cols-3 gap-12 border-t border-[#F7F3EA]/10 pt-12">
               {t.stats.map((stat, i) => (
                 <div key={i}>
                   <div className="text-3xl lg:text-4xl font-serif italic text-[#C9A87C] mb-2">{stat.value}</div>
-                  <div className="text-[9px] uppercase tracking-[3px] font-medium text-[#F5F2EB]/40">{stat.label}</div>
+                  <div className="text-[9px] uppercase tracking-[3px] font-medium text-[#F7F3EA]/40">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -406,7 +406,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border border-[#F5F2EB]/5 shadow-[0_20px_100px_rgba(0,0,0,0.8)]">
+            <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border border-[#F7F3EA]/5 shadow-[0_20px_100px_rgba(0,0,0,0.8)]">
               <img 
                 src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200&h=1500" 
                 alt="Luxury Experience" 
@@ -414,23 +414,23 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 referrerPolicy="no-referrer"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#11100F] via-transparent to-transparent opacity-80"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-transparent to-transparent opacity-80"></div>
               
               {/* Floating Invitation Preview Card */}
               <motion.div 
                 animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-4 sm:bottom-10 left-4 sm:left-10 right-4 sm:right-10 p-5 sm:p-8 bg-[#11100F]/60 backdrop-blur-2xl border border-[#F5F2EB]/10 rounded-[1.5rem] sm:rounded-[2rem]"
+                className="absolute bottom-4 sm:bottom-10 left-4 sm:left-10 right-4 sm:right-10 p-5 sm:p-8 bg-[#0F0E0C]/60 backdrop-blur-2xl border border-[#F7F3EA]/10 rounded-[1.5rem] sm:rounded-[2rem]"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#C9A87C]">Canlı Demo</div>
                   <div className="w-1.5 h-1.5 rounded-full bg-red-400/80 animate-pulse"></div>
                 </div>
-                <div className="text-2xl lg:text-3xl font-serif italic mb-3 text-[#F5F2EB]">Aeterna Masterpiece</div>
-                <p className="text-[#F5F2EB]/50 text-xs leading-relaxed mb-6 font-light">Zamanın ötesindeki bu şaheseri deneyimleyin.</p>
+                <div className="text-2xl lg:text-3xl font-serif italic mb-3 text-[#F7F3EA]">Aeterna Masterpiece</div>
+                <p className="text-[#F7F3EA]/50 text-xs leading-relaxed mb-6 font-light">Zamanın ötesindeki bu şaheseri deneyimleyin.</p>
                 <button 
                   onClick={() => onSelect('aeterna')}
-                  className="w-full py-3.5 bg-[#F5F2EB] text-[#11100F] text-[10px] font-bold uppercase tracking-[0.3em] rounded-full hover:bg-[#C9A87C] transition-all"
+                  className="w-full py-3.5 bg-[#F7F3EA] text-[#0F0E0C] text-[10px] font-bold uppercase tracking-[0.3em] rounded-full hover:bg-[#C9A87C] transition-all"
                 >
                   Şimdi Keşfet
                 </button>
@@ -438,8 +438,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
             </div>
             
             {/* Urgency Badge */}
-            <div className="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-tr from-[#C9A87C] to-[#E5CCAA] rounded-full flex items-center justify-center text-center p-8 shadow-[0_10px_40px_rgba(201,168,124,0.3)] rotate-12">
-              <div className="text-[#11100F]">
+            <div className="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-tr from-[#C9A87C] to-[#E3C9A4] rounded-full flex items-center justify-center text-center p-8 shadow-[0_10px_40px_rgba(201,168,124,0.3)] rotate-12">
+              <div className="text-[#0F0E0C]">
                 <div className="text-[11px] font-bold uppercase tracking-[0.2em] leading-relaxed">{t.urgency}</div>
               </div>
             </div>
@@ -454,7 +454,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
             <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#C9A87C] mb-6 block">
               {language === 'tr' ? 'Teknoloji & Zarafet' : 'Technology & Elegance'}
             </span>
-            <h2 className="text-5xl md:text-7xl font-serif italic tracking-tight font-light text-[#F5F2EB]">
+            <h2 className="text-5xl md:text-7xl font-serif italic tracking-tight font-light text-[#F7F3EA]">
               {language === 'tr' ? 'Sadece Davetiye Değil,' : 'Not Just an Invitation,'} <br />
               <span className="text-[#C9A87C]">{language === 'tr' ? 'Dijital Bir Ekosistem.' : 'A Digital Ecosystem.'}</span>
             </h2>
@@ -468,30 +468,30 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="md:col-span-6 lg:col-span-8 rounded-[3rem] bg-[#1A1817] border border-[#F5F2EB]/10 overflow-hidden relative group"
+              className="md:col-span-6 lg:col-span-8 rounded-[3rem] bg-[#171614] border border-[#F7F3EA]/10 overflow-hidden relative group"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[#C9A87C]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
               <div className="p-10 md:p-14 relative z-10 w-full h-full flex flex-col justify-between">
                 <div>
-                  <h3 className="text-3xl font-serif italic text-[#F5F2EB] mb-4">{language === 'tr' ? 'Merkez Komuta: Host Dashboard' : 'Command Center: Host Dashboard'}</h3>
-                  <p className="text-[#F5F2EB]/60 font-light max-w-md">
+                  <h3 className="text-3xl font-serif italic text-[#F7F3EA] mb-4">{language === 'tr' ? 'Merkez Komuta: Host Dashboard' : 'Command Center: Host Dashboard'}</h3>
+                  <p className="text-[#F7F3EA]/60 font-light max-w-md">
                     {language === 'tr' ? 'Tüm katılımcı verilerini, masaların dağılımını ve LCV yanıtlarını anlık finansal bir ekran gibi şık bir panelden izleyin.' : 'Monitor all attendee data, table distributions, and RSVP responses in real-time from a sleek panel as if it were a financial dashboard.'}
                   </p>
                 </div>
                 {/* Mockup UI representation */}
-                <div className="mt-8 rounded-2xl bg-black/40 border border-white/5 backdrop-blur-md p-6 overflow-hidden shadow-2xl transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700">
+                <div className="mt-8 rounded-2xl bg-ink/40 border border-ivory/5 backdrop-blur-md p-6 overflow-hidden shadow-2xl transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700">
                   <div className="flex gap-4 mb-6">
-                    <div className="w-1/3 h-16 rounded-xl bg-gradient-to-r from-[#10B981]/20 to-transparent border border-[#10B981]/30 flex flex-col justify-center px-4">
-                      <span className="text-[9px] uppercase tracking-wider text-[#10B981]">Katılacaklar</span>
-                      <span className="text-xl font-serif text-white">124</span>
+                    <div className="w-1/3 h-16 rounded-xl bg-gradient-to-r from-[#7D9A6E]/20 to-transparent border border-[#7D9A6E]/30 flex flex-col justify-center px-4">
+                      <span className="text-[9px] uppercase tracking-wider text-[#7D9A6E]">Katılacaklar</span>
+                      <span className="text-xl font-serif text-ivory">124</span>
                     </div>
-                    <div className="w-1/3 h-16 rounded-xl bg-gradient-to-r from-[#EF4444]/20 to-transparent border border-[#EF4444]/30 flex flex-col justify-center px-4">
-                      <span className="text-[9px] uppercase tracking-wider text-[#EF4444]">Katılamayacaklar</span>
-                      <span className="text-xl font-serif text-white">12</span>
+                    <div className="w-1/3 h-16 rounded-xl bg-gradient-to-r from-[#C0756C]/20 to-transparent border border-[#C0756C]/30 flex flex-col justify-center px-4">
+                      <span className="text-[9px] uppercase tracking-wider text-[#C0756C]">Katılamayacaklar</span>
+                      <span className="text-xl font-serif text-ivory">12</span>
                     </div>
-                    <div className="w-1/3 h-16 rounded-xl bg-gradient-to-r from-[#F5F2EB]/10 to-transparent border border-[#F5F2EB]/10 flex flex-col justify-center px-4">
-                      <span className="text-[9px] uppercase tracking-wider text-[#F5F2EB]/50">Bekleyen</span>
-                      <span className="text-xl font-serif text-white">45</span>
+                    <div className="w-1/3 h-16 rounded-xl bg-gradient-to-r from-[#F7F3EA]/10 to-transparent border border-[#F7F3EA]/10 flex flex-col justify-center px-4">
+                      <span className="text-[9px] uppercase tracking-wider text-[#F7F3EA]/50">Bekleyen</span>
+                      <span className="text-xl font-serif text-ivory">45</span>
                     </div>
                   </div>
                   <div className="w-full h-24 rounded-lg bg-gradient-to-t from-[#C9A87C]/20 to-transparent border-b border-[#C9A87C]/30 relative">
@@ -507,18 +507,18 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="md:col-span-6 lg:col-span-4 rounded-[3rem] bg-gradient-to-b from-[#1A1817] to-[#11100F] border border-[#F5F2EB]/10 overflow-hidden relative group"
+              className="md:col-span-6 lg:col-span-4 rounded-[3rem] bg-gradient-to-b from-[#171614] to-[#0F0E0C] border border-[#F7F3EA]/10 overflow-hidden relative group"
             >
               <div className="p-10 relative z-10 w-full h-full flex flex-col">
                 <div className="mb-auto">
                   <span className="text-3xl mb-4 block">🤖</span>
-                  <h3 className="text-2xl font-serif italic text-[#F5F2EB] mb-3">{language === 'tr' ? 'Yapay Zeka Destekli Asistan' : 'AI-Powered Assistant'}</h3>
-                  <p className="text-[#F5F2EB]/60 font-light text-sm">
+                  <h3 className="text-2xl font-serif italic text-[#F7F3EA] mb-3">{language === 'tr' ? 'Yapay Zeka Destekli Asistan' : 'AI-Powered Assistant'}</h3>
+                  <p className="text-[#F7F3EA]/60 font-light text-sm">
                     {language === 'tr' ? 'Otopark nerede? Kıyafet kuralı nedir? Akıllı sanal asistanımız misafirlerinizin sorularını anında sesli ve yazılı yanıtlar.' : 'Where is the parking? What is the dress code? Our smart virtual assistant immediately answers your guests’ questions.'}
                   </p>
                 </div>
                 <div className="mt-6 space-y-3">
-                  <div className="w-3/4 p-3 rounded-2xl rounded-tl-none bg-[#F5F2EB]/5 border border-[#F5F2EB]/10 text-xs text-[#F5F2EB]/70 ml-0">
+                  <div className="w-3/4 p-3 rounded-2xl rounded-tl-none bg-[#F7F3EA]/5 border border-[#F7F3EA]/10 text-xs text-[#F7F3EA]/70 ml-0">
                     Otopark hizmetiniz var mı?
                   </div>
                   <div className="w-5/6 p-3 rounded-2xl rounded-tr-none bg-[#C9A87C]/10 border border-[#C9A87C]/30 text-xs text-[#C9A87C] ml-auto">
@@ -534,22 +534,22 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="md:col-span-6 lg:col-span-5 rounded-[3rem] bg-[#1A1817] border border-[#F5F2EB]/10 overflow-hidden relative group"
+              className="md:col-span-6 lg:col-span-5 rounded-[3rem] bg-[#171614] border border-[#F7F3EA]/10 overflow-hidden relative group"
             >
                <div className="p-10 relative z-10 w-full h-full flex flex-col justify-center">
-                  <h3 className="text-2xl font-serif italic text-[#F5F2EB] mb-3">{language === 'tr' ? 'Dinamik & Şık LCV' : 'Dynamic & Elegant RSVP'}</h3>
-                  <p className="text-[#F5F2EB]/60 font-light text-sm mb-8">
+                  <h3 className="text-2xl font-serif italic text-[#F7F3EA] mb-3">{language === 'tr' ? 'Dinamik & Şık LCV' : 'Dynamic & Elegant RSVP'}</h3>
+                  <p className="text-[#F7F3EA]/60 font-light text-sm mb-8">
                     {language === 'tr' ? 'Unutulmuş kağıtlar yok. Özel menüler, müzik istekleri ve katılım durumunu saniyeler içinde toplayın.' : 'No forgotten papers. Collect custom menus, music requests, and attendance status in seconds.'}
                   </p>
                   
-                  <div className="w-full bg-[#11100F] rounded-2xl border border-[#F5F2EB]/10 p-5 transform transition-transform group-hover:scale-[1.02]">
-                    <div className="w-full border-b border-white/5 pb-3 mb-3 text-sm text-white/80 font-serif">Misafir LCV Formu</div>
+                  <div className="w-full bg-[#0F0E0C] rounded-2xl border border-[#F7F3EA]/10 p-5 transform transition-transform group-hover:scale-[1.02]">
+                    <div className="w-full border-b border-ivory/5 pb-3 mb-3 text-sm text-ivory/80 font-serif">Misafir LCV Formu</div>
                     <div className="flex gap-2 mb-3">
-                      <div className="px-4 py-2 bg-[#C9A87C] text-black text-[10px] font-bold uppercase rounded-lg">Katılıyorum</div>
-                      <div className="px-4 py-2 bg-white/5 text-white/50 text-[10px] font-bold uppercase rounded-lg">Katılamıyorum</div>
+                      <div className="px-4 py-2 bg-[#C9A87C] text-ink text-[10px] font-bold uppercase rounded-lg">Katılıyorum</div>
+                      <div className="px-4 py-2 bg-ivory/5 text-ivory/50 text-[10px] font-bold uppercase rounded-lg">Katılamıyorum</div>
                     </div>
-                    <div className="w-full h-8 bg-white/5 rounded-lg border border-white/10 mb-2"></div>
-                    <div className="w-full h-8 bg-white/5 rounded-lg border border-white/10"></div>
+                    <div className="w-full h-8 bg-ivory/5 rounded-lg border border-ivory/10 mb-2"></div>
+                    <div className="w-full h-8 bg-ivory/5 rounded-lg border border-ivory/10"></div>
                   </div>
                </div>
             </motion.div>
@@ -560,7 +560,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="md:col-span-6 lg:col-span-7 rounded-[3rem] bg-[#11100F] border border-[#C9A87C]/20 overflow-hidden relative group p-10 flex flex-col md:flex-row items-center gap-8"
+              className="md:col-span-6 lg:col-span-7 rounded-[3rem] bg-[#0F0E0C] border border-[#C9A87C]/20 overflow-hidden relative group p-10 flex flex-col md:flex-row items-center gap-8"
             >
               <div className="absolute inset-0 bg-[#C9A87C]/5 pointer-events-none"></div>
                <div className="w-24 h-24 rounded-full border border-[#C9A87C]/40 flex items-center justify-center flex-shrink-0 relative">
@@ -569,7 +569,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                </div>
                <div className="relative z-10 text-center md:text-left">
                   <h3 className="text-3xl font-serif italic text-[#C9A87C] mb-4">{language === 'tr' ? 'Atmosferik Müzik Entegrasyonu' : 'Atmospheric Music Integration'}</h3>
-                  <p className="text-[#F5F2EB]/70 font-light text-base leading-relaxed">
+                  <p className="text-[#F7F3EA]/70 font-light text-base leading-relaxed">
                     {language === 'tr' ? 'Giriş yaptıkları an duydukları naif bir melodi, tüm hikayenizin tonunu belirler. İster klasik piyano, ister tutkulu bir tango ezgisi; etkinlik ruhunu aylar öncesinden yaşatmaya başlayın.' : 'A gentle melody they hear the moment they enter sets the tone for your entire story. Whether classical piano or a passionate tango tune; start living the spirit of the event months in advance.'}
                   </p>
                </div>
@@ -580,11 +580,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       </section>
 
       {/* Exclusive Features Section */}
-      <section id="exclusive" className="py-24 sm:py-40 px-4 sm:px-8 md:px-20 bg-[#F5F2EB] text-[#11100F] rounded-[2rem] sm:rounded-[4rem] md:rounded-[6rem] relative z-20 mx-2 sm:mx-4 md:mx-8 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
+      <section id="exclusive" className="py-24 sm:py-40 px-4 sm:px-8 md:px-20 bg-[#F7F3EA] text-[#0F0E0C] rounded-[2rem] sm:rounded-[4rem] md:rounded-[6rem] relative z-20 mx-2 sm:mx-4 md:mx-8 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32 items-center">
             <div>
-              <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#b0936b] mb-8 block">Exclusivity</span>
+              <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#C9A87C] mb-8 block">Exclusivity</span>
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif italic mb-16 leading-[1.1] tracking-tight">
                 {language === 'tr' ? 'Kahramanımız Sizsiniz.' : 'You Are Our Hero.'}
               </h2>
@@ -599,25 +599,25 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                     transition={{ duration: 0.8, delay: i * 0.1 }}
                   >
                     <div className="flex items-center gap-6 mb-4">
-                      <div className="text-3xl font-serif italic text-[#b0936b]">0{i+1}</div>
+                      <div className="text-3xl font-serif italic text-[#C9A87C]">0{i+1}</div>
                       <h4 className="text-xl md:text-2xl font-medium">{item.title}</h4>
                     </div>
-                    <p className="text-[#11100F]/60 text-base md:text-lg leading-relaxed font-light pl-14">{item.desc}</p>
-                    <div className="h-px w-0 group-hover:w-full bg-[#11100F]/10 transition-all duration-700 mt-8"></div>
+                    <p className="text-[#0F0E0C]/60 text-base md:text-lg leading-relaxed font-light pl-14">{item.desc}</p>
+                    <div className="h-px w-0 group-hover:w-full bg-[#0F0E0C]/10 transition-all duration-700 mt-8"></div>
                   </motion.div>
                 ))}
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square bg-[#E5D7C5]/30 rounded-full flex items-center justify-center p-20 relative overflow-hidden border border-[#b0936b]/10">
+              <div className="aspect-square bg-[#E5D7C5]/30 rounded-full flex items-center justify-center p-20 relative overflow-hidden border border-[#C9A87C]/10">
                 <motion.div 
                   animate={{ rotate: 360 }}
                   transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 border-[1px] border-dashed border-[#b0936b]/30 rounded-full"
+                  className="absolute inset-0 border-[1px] border-dashed border-[#C9A87C]/30 rounded-full"
                 ></motion.div>
                 <div className="text-center relative z-10">
-                  <div className="text-6xl md:text-8xl font-serif italic text-[#b0936b] mb-6">100%</div>
-                  <div className="text-[10px] md:text-[12px] uppercase tracking-[0.3em] font-bold max-w-[150px] mx-auto text-[#11100F]/80 leading-relaxed">Kusursuz Müşteri Odaklılık</div>
+                  <div className="text-6xl md:text-8xl font-serif italic text-[#C9A87C] mb-6">100%</div>
+                  <div className="text-[10px] md:text-[12px] uppercase tracking-[0.3em] font-bold max-w-[150px] mx-auto text-[#0F0E0C]/80 leading-relaxed">Kusursuz Müşteri Odaklılık</div>
                 </div>
               </div>
             </div>
@@ -626,8 +626,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       </section>
 
       {/* Quiz Banner Feature */}
-      <section className="py-20 px-8 md:px-20 relative z-10 bg-[#11100F] border-b border-[#F5F2EB]/5">
-        <div className="max-w-5xl mx-auto bg-gradient-to-r from-[#1A1817] to-[#11100F] border border-[#C9A87C]/20 rounded-[3xl] p-10 md:p-16 text-center relative overflow-hidden shadow-[0_20px_50px_rgba(201,168,124,0.05)] rounded-[3rem]">
+      <section className="py-20 px-8 md:px-20 relative z-10 bg-[#0F0E0C] border-b border-[#F7F3EA]/5">
+        <div className="max-w-5xl mx-auto bg-gradient-to-r from-[#171614] to-[#0F0E0C] border border-[#C9A87C]/20 rounded-[3xl] p-10 md:p-16 text-center relative overflow-hidden shadow-[0_20px_50px_rgba(201,168,124,0.05)] rounded-[3rem]">
           <div className="absolute inset-0 pointer-events-none opacity-20">
             <div className="absolute top-[-50%] right-[-10%] w-[500px] h-[500px] bg-[#C9A87C] blur-[150px] rounded-full"></div>
           </div>
@@ -636,15 +636,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
             <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#C9A87C] mb-6 block">
               {language === 'tr' ? 'Kararsız Mısınız?' : 'Undecided?'}
             </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-[#F5F2EB] mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-[#F7F3EA] mb-8">
               {language === 'tr' ? 'Hangi Tarzın Size Uygun Olduğunu Keşfedin.' : 'Find Out Which Style Suits You Best.'}
             </h2>
-            <p className="text-[#F5F2EB]/50 max-w-2xl mx-auto mb-10 font-light">
+            <p className="text-[#F7F3EA]/50 max-w-2xl mx-auto mb-10 font-light">
               {language === 'tr' ? 'Sadece 3 kısa görsel soru ile hayalinizdeki konsepti analiz edip, size ve mekanınıza en uygun şaheseri önerelim.' : 'With just 3 quick visual questions, we analyze your dream concept and recommend the perfect masterpiece for you and your venue.'}
             </p>
             <button 
               onClick={() => setIsQuizOpen(true)}
-              className="group px-12 py-5 bg-[#C9A87C] text-[#11100F] text-[11px] uppercase tracking-[0.3em] font-bold rounded-full hover:bg-[#F5F2EB] transition-all duration-500 shadow-[0_10px_30px_rgba(201,168,124,0.2)] focus:outline-none"
+              className="group px-12 py-5 bg-[#C9A87C] text-[#0F0E0C] text-[11px] uppercase tracking-[0.3em] font-bold rounded-full hover:bg-[#F7F3EA] transition-all duration-500 shadow-[0_10px_30px_rgba(201,168,124,0.2)] focus:outline-none"
             >
               {language === 'tr' ? 'Testi Başlat' : 'Start The Quiz'}
             </button>
@@ -659,7 +659,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
             <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#C9A87C] mb-6 block">The Collection</span>
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif italic tracking-tight font-light">Sınırlı Sayıda <br /> <span className="text-[#C9A87C]">Başyapıtlar.</span></h2>
           </div>
-          <button className="px-10 py-4 mb-4 border border-[#F5F2EB]/10 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold text-[#F5F2EB] hover:bg-[#F5F2EB]/5 transition-all">
+          <button className="px-10 py-4 mb-4 border border-[#F7F3EA]/10 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold text-[#F7F3EA] hover:bg-[#F7F3EA]/5 transition-all">
             Tümünü Keşfet
           </button>
         </div>
@@ -672,7 +672,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
               className="group cursor-pointer"
               onClick={() => onSelect(concept.id as any)}
             >
-              <div className="relative aspect-[3/4] mb-8 overflow-hidden rounded-[3rem] border border-[#F5F2EB]/5 bg-[#1A1817] shadow-xl">
+              <div className="relative aspect-[3/4] mb-8 overflow-hidden rounded-[3rem] border border-[#F7F3EA]/5 bg-[#171614] shadow-xl">
                 <img 
                   src={concept.image} 
                   alt={concept.title} 
@@ -683,13 +683,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                     (e.target as HTMLImageElement).src = `https://picsum.photos/seed/${concept.id}/800/1000`;
                   }}
                 />
-                <div className="absolute top-6 right-6 px-5 py-2 bg-[#11100F]/60 backdrop-blur-md border border-[#F5F2EB]/10 rounded-full text-[9px] uppercase tracking-[0.3em] font-bold text-[#C9A87C]">
+                <div className="absolute top-6 right-6 px-5 py-2 bg-[#0F0E0C]/60 backdrop-blur-md border border-[#F7F3EA]/10 rounded-full text-[9px] uppercase tracking-[0.3em] font-bold text-[#C9A87C]">
                   {concept.tag}
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#11100F] via-transparent to-transparent opacity-80"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-transparent to-transparent opacity-80"></div>
                 <div className="absolute bottom-10 left-10 right-10">
-                  <h3 className="text-3xl lg:text-4xl font-serif italic mb-4 text-[#F5F2EB]">{concept.title}</h3>
-                  <div className="w-12 h-12 rounded-full bg-[#F5F2EB] flex items-center justify-center text-[#11100F] text-xl translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                  <h3 className="text-3xl lg:text-4xl font-serif italic mb-4 text-[#F7F3EA]">{concept.title}</h3>
+                  <div className="w-12 h-12 rounded-full bg-[#F7F3EA] flex items-center justify-center text-[#0F0E0C] text-xl translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                     →
                   </div>
                 </div>
@@ -703,7 +703,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       <SavingsCalculator language={language} />
 
       {/* Packages Section */}
-      <section id="packages" className="py-24 sm:py-40 px-4 sm:px-8 md:px-20 bg-[#11100F] relative z-10 overflow-hidden">
+      <section id="packages" className="py-24 sm:py-40 px-4 sm:px-8 md:px-20 bg-[#0F0E0C] relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20 relative">
             
@@ -715,14 +715,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 className="w-full h-full object-cover sepia-[0.4]"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#11100F] via-transparent to-[#11100F]"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#11100F] via-transparent to-[#11100F]"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-transparent to-[#0F0E0C]"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0F0E0C] via-transparent to-[#0F0E0C]"></div>
             </div>
 
             <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#C9A87C] mb-6 block relative z-10">{t.packagesTitle}</span>
-            <h2 className="text-5xl md:text-7xl font-serif italic tracking-tight mb-8 relative z-10 font-light text-[#F5F2EB]">{t.packagesSubtitle}</h2>
-            <div className="max-w-3xl mx-auto bg-[#1A1817]/90 border border-[#F5F2EB]/5 rounded-[2rem] p-8 md:p-10 backdrop-blur-xl relative z-10 shadow-2xl">
-              <p className="text-[#F5F2EB]/80 text-sm md:text-base leading-relaxed font-light">
+            <h2 className="text-5xl md:text-7xl font-serif italic tracking-tight mb-8 relative z-10 font-light text-[#F7F3EA]">{t.packagesSubtitle}</h2>
+            <div className="max-w-3xl mx-auto bg-[#171614]/90 border border-[#F7F3EA]/5 rounded-[2rem] p-8 md:p-10 backdrop-blur-xl relative z-10 shadow-2xl">
+              <p className="text-[#F7F3EA]/80 text-sm md:text-base leading-relaxed font-light">
                 {t.anchorText}
               </p>
             </div>
@@ -737,38 +737,38 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 whileHover={{ y: -5 }}
-                className={`relative p-8 md:p-10 rounded-[3rem] border ${pkg.popular ? 'border-[#C9A87C] bg-gradient-to-b from-[#C9A87C]/5 to-transparent shadow-[0_0_40px_rgba(201,168,124,0.1)]' : 'border-[#F5F2EB]/5 bg-[#1A1817]'} flex flex-col transition-all duration-500`}
+                className={`relative p-8 md:p-10 rounded-[3rem] border ${pkg.popular ? 'border-[#C9A87C] bg-gradient-to-b from-[#C9A87C]/5 to-transparent shadow-[0_0_40px_rgba(201,168,124,0.1)]' : 'border-[#F7F3EA]/5 bg-[#171614]'} flex flex-col transition-all duration-500`}
               >
                 {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-[#C9A87C] text-[#11100F] text-[10px] uppercase tracking-[0.3em] font-bold rounded-full shadow-[0_0_20px_rgba(201,168,124,0.3)] whitespace-nowrap">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-[#C9A87C] text-[#0F0E0C] text-[10px] uppercase tracking-[0.3em] font-bold rounded-full shadow-[0_0_20px_rgba(201,168,124,0.3)] whitespace-nowrap">
                     Davetasyon Seçimi
                   </div>
                 )}
                 <div className="mb-6">
-                  <h3 className={`text-3xl font-serif italic mb-4 ${pkg.popular ? 'text-[#C9A87C]' : 'text-[#F5F2EB]'}`}>{pkg.name}</h3>
+                  <h3 className={`text-3xl font-serif italic mb-4 ${pkg.popular ? 'text-[#C9A87C]' : 'text-[#F7F3EA]'}`}>{pkg.name}</h3>
                   <div className="flex flex-col mb-6">
                     <div className="flex items-baseline gap-3">
-                      <span className={`text-2xl md:text-3xl font-serif italic font-medium ${pkg.popular ? 'text-[#C9A87C]' : 'text-[#F5F2EB]'}`}>{pkg.price}</span>
-                      <span className="text-[#F5F2EB]/40 text-[10px] uppercase tracking-[0.2em] leading-none">{pkg.priceNote}</span>
+                      <span className={`text-2xl md:text-3xl font-serif italic font-medium ${pkg.popular ? 'text-[#C9A87C]' : 'text-[#F7F3EA]'}`}>{pkg.price}</span>
+                      <span className="text-[#F7F3EA]/40 text-[10px] uppercase tracking-[0.2em] leading-none">{pkg.priceNote}</span>
                     </div>
                   </div>
-                  <p className="text-[#F5F2EB]/50 text-[13px] leading-relaxed font-light">{pkg.desc}</p>
+                  <p className="text-[#F7F3EA]/50 text-[13px] leading-relaxed font-light">{pkg.desc}</p>
                 </div>
                 
-                <div className="flex-grow space-y-5 mb-12 border-t border-[#F5F2EB]/5 pt-8">
+                <div className="flex-grow space-y-5 mb-12 border-t border-[#F7F3EA]/5 pt-8">
                   {pkg.features.map((feature, fIdx) => (
                     <div key={fIdx} className="flex items-start gap-3">
                       <div className="mt-1 text-[#C9A87C]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                       </div>
-                      <span className="text-[13px] text-[#F5F2EB]/70 font-light leading-relaxed">{feature}</span>
+                      <span className="text-[13px] text-[#F7F3EA]/70 font-light leading-relaxed">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 <button 
                   onClick={onOrderModalOpen}
-                  className={`w-full py-4 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 ${pkg.popular ? 'bg-[#C9A87C] text-[#11100F] hover:bg-[#F5F2EB]' : 'bg-[#F5F2EB]/5 text-[#F5F2EB] border border-[#F5F2EB]/10 hover:bg-[#F5F2EB]/10'}`}
+                  className={`w-full py-4 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 ${pkg.popular ? 'bg-[#C9A87C] text-[#0F0E0C] hover:bg-[#F7F3EA]' : 'bg-[#F7F3EA]/5 text-[#F7F3EA] border border-[#F7F3EA]/10 hover:bg-[#F7F3EA]/10'}`}
                 >
                   {t.orderFormBtn}
                 </button>
@@ -783,7 +783,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-32">
             <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#C9A87C] mb-6 block">{t.pricingTitle}</span>
-            <h2 className="text-5xl md:text-7xl font-serif italic tracking-tight mb-8 font-light text-[#F5F2EB]">{t.pricingSubtitle}</h2>
+            <h2 className="text-5xl md:text-7xl font-serif italic tracking-tight mb-8 font-light text-[#F7F3EA]">{t.pricingSubtitle}</h2>
             <div className="flex items-center justify-center gap-4 text-[#C9A87C]">
               <span className="h-px w-8 bg-[#C9A87C]/50"></span>
               <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#C9A87C]/80">
@@ -803,17 +803,17 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 visual: (
                   <>
                     <div className="absolute inset-x-0 bottom-0 h-40 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#1A1817] to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#171614] to-transparent"></div>
                     </div>
                     <div className="absolute bottom-6 left-6 right-6 z-10">
-                      <div className="w-full bg-black/40 backdrop-blur-md rounded-2xl border border-white/5 p-4 flex gap-4 items-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-2xl">
-                        <div className="w-10 h-10 rounded-full bg-[#10B981]/20 flex items-center justify-center text-[#10B981]">
-                          <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-pulse"></span>
+                      <div className="w-full bg-ink/40 backdrop-blur-md rounded-2xl border border-ivory/5 p-4 flex gap-4 items-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-2xl">
+                        <div className="w-10 h-10 rounded-full bg-[#7D9A6E]/20 flex items-center justify-center text-[#7D9A6E]">
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#7D9A6E] animate-pulse"></span>
                         </div>
                         <div className="flex-1 space-y-2">
-                          <div className="h-2 bg-white/20 rounded-full w-1/3"></div>
-                          <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
-                            <div className="w-2/3 h-full bg-[#10B981] rounded-full"></div>
+                          <div className="h-2 bg-ivory/20 rounded-full w-1/3"></div>
+                          <div className="flex-1 h-1 bg-ivory/10 rounded-full overflow-hidden">
+                            <div className="w-2/3 h-full bg-[#7D9A6E] rounded-full"></div>
                           </div>
                         </div>
                       </div>
@@ -828,9 +828,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 descEn: "Custom selected music that adds soul and atmosphere to your invitation.",
                 visual: (
                   <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-gradient-to-br from-[#C9A87C]/10 to-transparent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-700">
-                    <div className="w-40 h-40 rounded-full border border-white/10 flex items-center justify-center relative shadow-2xl">
+                    <div className="w-40 h-40 rounded-full border border-ivory/10 flex items-center justify-center relative shadow-2xl">
                         <div className="absolute inset-0 rounded-full border-2 border-[#C9A87C]/30 border-t-transparent animate-[spin_4s_linear_infinite]"></div>
-                        <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10">
+                        <div className="w-20 h-20 bg-ivory/5 rounded-full flex items-center justify-center backdrop-blur-md border border-ivory/10">
                           <svg className="w-8 h-8 text-[#C9A87C] translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M8 5v14l11-7z" />
                           </svg>
@@ -845,10 +845,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 descTr: "Mekan, otopark veya kıyafet gibi soruları anında yanıtlayan şık asistanınız.",
                 descEn: "Your elegant assistant instantly answering questions about parking & dress codes.",
                 visual: (
-                  <div className="absolute -bottom-4 -right-4 w-72 h-64 bg-gradient-to-tl from-[#11100F] to-transparent rounded-full pt-16 pl-10">
-                    <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl rounded-tr-none p-4 w-52 mb-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      <div className="h-2 w-24 bg-white/30 rounded-full mb-3"></div>
-                      <div className="h-2 w-32 bg-white/10 rounded-full"></div>
+                  <div className="absolute -bottom-4 -right-4 w-72 h-64 bg-gradient-to-tl from-[#0F0E0C] to-transparent rounded-full pt-16 pl-10">
+                    <div className="bg-ivory/5 backdrop-blur-lg border border-ivory/10 rounded-2xl rounded-tr-none p-4 w-52 mb-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <div className="h-2 w-24 bg-ivory/30 rounded-full mb-3"></div>
+                      <div className="h-2 w-32 bg-ivory/10 rounded-full"></div>
                     </div>
                     <div className="bg-[#C9A87C]/10 backdrop-blur-lg border border-[#C9A87C]/30 rounded-2xl rounded-tl-none p-4 w-40 ml-auto shadow-[0_10px_30px_rgba(0,0,0,0.5)] transform translate-y-8 group-hover:translate-y-2 transition-transform duration-500 delay-100">
                       <div className="h-2 w-20 bg-[#C9A87C]/60 rounded-full"></div>
@@ -863,13 +863,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 descEn: "An interactive guest album collecting all event photos into one private cloud.",
                 visual: (
                   <div className="absolute inset-x-0 bottom-0 h-48 flex justify-center items-end pb-6 pointer-events-none">
-                    <div className="w-28 h-36 bg-[#F5F2EB] flex flex-col p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform -rotate-12 translate-x-8 translate-y-8 group-hover:translate-y-2 transition-transform duration-700 z-10 border border-[#ddd]">
-                        <div className="flex-1 bg-black/10 bg-[url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=300')] bg-cover bg-center"></div>
-                        <div className="h-8 flex justify-center items-center"><div className="w-8 h-1 bg-[#1A1817]/10 rounded-full"></div></div>
+                    <div className="w-28 h-36 bg-[#F7F3EA] flex flex-col p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform -rotate-12 translate-x-8 translate-y-8 group-hover:translate-y-2 transition-transform duration-700 z-10 border border-[#ddd]">
+                        <div className="flex-1 bg-ink/10 bg-[url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=300')] bg-cover bg-center"></div>
+                        <div className="h-8 flex justify-center items-center"><div className="w-8 h-1 bg-[#171614]/10 rounded-full"></div></div>
                     </div>
-                    <div className="w-28 h-36 bg-[#F5F2EB] flex flex-col p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform rotate-6 -translate-x-4 translate-y-12 group-hover:translate-y-6 transition-transform duration-700 z-0 border border-[#ddd]">
-                        <div className="flex-1 bg-black/10 bg-[url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=300')] bg-cover bg-center grayscale"></div>
-                        <div className="h-8 flex justify-center items-center"><div className="w-8 h-1 bg-[#1A1817]/10 rounded-full"></div></div>
+                    <div className="w-28 h-36 bg-[#F7F3EA] flex flex-col p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform rotate-6 -translate-x-4 translate-y-12 group-hover:translate-y-6 transition-transform duration-700 z-0 border border-[#ddd]">
+                        <div className="flex-1 bg-ink/10 bg-[url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=300')] bg-cover bg-center grayscale"></div>
+                        <div className="h-8 flex justify-center items-center"><div className="w-8 h-1 bg-[#171614]/10 rounded-full"></div></div>
                     </div>
                   </div>
                 )
@@ -881,12 +881,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 descEn: "Elegant, one-click add to calendar reminders seamlessly integrated.",
                 visual: (
                   <div className="absolute right-6 bottom-0 overflow-hidden shadow-2xl">
-                    <div className="w-36 bg-black/40 backdrop-blur-xl border border-white/10 rounded-t-2xl overflow-hidden transform translate-y-12 group-hover:translate-y-4 transition-transform duration-500">
-                        <div className="bg-[#EF4444] text-white text-[10px] font-bold text-center py-2 uppercase tracking-[0.2em]">Save the Date</div>
-                        <div className="py-6 text-center border-b border-white/5">
-                          <span className="text-5xl font-serif text-[#F5F2EB]">24</span>
+                    <div className="w-36 bg-ink/40 backdrop-blur-xl border border-ivory/10 rounded-t-2xl overflow-hidden transform translate-y-12 group-hover:translate-y-4 transition-transform duration-500">
+                        <div className="bg-[#C0756C] text-ivory text-[10px] font-bold text-center py-2 uppercase tracking-[0.2em]">Save the Date</div>
+                        <div className="py-6 text-center border-b border-ivory/5">
+                          <span className="text-5xl font-serif text-[#F7F3EA]">24</span>
                         </div>
-                        <div className="py-3 text-center text-[10px] text-white/50 uppercase tracking-widest">Eylül / Sept</div>
+                        <div className="py-3 text-center text-[10px] text-ivory/50 uppercase tracking-widest">Eylül / Sept</div>
                     </div>
                   </div>
                 )
@@ -899,9 +899,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 visual: (
                   <div className="absolute inset-0 flex items-end justify-end p-8">
                       <div className="flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <div className="px-5 py-2.5 bg-[#C9A87C] text-black text-xs font-bold rounded-xl shadow-[0_10px_30px_rgba(201,168,124,0.3)]">EN</div>
-                        <div className="px-5 py-2.5 bg-black/40 backdrop-blur-md border border-white/10 text-white/50 text-xs font-bold rounded-xl">TR</div>
-                        <div className="px-5 py-2.5 bg-black/40 backdrop-blur-md border border-white/10 text-white/50 text-xs font-bold rounded-xl">FR</div>
+                        <div className="px-5 py-2.5 bg-[#C9A87C] text-ink text-xs font-bold rounded-xl shadow-[0_10px_30px_rgba(201,168,124,0.3)]">EN</div>
+                        <div className="px-5 py-2.5 bg-ink/40 backdrop-blur-md border border-ivory/10 text-ivory/50 text-xs font-bold rounded-xl">TR</div>
+                        <div className="px-5 py-2.5 bg-ink/40 backdrop-blur-md border border-ivory/10 text-ivory/50 text-xs font-bold rounded-xl">FR</div>
                       </div>
                   </div>
                 )
@@ -913,14 +913,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.7, delay: i * 0.1 }}
-                className="relative h-[280px] p-8 rounded-[2.5rem] border border-[#F5F2EB]/5 bg-[#1A1817] hover:border-[#C9A87C]/30 transition-all duration-700 overflow-hidden group shadow-lg"
+                className="relative h-[280px] p-8 rounded-[2.5rem] border border-[#F7F3EA]/5 bg-[#171614] hover:border-[#C9A87C]/30 transition-all duration-700 overflow-hidden group shadow-lg"
               >
                 {/* Text Content */}
                 <div className="relative z-20">
-                  <h4 className="text-[17px] md:text-xl font-medium text-[#F5F2EB]/90 mb-3 group-hover:text-[#C9A87C] transition-colors">
+                  <h4 className="text-[17px] md:text-xl font-medium text-[#F7F3EA]/90 mb-3 group-hover:text-[#C9A87C] transition-colors">
                     {language === 'tr' ? feature.tr : feature.en}
                   </h4>
-                  <p className="text-sm font-light text-[#F5F2EB]/50 max-w-[85%] leading-relaxed">
+                  <p className="text-sm font-light text-[#F7F3EA]/50 max-w-[85%] leading-relaxed">
                     {language === 'tr' ? feature.descTr : feature.descEn}
                   </p>
                 </div>
@@ -936,13 +936,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
           <div className="mt-24 text-center flex flex-col sm:flex-row items-center justify-center gap-6">
             <button
               onClick={() => document.getElementById('collections')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-12 py-5 bg-[#C9A87C] text-[#11100F] text-[11px] uppercase tracking-[0.3em] font-bold hover:bg-[#F5F2EB] transition-all duration-500 rounded-full w-full sm:w-auto shadow-xl"
+              className="px-12 py-5 bg-[#C9A87C] text-[#0F0E0C] text-[11px] uppercase tracking-[0.3em] font-bold hover:bg-[#F7F3EA] transition-all duration-500 rounded-full w-full sm:w-auto shadow-xl"
             >
               {language === 'tr' ? 'Koleksiyonu İnceleyin' : 'Explore The Collection'}
             </button>
             <button 
               onClick={onOrderModalOpen}
-              className="px-12 py-5 border border-[#C9A87C]/40 text-[#C9A87C] text-[11px] uppercase tracking-[0.3em] font-bold hover:bg-[#C9A87C] hover:text-[#11100F] transition-all duration-500 rounded-full w-full sm:w-auto"
+              className="px-12 py-5 border border-[#C9A87C]/40 text-[#C9A87C] text-[11px] uppercase tracking-[0.3em] font-bold hover:bg-[#C9A87C] hover:text-[#0F0E0C] transition-all duration-500 rounded-full w-full sm:w-auto"
             >
               {t.orderFormBtn}
             </button>
@@ -951,27 +951,27 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
       </section>
 
       {/* Footer */}
-      <footer className="py-20 sm:py-32 px-4 sm:px-8 md:px-20 border-t border-[#F5F2EB]/5 text-center relative z-10 bg-[#11100F]">
+      <footer className="py-20 sm:py-32 px-4 sm:px-8 md:px-20 border-t border-[#F7F3EA]/5 text-center relative z-10 bg-[#0F0E0C]">
         <div className="mb-16">
           <div className="flex flex-col items-center justify-center mb-6">
             <div className="font-serif italic text-5xl text-[#C9A87C] leading-none mb-2">Davetasyon</div>
             <div className="text-[12px] uppercase tracking-[0.4em] text-[#C9A87C]/80 font-medium">Davetiye Atölyesi</div>
           </div>
-          <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#F5F2EB]/30">Crafting Digital Legacies Since 2026</p>
+          <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-[#F7F3EA]/30">Crafting Digital Legacies Since 2026</p>
         </div>
-        <div className="flex justify-center flex-wrap gap-10 md:gap-16 mb-10 text-[10px] uppercase tracking-[0.3em] font-bold text-[#F5F2EB]/40">
+        <div className="flex justify-center flex-wrap gap-10 md:gap-16 mb-10 text-[10px] uppercase tracking-[0.3em] font-bold text-[#F7F3EA]/40">
           <span className="hover:text-[#C9A87C] transition-colors cursor-pointer">Instagram</span>
           <span className="hover:text-[#C9A87C] transition-colors cursor-pointer">WhatsApp</span>
           <span className="hover:text-[#C9A87C] transition-colors cursor-pointer">Pinterest</span>
         </div>
-        <div className="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-8 text-[9px] uppercase tracking-[0.2em] text-[#F5F2EB]/30">
+        <div className="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-8 text-[9px] uppercase tracking-[0.2em] text-[#F7F3EA]/30">
           <a href="/yasal/kvkk" className="hover:text-[#C9A87C] transition-colors">KVKK</a>
           <a href="/yasal/cerez" className="hover:text-[#C9A87C] transition-colors">Çerez Politikası</a>
           <a href="/yasal/mesafeli-satis" className="hover:text-[#C9A87C] transition-colors">Mesafeli Satış</a>
           <a href="/yasal/iade" className="hover:text-[#C9A87C] transition-colors">İade & Teslimat</a>
           <a href="/yasal/on-bilgilendirme" className="hover:text-[#C9A87C] transition-colors">Ön Bilgilendirme</a>
         </div>
-        <div className="text-[9px] uppercase tracking-[0.3em] font-medium text-[#F5F2EB]/20">
+        <div className="text-[9px] uppercase tracking-[0.3em] font-medium text-[#F7F3EA]/20">
           © 2026 Davetasyon | Tüm Hakları Saklıdır
         </div>
       </footer>

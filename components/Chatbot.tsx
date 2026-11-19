@@ -199,15 +199,15 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
             initial={{ opacity: 0, y: 10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            className="fixed bottom-[90px] sm:bottom-8 right-6 sm:right-[90px] z-[199] bg-[#0a0a0a]/60 backdrop-blur-xl border border-[#d4af37]/50 text-white px-5 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center gap-3 cursor-pointer"
+            className="fixed bottom-[90px] sm:bottom-8 right-6 sm:right-[90px] z-[199] bg-[#0F0E0C]/60 backdrop-blur-xl border border-[#C9A87C]/50 text-ivory px-5 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center gap-3 cursor-pointer"
             onClick={() => {
               setIsOpen(true);
               setShowTooltip(false);
             }}
           >
             <div className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-[#d4af37]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C9A87C] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-[#C9A87C]"></span>
             </div>
             <p className="text-sm font-medium whitespace-nowrap">
               {language === 'tr' ? 'Size nasıl yardımcı olabilirim?' : 'How can I help you?'}
@@ -217,12 +217,12 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
                 e.stopPropagation();
                 setShowTooltip(false);
               }}
-              className="ml-2 text-white/50 hover:text-white transition-colors"
+              className="ml-2 text-ivory/50 hover:text-ivory transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
             {/* Triangle pointer */}
-            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-[#0a0a0a]/60 border-b border-r border-[#d4af37]/50 transform rotate-45 backdrop-blur-xl"></div>
+            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-[#0F0E0C]/60 border-b border-r border-[#C9A87C]/50 transform rotate-45 backdrop-blur-xl"></div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -235,13 +235,13 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
           setIsOpen(true);
           setShowTooltip(false);
         }}
-        className={`fixed bottom-6 sm:bottom-6 right-6 z-[200] w-14 h-14 rounded-full bg-[#d4af37] text-black flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-110 transition-transform ${isOpen ? 'hidden' : 'flex'}`}
+        className={`fixed bottom-6 sm:bottom-6 right-6 z-[200] w-14 h-14 rounded-full bg-[#C9A87C] text-ink flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-110 transition-transform ${isOpen ? 'hidden' : 'flex'}`}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/>
         </svg>
         {/* Unread dot notification */}
-        <div className="absolute top-0 right-0 w-4 h-4 bg-red-500 rounded-full border-2 border-[#050505]" />
+        <div className="absolute top-0 right-0 w-4 h-4 bg-[#C9A87C] rounded-full border-2 border-[#0F0E0C]" />
       </motion.button>
 
       {/* Chat Window */}
@@ -252,12 +252,12 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-6 sm:bottom-24 right-6 sm:right-6 z-[200] w-[350px] h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-[#0a0a0a]/30 backdrop-blur-xl border border-[#d4af37]/30 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden"
+            className="fixed bottom-6 sm:bottom-24 right-6 sm:right-6 z-[200] w-[350px] h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-[#0F0E0C]/30 backdrop-blur-xl border border-[#C9A87C]/30 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-transparent border-b border-[#d4af37]/20 p-4 flex justify-between items-center">
+            <div className="bg-transparent border-b border-[#C9A87C]/20 p-4 flex justify-between items-center">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#d4af37] flex items-center justify-center text-black">
+                <div className="w-8 h-8 rounded-full bg-[#C9A87C] flex items-center justify-center text-ink">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 8V4H8"/>
                     <rect width="16" height="12" x="4" y="8" rx="2"/>
@@ -268,9 +268,9 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-white font-serif text-sm font-medium leading-none mb-1">Davetasyon</h3>
-                  <span className="text-white/60 text-[9px] block mb-1">Davetiye Atölyesi</span>
-                  <p className="text-[#d4af37] text-[10px] uppercase tracking-wider">
+                  <h3 className="text-ivory font-serif text-sm font-medium leading-none mb-1">Davetasyon</h3>
+                  <span className="text-ivory/60 text-[9px] block mb-1">Davetiye Atölyesi</span>
+                  <p className="text-[#C9A87C] text-[10px] uppercase tracking-wider">
                     {language === 'tr' ? 'Dijital Asistan' : 'Digital Assistant'}
                   </p>
                 </div>
@@ -278,7 +278,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
               <div className="flex items-center gap-2">
                 <button 
                   onClick={() => setIsVoiceEnabled(!isVoiceEnabled)}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isVoiceEnabled ? 'bg-[#d4af37]/20 text-[#d4af37]' : 'bg-white/5 text-white/50 hover:text-white'}`}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isVoiceEnabled ? 'bg-[#C9A87C]/20 text-[#C9A87C]' : 'bg-ivory/5 text-ivory/50 hover:text-ivory'}`}
                   title={isVoiceEnabled ? "Voice On" : "Voice Off"}
                 >
                   {isVoiceEnabled ? (
@@ -289,7 +289,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
                 </button>
                 <button 
                   onClick={() => setIsOpen(false)}
-                  className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white/50 hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-full bg-ivory/5 flex items-center justify-center text-ivory/50 hover:text-ivory transition-colors"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M18 6 6 18"/>
@@ -309,12 +309,12 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
                   <div 
                     className={`max-w-[85%] p-3 rounded-2xl text-sm ${
                       msg.sender === 'user' 
-                        ? 'bg-[#d4af37]/80 backdrop-blur-md text-black rounded-tr-sm' 
-                        : 'bg-white/10 backdrop-blur-md text-white/90 border border-white/10 rounded-tl-sm'
+                        ? 'bg-[#C9A87C]/80 backdrop-blur-md text-ink rounded-tr-sm' 
+                        : 'bg-ivory/10 backdrop-blur-md text-ivory/90 border border-ivory/10 rounded-tl-sm'
                     }`}
                   >
                     {msg.sender === 'bot' ? (
-                      <div className="markdown-body prose prose-invert prose-sm max-w-none prose-a:text-[#d4af37] prose-a:underline">
+                      <div className="markdown-body prose prose-invert prose-sm max-w-none prose-a:text-[#C9A87C] prose-a:underline">
                         <Markdown>{msg.text}</Markdown>
                       </div>
                     ) : (
@@ -325,10 +325,10 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-white/10 backdrop-blur-md border border-white/10 p-4 rounded-2xl rounded-tl-sm flex gap-1">
-                    <div className="w-1.5 h-1.5 bg-[#d4af37] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <div className="w-1.5 h-1.5 bg-[#d4af37] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <div className="w-1.5 h-1.5 bg-[#d4af37] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="bg-ivory/10 backdrop-blur-md border border-ivory/10 p-4 rounded-2xl rounded-tl-sm flex gap-1">
+                    <div className="w-1.5 h-1.5 bg-[#C9A87C] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <div className="w-1.5 h-1.5 bg-[#C9A87C] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <div className="w-1.5 h-1.5 bg-[#C9A87C] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               )}
@@ -342,7 +342,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
                   <button
                     key={idx}
                     onClick={() => sendMessage(reply)}
-                    className="text-[11px] px-3 py-1.5 rounded-full border border-[#d4af37]/50 text-[#d4af37] bg-black/40 hover:bg-[#d4af37] hover:text-black transition-colors whitespace-nowrap backdrop-blur-md"
+                    className="text-[11px] px-3 py-1.5 rounded-full border border-[#C9A87C]/50 text-[#C9A87C] bg-ink/40 hover:bg-[#C9A87C] hover:text-ink transition-colors whitespace-nowrap backdrop-blur-md"
                   >
                     {reply}
                   </button>
@@ -351,19 +351,19 @@ export const Chatbot: React.FC<ChatbotProps> = ({ language, eventContext }) => {
             )}
 
             {/* Input */}
-            <form onSubmit={handleSend} className="p-3 bg-transparent border-t border-[#d4af37]/20 flex gap-2">
+            <form onSubmit={handleSend} className="p-3 bg-transparent border-t border-[#C9A87C]/20 flex gap-2">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={language === 'tr' ? 'Mesajınızı yazın...' : 'Type your message...'}
-                className="flex-1 bg-black/40 border border-white/10 rounded-full px-4 py-2 text-sm text-white focus:outline-none focus:border-[#d4af37]/50 transition-colors"
+                className="flex-1 bg-ink/40 border border-ivory/10 rounded-full px-4 py-2 text-sm text-ivory focus:outline-none focus:border-[#C9A87C]/50 transition-colors"
                 disabled={isLoading}
               />
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="w-10 h-10 rounded-full bg-[#d4af37] text-black flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white transition-colors"
+                className="w-10 h-10 rounded-full bg-[#C9A87C] text-ink flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-ivory transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
                   <path d="m22 2-7 20-4-9-9-4Z"/>
