@@ -29,13 +29,13 @@ export default function MemoryBoxTemplate({
   const galleryInputRef = useRef<HTMLInputElement>(null);
 
   const photos = [
-    { url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80', cols: 2 },
-    { url: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80', cols: 1 },
-    { url: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80', cols: 1 },
-    { url: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80', cols: 2 },
-    { url: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80', cols: 1 },
-    { url: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80', cols: 1 },
-    { url: 'https://images.unsplash.com/photo-1509927083803-4bd519298ac4?auto=format&fit=crop&w=800&q=80', cols: 2 },
+    { url: '/images/memory-box/mb-01.webp', cols: 2 },
+    { url: '/images/memory-box/mb-02.webp', cols: 1 },
+    { url: '/images/memory-box/mb-03.webp', cols: 1 },
+    { url: '/images/memory-box/mb-04.webp', cols: 2 },
+    { url: '/images/memory-box/mb-05.webp', cols: 1 },
+    { url: '/images/memory-box/mb-06.webp', cols: 1 },
+    { url: '/images/memory-box/mb-07.webp', cols: 2 },
   ];
 
   const MAX_FILE_SIZE = 15 * 1024 * 1024; // 15 MB
@@ -164,9 +164,10 @@ export default function MemoryBoxTemplate({
             >
               <img 
                 src={photo.url} 
-                alt="Wedding moment" 
+                alt={language === 'tr' ? 'Anı kutusundan bir kare' : 'A moment from the memory box'}
                 className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100 placeholder-blur"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0C]/80 via-[#0F0E0C]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
                 <div className="flex justify-between items-center text-[#F7F3EA]/90">

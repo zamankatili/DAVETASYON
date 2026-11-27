@@ -191,7 +191,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({ isOpen, onClose,
 
             {submitted ? (
               <div className="p-10 text-center">
-                <div className="w-20 h-20 rounded-full bg-[#C9A87C]/15 border border-[#C9A87C]/40 flex items-center justify-center mx-auto mb-8">
+                <div className="w-20 h-20 rounded-full bg-[#C9A87C]/[0.15] border border-[#C9A87C]/40 flex items-center justify-center mx-auto mb-8">
                   <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#C9A87C]"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
                 <h3 className="text-2xl font-serif text-ivory mb-4">{t.successTitle}</h3>
@@ -312,7 +312,7 @@ export const OrderFormModal: React.FC<OrderFormModalProps> = ({ isOpen, onClose,
                 <button type="button" onClick={onClose} className="flex-1 py-4 rounded-full border border-ivory/20 text-ivory hover:bg-ivory/5 transition-colors font-medium tracking-wide">
                   {t.cancel}
                 </button>
-                <button type="submit" disabled={!acceptConsent || isSubmitting} className="flex-1 py-4 rounded-full bg-[#C9A87C] text-ink hover:bg-ivory transition-colors font-medium tracking-wide shadow-[0_0_20px_rgba(212,175,55,0.3)] disabled:opacity-40 disabled:cursor-not-allowed">
+                <button type="submit" disabled={!acceptConsent || isSubmitting} className="flex-1 py-4 rounded-full bg-[#C9A87C] text-ink hover:bg-ivory transition-colors font-medium tracking-wide shadow-[0_0_20px_rgba(201,168,124,0.3)] disabled:opacity-40 disabled:cursor-not-allowed">
                   {isSubmitting ? t.submitting : t.submit}
                 </button>
               </div>

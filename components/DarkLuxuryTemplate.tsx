@@ -21,22 +21,22 @@ const VenueArchitecture = () => (
     <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="none">
       <defs>
         <linearGradient id="floorFade" x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0%" stopColor="#d4af37" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#d4af37" stopOpacity="0" />
+          <stop offset="0%" stopColor="#C9A87C" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#C9A87C" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="ceilingFade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#d4af37" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#d4af37" stopOpacity="0" />
+          <stop offset="0%" stopColor="#C9A87C" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#C9A87C" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="columnFade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#d4af37" stopOpacity="0.2" />
-          <stop offset="50%" stopColor="#d4af37" stopOpacity="0.02" />
-          <stop offset="100%" stopColor="#d4af37" stopOpacity="0.2" />
+          <stop offset="0%" stopColor="#C9A87C" stopOpacity="0.2" />
+          <stop offset="50%" stopColor="#C9A87C" stopOpacity="0.02" />
+          <stop offset="100%" stopColor="#C9A87C" stopOpacity="0.2" />
         </linearGradient>
       </defs>
 
       {/* Horizon Line */}
-      <line x1="0" y1="55" x2="100" y2="55" stroke="#d4af37" strokeWidth="0.1" opacity="0.5" vectorEffect="nonScalingStroke" />
+      <line x1="0" y1="55" x2="100" y2="55" stroke="#C9A87C" strokeWidth="0.1" opacity="0.5" vectorEffect="nonScalingStroke" />
 
       {/* Floor Perspective Lines */}
       {[5, 25, 50, 75, 95].map(x => (
@@ -163,7 +163,7 @@ const Silhouettes = () => {
           animate={{ y: [0, -3, 0], opacity: [table.opacity, table.opacity * 0.7, table.opacity] }}
           transition={{ duration: table.swayDuration, repeat: Infinity, ease: "easeInOut", delay: table.delay }}
         >
-          <svg viewBox="0 0 40 24" fill="none" stroke="#d4af37" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full" preserveAspectRatio="xMidYMax meet" style={{ strokeWidth: table.strokeWidth }}>
+          <svg viewBox="0 0 40 24" fill="none" stroke="#C9A87C" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full" preserveAspectRatio="xMidYMax meet" style={{ strokeWidth: table.strokeWidth }}>
             {/* Table */}
             <path d="M12 15h16v1H12z M19 16v8 M21 16v8 M16 24h8" vectorEffect="nonScalingStroke" />
             {/* Person 1 (Woman Left) */}
@@ -198,7 +198,7 @@ const Silhouettes = () => {
             delay: person.delay
           }}
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full" preserveAspectRatio="xMidYMax meet" style={{ strokeWidth: person.strokeWidth }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A87C" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full" preserveAspectRatio="xMidYMax meet" style={{ strokeWidth: person.strokeWidth }}>
             {renderPersonSVG(person.type)}
           </svg>
         </motion.div>
@@ -290,16 +290,16 @@ const DarkLuxuryTemplate: React.FC<DarkLuxuryProps> = ({ language, onBack, onOrd
   }[language];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#f5f2ed] font-sans selection:bg-[#d4af37]/30 relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#0F0E0C] text-[#F7F3EA] font-sans selection:bg-[#C9A87C]/30 relative overflow-x-hidden">
       {/* Subtle Grain Texture */}
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-50" style={{ backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png")' }}></div>
 
       {/* Background Gradients */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-[#d4af37]/5 blur-[150px] rounded-full"></div>
-        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-[#d4af37]/5 blur-[150px] rounded-full"></div>
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-[#C9A87C]/5 blur-[150px] rounded-full"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-[#C9A87C]/5 blur-[150px] rounded-full"></div>
         {/* Center Stage Spotlight */}
-        <div className="absolute top-0 left-[20%] right-[20%] h-[60%] bg-gradient-to-b from-[#d4af37]/10 to-transparent blur-[80px]"></div>
+        <div className="absolute top-0 left-[20%] right-[20%] h-[60%] bg-gradient-to-b from-[#C9A87C]/10 to-transparent blur-[80px]"></div>
       </div>
 
       {/* Animated Background Wrapper for Zoom In/Out Effect */}
@@ -326,7 +326,7 @@ const DarkLuxuryTemplate: React.FC<DarkLuxuryProps> = ({ language, onBack, onOrd
       {!eventContext && (
         <button 
           onClick={onOrder}
-          className="fixed bottom-8 right-8 z-50 px-8 py-4 bg-transparent border border-[#d4af37] rounded-full text-[#d4af37] text-[10px] uppercase tracking-[3px] font-bold hover:bg-[#d4af37] hover:text-[#0a0a0a] transition-all duration-500 shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:shadow-[0_0_50px_rgba(212,175,55,0.3)] backdrop-blur-md flex items-center gap-2 group"
+          className="fixed bottom-8 right-8 z-50 px-8 py-4 bg-transparent border border-[#C9A87C] rounded-full text-[#C9A87C] text-[10px] uppercase tracking-[3px] font-bold hover:bg-[#C9A87C] hover:text-[#0F0E0C] transition-all duration-500 shadow-[0_0_30px_rgba(201,168,124,0.1)] hover:shadow-[0_0_50px_rgba(201,168,124,0.3)] backdrop-blur-md flex items-center gap-2 group"
         >
           <span>{language === 'tr' ? 'Bu Tasarımla Sipariş Ver' : 'Order with this Design'}</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -344,7 +344,7 @@ const DarkLuxuryTemplate: React.FC<DarkLuxuryProps> = ({ language, onBack, onOrd
           className="w-full mb-32"
         >
           <div className="inline-block mb-12">
-            <span className="text-[10px] uppercase tracking-[8px] text-[#d4af37] font-bold border-b border-[#d4af37]/30 pb-2">{t.tag}</span>
+            <span className="text-[10px] uppercase tracking-[8px] text-[#C9A87C] font-bold border-b border-[#C9A87C]/30 pb-2">{t.tag}</span>
           </div>
           
           <h1 className="text-5xl sm:text-7xl md:text-8xl font-serif font-light tracking-tight mb-8 leading-[1.1] text-white">
@@ -352,10 +352,10 @@ const DarkLuxuryTemplate: React.FC<DarkLuxuryProps> = ({ language, onBack, onOrd
           </h1>
           
           <p className="text-sm sm:text-base uppercase tracking-[4px] text-white/50 mb-16">
-            Hosted by <span className="text-[#d4af37]">{t.host}</span>
+            Hosted by <span className="text-[#C9A87C]">{t.host}</span>
           </p>
 
-          <div className="w-px h-32 bg-gradient-to-b from-[#d4af37]/50 to-transparent mx-auto mb-16"></div>
+          <div className="w-px h-32 bg-gradient-to-b from-[#C9A87C]/50 to-transparent mx-auto mb-16"></div>
 
           <p className="text-lg sm:text-2xl font-serif font-light text-white/80 max-w-2xl mx-auto leading-relaxed mb-16">
             "{t.message}"
@@ -377,9 +377,9 @@ const DarkLuxuryTemplate: React.FC<DarkLuxuryProps> = ({ language, onBack, onOrd
             { label: t.countdown.secs, value: timeLeft.secs }
           ].map((item, idx) => (
             <div key={idx} className="flex flex-col items-center">
-              <div className="w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center border border-[#d4af37]/30 bg-black/40 backdrop-blur-md rounded-lg shadow-[0_0_15px_rgba(212,175,55,0.1)] mb-3 relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-b from-[#d4af37]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <span className="text-2xl sm:text-4xl font-mono text-[#d4af37] font-light tracking-wider">{item.value.toString().padStart(2, '0')}</span>
+              <div className="w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center border border-[#C9A87C]/30 bg-black/40 backdrop-blur-md rounded-lg shadow-[0_0_15px_rgba(201,168,124,0.1)] mb-3 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#C9A87C]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span className="text-2xl sm:text-4xl font-mono text-[#C9A87C] font-light tracking-wider">{item.value.toString().padStart(2, '0')}</span>
               </div>
               <span className="text-[9px] sm:text-[11px] uppercase tracking-[3px] text-white/50">{item.label}</span>
             </div>
@@ -396,20 +396,20 @@ const DarkLuxuryTemplate: React.FC<DarkLuxuryProps> = ({ language, onBack, onOrd
         >
           <div className="flex flex-col items-center">
             <span className="text-[10px] uppercase tracking-[4px] text-white/40 mb-4">Date</span>
-            <span className="text-xl font-serif text-[#d4af37]">{t.date}</span>
+            <span className="text-xl font-serif text-[#C9A87C]">{t.date}</span>
           </div>
           <div className="flex flex-col items-center md:border-x border-white/10">
             <span className="text-[10px] uppercase tracking-[4px] text-white/40 mb-4">Time</span>
-            <span className="text-xl font-serif text-[#d4af37]">{t.time}</span>
+            <span className="text-xl font-serif text-[#C9A87C]">{t.time}</span>
           </div>
           <div className="flex flex-col items-center">
             <span className="text-[10px] uppercase tracking-[4px] text-white/40 mb-4">Venue</span>
-            <span className="text-xl font-serif text-[#d4af37] mb-4 text-center max-w-[200px]">{eventContext?.venue?.name || t.location}</span>
+            <span className="text-xl font-serif text-[#C9A87C] mb-4 text-center max-w-[200px]">{eventContext?.venue?.name || t.location}</span>
             <a 
               href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(eventContext?.venue?.address || t.location)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[2px] text-white/60 hover:text-[#d4af37] transition-colors border-b border-white/20 hover:border-[#d4af37] pb-1"
+              className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[2px] text-white/60 hover:text-[#C9A87C] transition-colors border-b border-white/20 hover:border-[#C9A87C] pb-1"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
               {t.directions}
@@ -430,8 +430,8 @@ const DarkLuxuryTemplate: React.FC<DarkLuxuryProps> = ({ language, onBack, onOrd
             <div className="space-y-8">
               {t.schedule.map((item, idx) => (
                 <div key={idx} className="flex justify-between items-center border-b border-white/5 pb-4 group">
-                  <span className="text-sm font-serif text-[#d4af37] group-hover:text-white transition-colors">{item.time}</span>
-                  <span className="text-sm uppercase tracking-[2px] text-white/60 group-hover:text-[#d4af37] transition-colors">{item.event}</span>
+                  <span className="text-sm font-serif text-[#C9A87C] group-hover:text-white transition-colors">{item.time}</span>
+                  <span className="text-sm uppercase tracking-[2px] text-white/60 group-hover:text-[#C9A87C] transition-colors">{item.event}</span>
                 </div>
               ))}
             </div>
@@ -442,7 +442,7 @@ const DarkLuxuryTemplate: React.FC<DarkLuxuryProps> = ({ language, onBack, onOrd
         <div className="w-full max-w-2xl mx-auto mb-32">
           <RSVPForm 
             language={language}
-            themeColor="#d4af37"
+            themeColor="#C9A87C"
             eventId={eventId || 'darkluxury-demo'}
             theme="dark"
           />
@@ -458,7 +458,7 @@ const DarkLuxuryTemplate: React.FC<DarkLuxuryProps> = ({ language, onBack, onOrd
         >
           <LocationMap 
             language={language}
-            themeColor="#d4af37"
+            themeColor="#C9A87C"
             venueName={eventContext?.venue?.name || t.location.split(',')[0]}
             address={eventContext?.venue?.address || t.location}
             googleMapsUrl={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(eventContext?.venue?.address || t.location)}`}
@@ -475,7 +475,7 @@ const DarkLuxuryTemplate: React.FC<DarkLuxuryProps> = ({ language, onBack, onOrd
           className="text-center"
         >
           <p className="text-[10px] uppercase tracking-[6px] text-white/30 mb-4">{t.dressCode}</p>
-          <div className="w-12 h-12 rounded-full border border-[#d4af37]/30 flex items-center justify-center mx-auto text-[#d4af37] font-serif italic text-xl">
+          <div className="w-12 h-12 rounded-full border border-[#C9A87C]/30 flex items-center justify-center mx-auto text-[#C9A87C] font-serif italic text-xl">
             D
           </div>
         </motion.div>

@@ -4,9 +4,10 @@ import { Chatbot } from './Chatbot';
 import { OrderFormModal } from './OrderFormModal';
 import { StyleQuizModal } from './StyleQuizModal';
 import { SavingsCalculator } from './SavingsCalculator';
+import { collectionSections, type TemplateId } from '../src/data/collections';
 
 interface LandingPageProps {
-  onSelect: (template: 'sunnet' | 'babyshower' | 'wedding' | 'engagement' | 'birthday' | 'kina' | 'graduation' | 'aurora' | 'darkluxury' | 'classicenvelope' | 'memorybox' | 'aeterna') => void;
+  onSelect: (template: TemplateId) => void;
   language: 'tr' | 'en';
   setLanguage: (lang: 'tr' | 'en') => void;
   onOrderModalOpen: () => void;
@@ -196,104 +197,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
     }
   }[language];
 
-  const concepts = [
-    {
-      id: 'aeterna',
-      title: language === 'tr' ? 'Aeterna (Başyapıt)' : 'Aeterna (Masterpiece)',
-      description: language === 'tr' ? 'Dün, bugün ve yarını birleştiren; anılarınızı geleceğe mühürleyen yapay zeka destekli zaman ötesi bir deneyim.' : 'A timeless experience supported by AI that unites yesterday, today and tomorrow, sealing your memories into the future.',
-      icon: '⏳',
-      tag: 'Masterpiece',
-      image: '/images/covers/aeterna.webp'
-    },
-    {
-      id: 'memorybox',
-      title: language === 'tr' ? 'Dijital Anı Kutusu' : 'Digital Memory Box',
-      description: language === 'tr' ? 'Tüm sevdiklerinizin o gece çektiği fotoğrafları sizin için tek bir bulutta toplayan interaktif misafir kamerası.' : 'An interactive guest camera that securely collects all the photos taken by your loved ones that night in a private cloud.',
-      icon: '📸',
-      tag: 'New / Yeni',
-      image: '/images/covers/memorybox.webp'
-    },
-    {
-      id: 'classicenvelope',
-      title: language === 'tr' ? 'Klasik Zarf (Berna & Melih)' : 'Classic Envelope (Berna & Melih)',
-      description: language === 'tr' ? 'Zarif bir zarf animasyonu ile açılan, sade, şık ve zamansız bir düğün davetiyesi.' : 'A simple, elegant, and timeless wedding invitation that opens with a graceful envelope animation.',
-      icon: '✉️',
-      tag: 'Classic',
-      image: '/images/covers/classicenvelope.webp'
-    },
-    {
-      id: 'darkluxury',
-      title: language === 'tr' ? 'Kurumsal Gala (Dark Luxury)' : 'Corporate Gala (Dark Luxury)',
-      description: language === 'tr' ? 'Siyah ve altının buluştuğu, prestijli ve kurumsal etkinlikler için tasarlanmış VIP deneyim.' : 'A VIP experience designed for prestigious and corporate events where black and gold meet.',
-      icon: '🏛️',
-      tag: 'VIP',
-      image: '/images/covers/darkluxury.webp'
-    },
-    {
-      id: 'sunnet',
-      title: language === 'tr' ? 'Sünnet Merasimi' : 'Circumcision Ceremony',
-      description: language === 'tr' ? 'Geleneksel motiflerin manevi derinlik ve modern teknolojiyle harmanlandığı özel bir deneyim.' : 'A special experience blending traditional motifs with spiritual depth and modern technology.',
-      icon: '🌙',
-      tag: 'Couture',
-      image: '/images/covers/sunnet.webp'
-    },
-    {
-      id: 'wedding',
-      title: language === 'tr' ? 'Düğün & Evlilik' : 'Wedding & Marriage',
-      description: language === 'tr' ? 'Zarafet ve lüksün buluştuğu, sonsuz aşkınızı en şık şekilde duyuran dijital sanat eseri.' : 'A digital masterpiece where elegance and luxury meet, announcing your eternal love in the most stylish way.',
-      icon: '💍',
-      tag: 'Elite',
-      image: '/images/covers/wedding.webp'
-    },
-    {
-      id: 'babyshower',
-      title: 'Baby Shower',
-      description: language === 'tr' ? 'Minik mucizenizin gelişini kutlayan, sıcak ve sevgi dolu tasarımlarla hazırlanan davetiyeler.' : 'Invitations prepared with warm and loving designs, celebrating the arrival of your little miracle.',
-      icon: '👶',
-      tag: 'Boutique',
-      image: '/images/covers/babyshower.webp'
-    },
-    {
-      id: 'engagement',
-      title: language === 'tr' ? 'Nişan & Söz' : 'Engagement',
-      description: language === 'tr' ? 'Baharın uyanışı, uçuşan kelebekler ve doğanın sesleriyle bezenmiş masalsı bir başlangıç.' : 'A fairytale beginning adorned with the awakening of spring, fluttering butterflies, and the sounds of nature.',
-      icon: '🌸',
-      tag: 'Spring',
-      image: '/images/covers/engagement.webp'
-    },
-    {
-      id: 'birthday',
-      title: language === 'tr' ? 'Doğum Günü' : 'Birthday',
-      description: language === 'tr' ? 'Eğlenceli, interaktif ve enerji dolu kutlamalar için tasarlanmış renkli dijital dünyalar.' : 'Colorful digital worlds designed for fun, interactive, and energetic celebrations.',
-      icon: '🎈',
-      tag: 'Fun',
-      image: '/images/covers/birthday.webp'
-    },
-    {
-      id: 'kina',
-      title: language === 'tr' ? 'Kına Gecesi' : 'Henna Night',
-      description: language === 'tr' ? 'Geleneksel kına gecesi ruhunu, modern ve lüks detaylarla harmanlayan büyüleyici bir davet.' : 'An enchanting invitation blending the traditional henna night spirit with modern and luxury details.',
-      icon: '🌹',
-      tag: 'Traditional',
-      image: '/images/covers/kina.webp'
-    },
-    {
-      id: 'graduation',
-      title: language === 'tr' ? 'Mezuniyet Balosu' : 'Graduation Prom',
-      description: language === 'tr' ? 'Başarılarınızı kutladığınız, prestijli ve unutulmaz bir gece için tasarlanmış dijital bir anı.' : 'A digital memory designed for a prestigious and unforgettable night where you celebrate your achievements.',
-      icon: '🎓',
-      tag: 'Prestige',
-      image: '/images/covers/graduation.webp'
-    },
-    {
-      id: 'aurora',
-      title: language === 'tr' ? 'Kuzey Işıkları (Aurora)' : 'Northern Lights (Aurora)',
-      description: language === 'tr' ? 'Büyüleyici kuzey ışıkları altında, masalsı ve kozmik bir atmosferde gerçekleşecek etkinlikler için.' : 'For events taking place in a fairytale and cosmic atmosphere under the enchanting northern lights.',
-      icon: '🌌',
-      tag: 'Magical',
-      image: '/images/covers/aurora.webp'
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-[#0F0E0C] text-[#F7F3EA] font-sans selection:bg-[#C9A87C] selection:text-[#0F0E0C] overflow-x-hidden relative">
@@ -664,37 +567,61 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 max-w-[100rem] mx-auto">
-          {concepts.map((concept, idx) => (
-            <motion.div
-              key={concept.id}
-              whileHover={{ y: -15 }}
-              className="group cursor-pointer"
-              onClick={() => onSelect(concept.id as any)}
-            >
-              <div className="relative aspect-[3/4] mb-8 overflow-hidden rounded-[3rem] border border-[#F7F3EA]/5 bg-[#171614] shadow-xl">
-                <img 
-                  src={concept.image} 
-                  alt={concept.title} 
-                  className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105 opacity-80 group-hover:opacity-100 sepia-[0.2]"
-                  referrerPolicy="no-referrer"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.opacity = '0';
-                  }}
-                />
-                <div className="absolute top-6 right-6 px-5 py-2 bg-[#0F0E0C]/60 backdrop-blur-md border border-[#F7F3EA]/10 rounded-full text-[9px] uppercase tracking-[0.3em] font-bold text-[#C9A87C]">
-                  {concept.tag}
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-transparent to-transparent opacity-80"></div>
-                <div className="absolute bottom-10 left-10 right-10">
-                  <h3 className="text-3xl lg:text-4xl font-serif italic mb-4 text-[#F7F3EA]">{concept.title}</h3>
-                  <div className="w-12 h-12 rounded-full bg-[#F7F3EA] flex items-center justify-center text-[#0F0E0C] text-xl translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    →
+        <div className="max-w-[100rem] mx-auto space-y-24 sm:space-y-32">
+          {collectionSections.map((section, sectionIdx) => (
+            <div key={section.id}>
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 md:mb-14">
+                <div className="max-w-xl">
+                  <div className="flex items-center gap-4 mb-5">
+                    <span className="text-[#C9A87C] font-cinzel text-xs tracking-[0.3em]">0{sectionIdx + 1}</span>
+                    <span className="h-px w-12 bg-[#C9A87C]/40"></span>
                   </div>
+                  <h3 className="text-3xl md:text-5xl font-serif italic font-light tracking-tight text-[#F7F3EA]">
+                    {section.label[language]}
+                  </h3>
+                  <p className="text-sm md:text-base font-light text-[#F7F3EA]/[0.45] mt-4 leading-relaxed">
+                    {section.description[language]}
+                  </p>
                 </div>
+                <span className="text-[10px] uppercase tracking-[0.3em] text-[#C9A87C]/70 whitespace-nowrap">
+                  {section.items.length} {language === 'tr' ? 'TASARIM' : 'DESIGNS'}
+                </span>
               </div>
-            </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                {section.items.map((concept) => (
+                  <motion.div
+                    key={concept.id}
+                    whileHover={{ y: -15 }}
+                    className="group cursor-pointer"
+                    onClick={() => onSelect(concept.id)}
+                  >
+                    <div className="relative aspect-[3/4] mb-8 overflow-hidden rounded-[3rem] border border-[#F7F3EA]/5 bg-[#171614] shadow-xl">
+                      <img 
+                        src={concept.image} 
+                        alt={concept.title[language]} 
+                        className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105 opacity-80 group-hover:opacity-100 sepia-[0.2]"
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.style.opacity = '0';
+                        }}
+                      />
+                      <div className="absolute top-6 right-6 px-5 py-2 bg-[#0F0E0C]/60 backdrop-blur-md border border-[#F7F3EA]/10 rounded-full text-[9px] uppercase tracking-[0.3em] font-bold text-[#C9A87C]">
+                        {concept.tag}
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-transparent to-transparent opacity-80"></div>
+                      <div className="absolute bottom-10 left-10 right-10">
+                        <h4 className="text-3xl lg:text-4xl font-serif italic mb-4 text-[#F7F3EA]">{concept.title[language]}</h4>
+                        <div className="w-12 h-12 rounded-full bg-[#F7F3EA] flex items-center justify-center text-[#0F0E0C] text-xl translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                          →
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>
@@ -710,7 +637,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
             {/* Competitor Price Anchor Image background */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-[800px] h-[500px] md:h-full pointer-events-none z-0 rotate-[-1deg] opacity-10 blur-sm mix-blend-screen scale-110">
               <img 
-                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1000&h=600" 
+                src="/images/ui/price-anchor.webp" 
                 alt="Competitor Prices" 
                 className="w-full h-full object-cover sepia-[0.4]"
                 loading="lazy"
@@ -802,7 +729,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onSelect, language, setLangua
                 descEn: "Ensure guests never get lost with one-click map and directions integration.",
                 visual: (
                   <>
-                    <div className="absolute inset-x-0 bottom-0 h-40 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center opacity-20 group-hover:opacity-40 transition-opacity duration-700">
+                    <div className="absolute inset-x-0 bottom-0 h-40 bg-[url('/images/ui/map-texture.webp')] bg-cover bg-center opacity-20 group-hover:opacity-40 transition-opacity duration-700">
                       <div className="absolute inset-0 bg-gradient-to-t from-[#171614] to-transparent"></div>
                     </div>
                     <div className="absolute bottom-6 left-6 right-6 z-10">

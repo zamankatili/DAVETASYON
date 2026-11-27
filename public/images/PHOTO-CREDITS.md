@@ -26,3 +26,16 @@ attribution required). Credits are listed as good practice.
 | `scene/chairs-garden.webp` | https://unsplash.com/photos/1522673607200-164d1b6ce486 |
 | `scene/wedding-bouquet.webp` | https://unsplash.com/photos/1571753217197-b28b8f889b7a |
 | `scene/aurora-sky.webp` | https://unsplash.com/photos/1531366936337-7c912a4589a7 |
+| `memory-box/mb-01.webp` | https://unsplash.com/photos/1511285560929-80b456fea0bc |
+| `memory-box/mb-02.webp` | https://unsplash.com/photos/1519741497674-611481863552 |
+| `memory-box/mb-03.webp` | https://unsplash.com/photos/1465495976277-4387d4b0b4c6 |
+| `memory-box/mb-04.webp` | https://unsplash.com/photos/1532712938310-34cb3982ef74 |
+| `memory-box/mb-05.webp` | https://unsplash.com/photos/1519225421980-715cb0215aed |
+| `memory-box/mb-06.webp` | https://unsplash.com/photos/1520854221256-17451cc331bf |
+| `memory-box/mb-07.webp` | https://unsplash.com/photos/1509927083803-4bd519298ac4 |
+| `templates/seaside-hero.webp` | https://unsplash.com/photos/1507525428034-b723cf961d3e |
+| `templates/seaside-cove.webp` | https://unsplash.com/photos/1505228395891-9a51e7e86bf6 |
+| `templates/seaside-sunset.webp` | https://unsplash.com/photos/1473116763249-2faaef81ccda |
+| `templates/seaside-palm.webp` | https://unsplash.com/photos/1519046904884-53103b34b206 |
+| `ui/price-anchor.webp` | https://unsplash.com/photos/1554224155-8d04cb21cd6c |
+| `ui/map-texture.webp` | https://unsplash.com/photos/1524661135-423995f22d0b |

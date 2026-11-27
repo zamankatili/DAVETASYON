@@ -93,22 +93,22 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
   }[language];
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white font-sans selection:bg-teal-500/30 relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#0F0E0C] text-white font-sans selection:bg-[#45BFAE]/30 relative overflow-x-hidden">
       {/* Background Layer - Static image with dark overlay for performance */}
       <div 
         className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/images/scene/aurora-sky.webp)' }}
       />
-      <div className="fixed inset-0 z-0 bg-[#020617]/85" />
+      <div className="fixed inset-0 z-0 bg-[#0F0E0C]/[0.85]" />
 
       {/* Performant Ambient Light - No heavy blurs, just a soft radial gradient */}
       <motion.div 
         className="fixed inset-0 z-0 opacity-40 pointer-events-none"
         animate={{
           background: [
-            'radial-gradient(circle at 20% 30%, rgba(45, 212, 191, 0.15) 0%, transparent 50%)',
+            'radial-gradient(circle at 20% 30%, rgba(69, 191, 174, 0.15) 0%, transparent 50%)',
             'radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%)',
-            'radial-gradient(circle at 20% 30%, rgba(45, 212, 191, 0.15) 0%, transparent 50%)',
+            'radial-gradient(circle at 20% 30%, rgba(69, 191, 174, 0.15) 0%, transparent 50%)',
           ]
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
@@ -171,28 +171,28 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 1 } }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#020617]/90 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#0F0E0C]/90 backdrop-blur-sm p-4"
           >
             <div className={`relative w-full max-w-md h-[350px] md:h-[400px] transition-all duration-1500 ease-in-out ${isOpening ? 'scale-150 opacity-0 translate-y-[-100px]' : 'scale-100'}`}>
               {/* Envelope Body */}
-              <div className="absolute inset-0 bg-[#0f172a] rounded-lg shadow-[0_0_50px_rgba(45,212,191,0.1)] border border-teal-500/20 flex flex-col items-center justify-center p-8 text-center overflow-hidden">
+              <div className="absolute inset-0 bg-[#171614] rounded-lg shadow-[0_0_50px_rgba(69,191,174,0.1)] border border-[#45BFAE]/20 flex flex-col items-center justify-center p-8 text-center overflow-hidden">
                 {/* Subtle glow inside envelope */}
-                <div className="absolute inset-0 bg-gradient-to-b from-teal-500/5 to-purple-500/5 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#45BFAE]/5 to-purple-500/5 pointer-events-none" />
                 
-                <div className="w-20 h-20 rounded-full border border-teal-500/40 flex items-center justify-center mb-8 bg-[#020617]/50 shadow-[0_0_20px_rgba(45,212,191,0.2)]">
+                <div className="w-20 h-20 rounded-full border border-[#45BFAE]/40 flex items-center justify-center mb-8 bg-[#0F0E0C]/50 shadow-[0_0_20px_rgba(69,191,174,0.2)]">
                   <span className="font-serif italic text-3xl text-teal-200">
                     {eventContext?.title ? eventContext.title.split('&').map(n => n.trim()[0]).join('&') : 'A&C'}
                   </span>
                 </div>
                 
-                <p className="text-teal-400/80 uppercase tracking-[4px] text-xs font-medium mb-12 relative z-10">
+                <p className="text-[#5FD0C1]/80 uppercase tracking-[4px] text-xs font-medium mb-12 relative z-10">
                   {t.envelopeText}
                 </p>
                 
                 <button 
                   onClick={handleEnter}
                   disabled={isOpening}
-                  className="relative z-10 px-10 py-3 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-300 uppercase tracking-[3px] text-xs font-light hover:bg-teal-500/20 hover:border-teal-500/50 transition-all duration-500 shadow-[0_0_30px_rgba(45,212,191,0.2)]"
+                  className="relative z-10 px-10 py-3 rounded-full border border-[#45BFAE]/30 bg-[#45BFAE]/10 text-[#45BFAE] uppercase tracking-[3px] text-xs font-light hover:bg-[#45BFAE]/20 hover:border-[#45BFAE]/50 transition-all duration-500 shadow-[0_0_30px_rgba(69,191,174,0.2)]"
                 >
                   {isOpening ? t.openingBtn : t.openBtn}
                 </button>
@@ -200,7 +200,7 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
               
               {/* Envelope Flap */}
               <div 
-                className={`absolute top-0 left-0 w-full h-1/2 bg-[#1e293b] origin-top transition-transform duration-1000 z-30 shadow-sm rounded-t-lg border-b border-teal-500/20 ${isOpening ? 'rotate-x-180 opacity-0' : 'rotate-x-0'}`}
+                className={`absolute top-0 left-0 w-full h-1/2 bg-[#1F1D1A] origin-top transition-transform duration-1000 z-30 shadow-sm rounded-t-lg border-b border-[#45BFAE]/20 ${isOpening ? 'rotate-x-180 opacity-0' : 'rotate-x-0'}`}
                 style={{ 
                   clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
                   backfaceVisibility: 'hidden',
@@ -218,7 +218,7 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
           >
             {/* Hero Section */}
             <div className="text-center mb-24 w-full">
-              <p className="text-teal-400/80 uppercase tracking-[6px] text-xs font-medium mb-12">
+              <p className="text-[#5FD0C1]/80 uppercase tracking-[6px] text-xs font-medium mb-12">
                 {t.title}
               </p>
               
@@ -226,7 +226,7 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
                 {eventContext?.title || t.names}
               </h1>
               
-              <div className="w-px h-20 bg-gradient-to-b from-teal-500/50 to-transparent mx-auto mb-12" />
+              <div className="w-px h-20 bg-gradient-to-b from-[#45BFAE]/50 to-transparent mx-auto mb-12" />
               
               <p className="text-lg md:text-xl font-light text-white/70 leading-relaxed max-w-2xl mx-auto">
                 {t.message}
@@ -236,25 +236,25 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
             {/* Event Details (Date & Time) */}
             <div className="flex flex-col md:flex-row gap-16 md:gap-32 mb-24 text-center">
               <div>
-                <p className="text-teal-400/60 uppercase tracking-[4px] text-[10px] mb-4">{t.dateLabel}</p>
+                <p className="text-[#5FD0C1]/60 uppercase tracking-[4px] text-[10px] mb-4">{t.dateLabel}</p>
                 <p className="text-2xl font-serif text-white/90">{t.date}</p>
               </div>
               <div>
-                <p className="text-teal-400/60 uppercase tracking-[4px] text-[10px] mb-4">{t.timeLabel}</p>
+                <p className="text-[#5FD0C1]/60 uppercase tracking-[4px] text-[10px] mb-4">{t.timeLabel}</p>
                 <p className="text-2xl font-serif text-white/90">{t.time}</p>
               </div>
             </div>
 
             {/* Location Section (Simple, No Map) */}
             <div className="w-full max-w-2xl bg-white/[0.03] border border-white/10 rounded-3xl p-10 md:p-16 text-center mb-24">
-              <p className="text-teal-400/60 uppercase tracking-[4px] text-[10px] mb-6">{t.locationLabel}</p>
+              <p className="text-[#5FD0C1]/60 uppercase tracking-[4px] text-[10px] mb-6">{t.locationLabel}</p>
               <h3 className="text-3xl md:text-4xl font-serif text-white/90 mb-4">{eventContext?.venue?.name || t.venue}</h3>
               <p className="text-white/50 font-light mb-10 max-w-sm mx-auto">{eventContext?.venue?.address || t.address}</p>
               <a 
                 href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(t.venue + ' ' + t.address)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-8 py-3 rounded-full border border-teal-500/30 text-teal-300 uppercase tracking-[3px] text-xs font-medium hover:bg-teal-500 hover:text-[#020617] transition-all duration-300"
+                className="inline-block px-8 py-3 rounded-full border border-[#45BFAE]/30 text-[#45BFAE] uppercase tracking-[3px] text-xs font-medium hover:bg-[#45BFAE] hover:text-[#0F0E0C] transition-all duration-300"
               >
                 {t.directions}
               </a>
@@ -270,7 +270,7 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
 
             {/* Countdown Section */}
             <div className="text-center w-full mb-32">
-              <p className="text-teal-400/60 uppercase tracking-[6px] text-[10px] mb-12">{t.countdownTitle}</p>
+              <p className="text-[#5FD0C1]/60 uppercase tracking-[6px] text-[10px] mb-12">{t.countdownTitle}</p>
               <div className="flex justify-center gap-6 md:gap-12">
                 {[
                   { label: language === 'tr' ? 'GÜN' : 'DAYS', value: countdown.days },
@@ -280,7 +280,7 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
                 ].map((item, idx) => (
                   <div key={idx} className="flex flex-col items-center">
                     <span className="text-4xl md:text-5xl font-light text-white mb-2">{item.value.toString().padStart(2, '0')}</span>
-                    <span className="text-[9px] uppercase tracking-[3px] text-teal-400/50">{item.label}</span>
+                    <span className="text-[9px] uppercase tracking-[3px] text-[#5FD0C1]/50">{item.label}</span>
                   </div>
                 ))}
               </div>
@@ -290,7 +290,7 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
             <div className="w-full max-w-2xl mb-24">
               <SpiritualCorner 
                 language={language} 
-                themeColor="#2dd4bf" 
+                themeColor="#45BFAE" 
                 eventNames={eventContext?.title || t.names} 
                 eventType={language === 'tr' ? "Düğün" : "Wedding"} 
                 theme="dark" 
@@ -301,7 +301,7 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
             <div className="w-full max-w-2xl">
               <RSVPForm 
                 language={language} 
-                themeColor="#2dd4bf" 
+                themeColor="#45BFAE" 
                 eventId={eventId || 'aurora-demo'} 
                 theme="dark"
               />
@@ -325,7 +325,7 @@ const AuroraTemplate: React.FC<AuroraTemplateProps> = ({ language, onBack, onOrd
       {hasEntered && !eventContext && (
         <button 
           onClick={onOrder}
-          className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 px-6 py-3 md:px-8 md:py-4 bg-teal-500 text-[#020617] text-[10px] md:text-xs uppercase tracking-[3px] font-bold rounded-full hover:bg-teal-400 transition-all duration-300 shadow-[0_0_20px_rgba(45,212,191,0.3)] flex items-center gap-2 group"
+          className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 px-6 py-3 md:px-8 md:py-4 bg-[#45BFAE] text-[#0F0E0C] text-[10px] md:text-xs uppercase tracking-[3px] font-bold rounded-full hover:bg-[#5FD0C1] transition-all duration-300 shadow-[0_0_20px_rgba(69,191,174,0.3)] flex items-center gap-2 group"
         >
           <span>{t.order}</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
