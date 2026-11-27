@@ -159,7 +159,7 @@ export const LegalPages: React.FC = () => {
         {doc.sections.map((s) => (
           <section key={s.heading} className="mb-9">
             <h2 className="font-serif italic text-2xl text-ivory mb-3">{s.heading}</h2>
-            <p className="text-ivory/65 text-sm md:text-[15px] leading-relaxed font-light">{s.body}</p>
+            <p className="text-ivory/[0.65] text-sm md:text-[15px] leading-relaxed font-light">{s.body}</p>
           </section>
         ))}
         <nav className="mt-14 pt-8 border-t border-ivory/10 flex flex-wrap gap-4 text-[10px] uppercase tracking-[0.2em] font-bold">

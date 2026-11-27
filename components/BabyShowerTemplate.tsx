@@ -26,7 +26,7 @@ const BabyShowerTemplate: React.FC<BabyShowerTemplateProps> = ({ onBack, languag
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
 
   const t = translations[language].babyshower;
-  const themeColor = "#8a8a6a"; // Sage green for baby shower
+  const themeColor = "#9AA386"; // Sage green for baby shower
 
   const targetDate = new Date('2026-05-20T14:00:00').getTime();
 
@@ -56,14 +56,14 @@ const BabyShowerTemplate: React.FC<BabyShowerTemplateProps> = ({ onBack, languag
   };
 
   return (
-    <div className="min-h-screen bg-[#fffcf5] text-[#5a5a40] font-serif relative overflow-x-hidden pb-20">
-      <StarField color="#5a5a40" opacity={0.3} backgroundColor="#fffcf5" />
+    <div className="min-h-screen bg-[#FAF7EE] text-[#7D8467] font-serif relative overflow-x-hidden pb-20">
+      <StarField color="#7D8467" opacity={0.3} backgroundColor="#FAF7EE" />
       
       {hasEntered && <ConceptAnimation type="babyshower" />}
 
       <button 
         onClick={onBack}
-        className="fixed top-6 left-6 z-[110] bg-white/80 border border-[#5a5a40]/20 px-4 py-2 rounded-full text-[10px] font-sans font-bold uppercase tracking-widest hover:bg-[#5a5a40] hover:text-white transition-all shadow-sm"
+        className="fixed top-6 left-6 z-[110] bg-white/80 border border-[#7D8467]/20 px-4 py-2 rounded-full text-[10px] font-sans font-bold uppercase tracking-widest hover:bg-[#7D8467] hover:text-white transition-all shadow-sm"
       >
         ← {t.back}
       </button>
@@ -72,7 +72,7 @@ const BabyShowerTemplate: React.FC<BabyShowerTemplateProps> = ({ onBack, languag
       {hasEntered && !eventContext && (
         <button 
           onClick={onOrder}
-          className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-[110] px-6 py-3 sm:px-8 sm:py-4 bg-[#5a5a40] border border-[#5a5a40] rounded-full text-white text-[10px] sm:text-xs uppercase tracking-[3px] font-bold hover:bg-[#8a8a6a] transition-all duration-500 shadow-xl hover:shadow-[0_10px_30px_rgba(90,90,64,0.4)] flex items-center gap-2 group"
+          className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-[110] px-6 py-3 sm:px-8 sm:py-4 bg-[#7D8467] border border-[#7D8467] rounded-full text-white text-[10px] sm:text-xs uppercase tracking-[3px] font-bold hover:bg-[#9AA386] transition-all duration-500 shadow-xl hover:shadow-[0_10px_30px_rgba(125,132,103,0.4)] flex items-center gap-2 group"
         >
           <span>{language === 'tr' ? 'Bu Tasarımla Sipariş Ver' : 'Order with this Design'}</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -84,28 +84,28 @@ const BabyShowerTemplate: React.FC<BabyShowerTemplateProps> = ({ onBack, languag
           <motion.div 
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-[#fffcf5] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[100] bg-[#FAF7EE] flex items-center justify-center p-4"
           >
             <div className={`relative w-full max-w-2xl h-[500px] md:h-[600px] transition-all duration-1000 ease-in-out ${isOpening ? 'scale-[2] opacity-0 translate-y-[-100px]' : 'scale-100'}`} style={{ perspective: '2000px' }}>
-              <div className="absolute inset-0 bg-[#fdf8e1] rounded-b-3xl shadow-2xl border border-[#5a5a40]/10 overflow-hidden">
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#5a5a40 0.5px, transparent 0.5px)', backgroundSize: '30px 30px' }}></div>
+              <div className="absolute inset-0 bg-[#F3EFDD] rounded-b-3xl shadow-2xl border border-[#7D8467]/10 overflow-hidden">
+                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#7D8467 0.5px, transparent 0.5px)', backgroundSize: '30px 30px' }}></div>
                 
                 <div className={`relative z-40 h-full flex flex-col items-center justify-center p-6 text-center transition-all duration-700 ${isOpening ? 'blur-sm' : ''}`}>
                   <div className="mb-8 md:mb-12">
-                    <h2 className="text-5xl md:text-7xl text-[#5a5a40] mb-4 font-light italic">{t.title}</h2>
-                    <div className="h-px w-20 bg-[#5a5a40]/30 mx-auto mt-4"></div>
+                    <h2 className="text-5xl md:text-7xl text-[#7D8467] mb-4 font-light italic">{t.title}</h2>
+                    <div className="h-px w-20 bg-[#7D8467]/30 mx-auto mt-4"></div>
                   </div>
                   
-                  <p className="text-[#5a5a40]/70 mb-10 md:mb-14 font-sans tracking-[6px] text-[10px] md:text-xs uppercase max-w-xs leading-loose font-bold">{t.subtitle}</p>
+                  <p className="text-[#7D8467]/70 mb-10 md:mb-14 font-sans tracking-[6px] text-[10px] md:text-xs uppercase max-w-xs leading-loose font-bold">{t.subtitle}</p>
                   
                   <button 
                     onClick={handleEnter}
                     disabled={isOpening}
                     className="group relative flex items-center justify-center p-1 overflow-hidden rounded-full transition-all active:scale-95 shadow-2xl"
                   >
-                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#5a5a40] via-[#8a8a6a] to-[#5a5a40] opacity-20"></span>
-                    <span className="relative px-16 py-6 md:px-24 md:py-8 transition-all ease-in duration-75 bg-white rounded-full group-hover:bg-[#5a5a40]">
-                      <span className="relative text-[#5a5a40] group-hover:text-white font-sans font-bold tracking-[6px] md:tracking-[8px] uppercase text-xs md:text-sm">
+                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#7D8467] via-[#9AA386] to-[#7D8467] opacity-20"></span>
+                    <span className="relative px-16 py-6 md:px-24 md:py-8 transition-all ease-in duration-75 bg-white rounded-full group-hover:bg-[#7D8467]">
+                      <span className="relative text-[#7D8467] group-hover:text-white font-sans font-bold tracking-[6px] md:tracking-[8px] uppercase text-xs md:text-sm">
                         {isOpening ? t.opening : t.open}
                       </span>
                     </span>
@@ -113,21 +113,21 @@ const BabyShowerTemplate: React.FC<BabyShowerTemplateProps> = ({ onBack, languag
                 </div>
 
                 <div className="absolute inset-0 pointer-events-none z-20">
-                  <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#5a5a40]/5 to-transparent"></div>
-                  <div className="absolute inset-0" style={{ clipPath: 'polygon(0 100%, 50% 50%, 100% 100%)', background: 'rgba(253, 248, 225, 0.8)', borderTop: '1px solid rgba(90, 90, 64, 0.1)' }}></div>
+                  <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#7D8467]/5 to-transparent"></div>
+                  <div className="absolute inset-0" style={{ clipPath: 'polygon(0 100%, 50% 50%, 100% 100%)', background: 'rgba(253, 248, 225, 0.8)', borderTop: '1px solid rgba(125, 132, 103, 0.1)' }}></div>
                 </div>
               </div>
 
               <div 
-                className={`absolute top-0 left-0 w-full h-1/2 bg-[#fdf8e1] origin-top transition-transform duration-1000 z-30 shadow-md ${isOpening ? 'rotate-x-180' : 'rotate-x-0'}`}
+                className={`absolute top-0 left-0 w-full h-1/2 bg-[#F3EFDD] origin-top transition-transform duration-1000 z-30 shadow-md ${isOpening ? 'rotate-x-180' : 'rotate-x-0'}`}
                 style={{ 
                   clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
                   backfaceVisibility: 'hidden',
-                  borderBottom: '1px solid rgba(90, 90, 64, 0.1)'
+                  borderBottom: '1px solid rgba(125, 132, 103, 0.1)'
                 }}
               >
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center border border-[#5a5a40]/20">
-                  <span className="text-[#5a5a40] text-lg">👶</span>
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center border border-[#7D8467]/20">
+                  <span className="text-[#7D8467] text-lg">👶</span>
                 </div>
               </div>
             </div>
@@ -141,20 +141,20 @@ const BabyShowerTemplate: React.FC<BabyShowerTemplateProps> = ({ onBack, languag
           animate={{ opacity: 1, y: 0 }}
           className="flex flex-col items-center justify-center p-4 md:p-10 relative z-10"
         >
-          <div className="w-full max-w-2xl bg-white/40 backdrop-blur-sm border border-[#5a5a40]/10 p-8 md:p-16 text-center rounded-3xl shadow-xl">
+          <div className="w-full max-w-2xl bg-white/40 backdrop-blur-sm border border-[#7D8467]/10 p-8 md:p-16 text-center rounded-3xl shadow-xl">
             <div className="mb-12">
-              <span className="text-[10px] md:text-xs uppercase tracking-[6px] text-[#5a5a40]/60 block mb-4 font-bold">{language === 'tr' ? 'Baby Shower Daveti' : 'Baby Shower Invitation'}</span>
-              <h1 className="text-5xl md:text-8xl text-[#5a5a40] font-light italic mb-6 break-words">{eventContext?.title || t.mainTitle}</h1>
-              <p className="text-[#5a5a40]/80 text-sm md:text-base leading-relaxed max-w-md mx-auto">
+              <span className="text-[10px] md:text-xs uppercase tracking-[6px] text-[#7D8467]/60 block mb-4 font-bold">{language === 'tr' ? 'Baby Shower Daveti' : 'Baby Shower Invitation'}</span>
+              <h1 className="text-5xl md:text-8xl text-[#7D8467] font-light italic mb-6 break-words">{eventContext?.title || t.mainTitle}</h1>
+              <p className="text-[#7D8467]/80 text-sm md:text-base leading-relaxed max-w-md mx-auto">
                 {t.desc}
               </p>
             </div>
 
             <div className="mb-16">
-              <div className="h-px w-16 bg-[#5a5a40]/20 mx-auto mb-8"></div>
-              <h2 className="text-3xl md:text-5xl text-[#5a5a40] tracking-[4px] mb-2">{t.date}</h2>
-              <p className="text-[#5a5a40]/60 text-xs tracking-[8px] uppercase font-bold">{t.day} | {t.time}</p>
-              <div className="h-px w-16 bg-[#5a5a40]/20 mx-auto mt-8"></div>
+              <div className="h-px w-16 bg-[#7D8467]/20 mx-auto mb-8"></div>
+              <h2 className="text-3xl md:text-5xl text-[#7D8467] tracking-[4px] mb-2">{t.date}</h2>
+              <p className="text-[#7D8467]/60 text-xs tracking-[8px] uppercase font-bold">{t.day} | {t.time}</p>
+              <div className="h-px w-16 bg-[#7D8467]/20 mx-auto mt-8"></div>
             </div>
 
             <div className="grid grid-cols-4 gap-4 mb-16">
@@ -164,9 +164,9 @@ const BabyShowerTemplate: React.FC<BabyShowerTemplateProps> = ({ onBack, languag
                 { label: t.countdownLabels[2], value: countdown.mins },
                 { label: t.countdownLabels[3], value: countdown.secs }
               ].map((item, idx) => (
-                <div key={idx} className="bg-[#fdf8e1] border border-[#5a5a40]/5 rounded-2xl p-4">
-                  <div className="text-2xl md:text-4xl font-light text-[#5a5a40] mb-1">{String(item.value).padStart(2, '0')}</div>
-                  <div className="text-[8px] md:text-[10px] text-[#5a5a40]/60 tracking-widest font-bold">{item.label}</div>
+                <div key={idx} className="bg-[#F3EFDD] border border-[#7D8467]/5 rounded-2xl p-4">
+                  <div className="text-2xl md:text-4xl font-light text-[#7D8467] mb-1">{String(item.value).padStart(2, '0')}</div>
+                  <div className="text-[8px] md:text-[10px] text-[#7D8467]/60 tracking-widest font-bold">{item.label}</div>
                 </div>
               ))}
             </div>
@@ -197,7 +197,7 @@ const BabyShowerTemplate: React.FC<BabyShowerTemplateProps> = ({ onBack, languag
               theme="light"
             />
 
-            <div className="mt-16 text-[10px] text-[#5a5a40]/40 uppercase tracking-[4px] font-bold">
+            <div className="mt-16 text-[10px] text-[#7D8467]/40 uppercase tracking-[4px] font-bold">
               {eventContext?.title || t.names}
             </div>
           </div>

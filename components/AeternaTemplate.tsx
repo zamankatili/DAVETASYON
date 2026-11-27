@@ -92,10 +92,10 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
       transition={{ duration: 1.5 }}
-      className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-[#020202]"
+      className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-[#0B0A09]"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(212,175,55,0.05)_0%,transparent_70%)] rounded-full animate-pulse-slow"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(201,168,124,0.05)_0%,transparent_70%)] rounded-full animate-pulse-slow"></div>
       </div>
       <motion.div
         initial={{ y: 50, opacity: 0 }}
@@ -103,14 +103,14 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
         transition={{ delay: 0.5, duration: 1 }}
         className="text-center relative z-10"
       >
-        <span className="text-[10px] tracking-[10px] text-[#d4af37]/60 uppercase block mb-8 font-light">Aeterna Masterpiece</span>
-        <h1 className="text-5xl md:text-8xl font-serif text-[#F5F2EB] italic font-light mb-12 tracking-tight drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]">{title}</h1>
+        <span className="text-[10px] tracking-[10px] text-[#C9A87C]/60 uppercase block mb-8 font-light">Aeterna Masterpiece</span>
+        <h1 className="text-5xl md:text-8xl font-serif text-[#F5F2EB] italic font-light mb-12 tracking-tight drop-shadow-[0_0_15px_rgba(201,168,124,0.3)]">{title}</h1>
         <button 
           onClick={() => setActiveStage('yesterday')}
-          className="group relative px-10 py-4 bg-transparent border border-[#d4af37]/30 rounded-full overflow-hidden hover:border-[#d4af37] transition-all duration-700"
+          className="group relative px-10 py-4 bg-transparent border border-[#C9A87C]/30 rounded-full overflow-hidden hover:border-[#C9A87C] transition-all duration-700"
         >
-          <div className="absolute inset-0 bg-[#d4af37]/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-700 ease-out"></div>
-          <span className="relative text-[#d4af37] text-[10px] uppercase tracking-[4px] font-medium">{t.begin}</span>
+          <div className="absolute inset-0 bg-[#C9A87C]/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-700 ease-out"></div>
+          <span className="relative text-[#C9A87C] text-[10px] uppercase tracking-[4px] font-medium">{t.begin}</span>
         </button>
       </motion.div>
     </motion.div>
@@ -127,8 +127,8 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
     >
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="flex items-center gap-4 mb-20">
-          <div className="h-px w-20 bg-[#d4af37]"></div>
-          <span className="text-[10px] tracking-[8px] text-[#d4af37] font-bold uppercase">{t.yesterday}</span>
+          <div className="h-px w-20 bg-[#C9A87C]"></div>
+          <span className="text-[10px] tracking-[8px] text-[#C9A87C] font-bold uppercase">{t.yesterday}</span>
         </div>
         
         <h2 className="text-6xl md:text-8xl font-serif italic text-white mb-12 leading-tight">{t.yesterdayTitle}</h2>
@@ -137,20 +137,20 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-          <div className="aspect-[3/4] relative rounded-t-full overflow-hidden border border-[#d4af37]/20 p-2">
+          <div className="aspect-[3/4] relative rounded-t-full overflow-hidden border border-[#C9A87C]/20 p-2">
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
             <img src="/images/scene/rings-pearls.webp" alt="Memory" className="w-full h-full object-cover rounded-t-full grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]" />
           </div>
-          <div className="aspect-[3/4] relative rounded-b-full overflow-hidden border border-[#d4af37]/20 p-2 md:mt-32">
+          <div className="aspect-[3/4] relative rounded-b-full overflow-hidden border border-[#C9A87C]/20 p-2 md:mt-32">
             <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-transparent z-10"></div>
             <img src="/images/scene/chairs-garden.webp" alt="Memory 2" className="w-full h-full object-cover rounded-b-full grayscale-[0.5] hover:grayscale-0 transition-all duration-[2s]" />
           </div>
         </div>
 
         <div className="mt-32 flex justify-end">
-          <button onClick={() => setActiveStage('today')} className="text-[#d4af37] flex items-center gap-4 group">
+          <button onClick={() => setActiveStage('today')} className="text-[#C9A87C] flex items-center gap-4 group">
             <span className="text-[10px] tracking-[4px] uppercase font-bold group-hover:translate-x-[-10px] transition-transform duration-500">{t.today}'e Geç</span>
-            <div className="w-12 h-12 rounded-full border border-[#d4af37]/30 flex items-center justify-center group-hover:bg-[#d4af37]/10 transition-colors">
+            <div className="w-12 h-12 rounded-full border border-[#C9A87C]/30 flex items-center justify-center group-hover:bg-[#C9A87C]/10 transition-colors">
               →
             </div>
           </button>
@@ -166,14 +166,14 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -100 }}
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-0 overflow-y-auto overflow-x-hidden pt-32 pb-40 px-6 md:px-20 bg-[#050505]"
+      className="absolute inset-0 overflow-y-auto overflow-x-hidden pt-32 pb-40 px-6 md:px-20 bg-[#0F0E0C]"
     >
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="flex items-center gap-4 mb-20 text-center justify-center">
           <span className="text-[10px] tracking-[8px] text-[#F5F2EB]/40 font-bold uppercase">{t.yesterday}</span>
-          <div className="h-px w-10 bg-[#d4af37]/30"></div>
-          <span className="text-[10px] tracking-[8px] text-[#d4af37] font-bold uppercase">{t.today}</span>
-          <div className="h-px w-10 bg-[#d4af37]/30"></div>
+          <div className="h-px w-10 bg-[#C9A87C]/30"></div>
+          <span className="text-[10px] tracking-[8px] text-[#C9A87C] font-bold uppercase">{t.today}</span>
+          <div className="h-px w-10 bg-[#C9A87C]/30"></div>
           <span className="text-[10px] tracking-[8px] text-[#F5F2EB]/40 font-bold uppercase">{t.tomorrow}</span>
         </div>
         
@@ -185,14 +185,14 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
         {/* Location & Details */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
           <div className="bg-white/[0.02] border border-white/5 p-10 rounded-[2rem] backdrop-blur-md">
-            <Calendar className="text-[#d4af37] w-8 h-8 mb-6" />
-            <div className="text-[10px] text-[#d4af37] tracking-[4px] uppercase mb-2">Tarih</div>
+            <Calendar className="text-[#C9A87C] w-8 h-8 mb-6" />
+            <div className="text-[10px] text-[#C9A87C] tracking-[4px] uppercase mb-2">Tarih</div>
             <div className="text-3xl font-serif text-white mb-2">15 Ağustos 2026</div>
             <div className="text-white/50 font-light">Cumartesi, 19:00</div>
           </div>
           <div className="bg-white/[0.02] border border-white/5 p-10 rounded-[2rem] backdrop-blur-md">
-            <MapPin className="text-[#d4af37] w-8 h-8 mb-6" />
-            <div className="text-[10px] text-[#d4af37] tracking-[4px] uppercase mb-2">Mekan</div>
+            <MapPin className="text-[#C9A87C] w-8 h-8 mb-6" />
+            <div className="text-[10px] text-[#C9A87C] tracking-[4px] uppercase mb-2">Mekan</div>
             <div className="text-3xl font-serif text-white mb-2">Four Seasons Bosphorus</div>
             <div className="text-white/50 font-light text-sm">Çırağan Cd. No:28, 34349 Beşiktaş/İstanbul</div>
           </div>
@@ -200,7 +200,7 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
 
         <LocationMap 
            language={language}
-           themeColor="#d4af37"
+           themeColor="#C9A87C"
            venueName={eventContext?.venue?.name || "Four Seasons Bosphorus"}
            address={eventContext?.venue?.address || "Çırağan Cd. No:28, Beşiktaş/İstanbul"}
            googleMapsUrl="https://maps.google.com"
@@ -212,16 +212,16 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
             <h3 className="text-3xl font-serif italic text-white mb-4">LCV</h3>
             <p className="text-white/50 text-sm">{t.rsvpText}</p>
           </div>
-          <RSVPForm language={language} themeColor="#d4af37" eventId={eventId || 'masterpiece'} theme="dark" />
+          <RSVPForm language={language} themeColor="#C9A87C" eventId={eventId || 'masterpiece'} theme="dark" />
         </div>
 
         <div className="mt-32 flex justify-between">
-          <button onClick={() => setActiveStage('yesterday')} className="text-white/40 hover:text-[#d4af37] transition-colors text-[10px] tracking-[4px] uppercase">
+          <button onClick={() => setActiveStage('yesterday')} className="text-white/40 hover:text-[#C9A87C] transition-colors text-[10px] tracking-[4px] uppercase">
             ← {t.yesterday}
           </button>
           <button onClick={() => setActiveStage('tomorrow')} className="flex items-center gap-4 group">
-            <span className="text-[#d4af37] text-[10px] tracking-[4px] uppercase font-bold group-hover:translate-x-[-10px] transition-transform duration-500">Zaman Kapsülünü Aç ({t.tomorrow})</span>
-            <div className="w-12 h-12 rounded-full border border-[#d4af37]/30 flex items-center justify-center group-hover:bg-[#d4af37]/10 transition-colors text-[#d4af37]">
+            <span className="text-[#C9A87C] text-[10px] tracking-[4px] uppercase font-bold group-hover:translate-x-[-10px] transition-transform duration-500">Zaman Kapsülünü Aç ({t.tomorrow})</span>
+            <div className="w-12 h-12 rounded-full border border-[#C9A87C]/30 flex items-center justify-center group-hover:bg-[#C9A87C]/10 transition-colors text-[#C9A87C]">
               →
             </div>
           </button>
@@ -237,7 +237,7 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.05 }}
       transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-0 overflow-y-auto overflow-x-hidden pt-32 pb-40 px-6 md:px-20 bg-gradient-to-b from-[#020202] to-[#0a0a05] perspective-1000"
+      className="absolute inset-0 overflow-y-auto overflow-x-hidden pt-32 pb-40 px-6 md:px-20 bg-gradient-to-b from-[#0B0A09] to-[#141210] perspective-1000"
     >
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 pointer-events-none"></div>
       
@@ -245,13 +245,13 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
         <motion.div 
           animate={{ rotateZ: 360 }} 
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          className="mb-12 inline-flex items-center justify-center w-24 h-24 rounded-full border border-[#d4af37]/30 bg-[#d4af37]/5 backdrop-blur-xl relative shadow-[0_0_50px_rgba(212,175,55,0.2)]"
+          className="mb-12 inline-flex items-center justify-center w-24 h-24 rounded-full border border-[#C9A87C]/30 bg-[#C9A87C]/5 backdrop-blur-xl relative shadow-[0_0_50px_rgba(201,168,124,0.2)]"
         >
-          <div className="absolute inset-0 rounded-full border border-[#d4af37]/20"></div>
-          <Clock className="w-8 h-8 text-[#d4af37] transform -rotate-12" />
+          <div className="absolute inset-0 rounded-full border border-[#C9A87C]/20"></div>
+          <Clock className="w-8 h-8 text-[#C9A87C] transform -rotate-12" />
         </motion.div>
         
-        <h2 className="text-5xl md:text-8xl font-serif italic text-[#F5F2EB] mb-8 drop-shadow-[0_0_20px_rgba(212,175,55,0.2)]">{t.tomorrowTitle}</h2>
+        <h2 className="text-5xl md:text-8xl font-serif italic text-[#F5F2EB] mb-8 drop-shadow-[0_0_20px_rgba(201,168,124,0.2)]">{t.tomorrowTitle}</h2>
         <p className="text-lg text-white/50 font-light max-w-xl mx-auto mb-16 leading-relaxed">
           {t.tomorrowText}
         </p>
@@ -261,23 +261,23 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
             initial={{ opacity: 0, y: 50, rotateX: 10 }}
             animate={{ opacity: 1, y: 0, rotateX: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="bg-white/[0.02] border border-[#d4af37]/20 rounded-[2rem] p-8 md:p-12 backdrop-blur-md text-left relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform translate-z-10"
+            className="bg-white/[0.02] border border-[#C9A87C]/20 rounded-[2rem] p-8 md:p-12 backdrop-blur-md text-left relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform translate-z-10"
           >
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent opacity-30"></div>
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C9A87C] to-transparent opacity-30"></div>
             
             <input
               type="text"
               value={timeCapsuleGuest}
               onChange={(e) => setTimeCapsuleGuest(e.target.value)}
               placeholder={language === 'tr' ? "Adınız Soyadınız" : "Your Name"}
-              className="w-full bg-transparent border-b border-white/10 text-white placeholder-white/30 p-4 focus:outline-none focus:border-[#d4af37] transition-colors font-serif italic text-xl mb-4"
+              className="w-full bg-transparent border-b border-white/10 text-white placeholder-white/30 p-4 focus:outline-none focus:border-[#C9A87C] transition-colors font-serif italic text-xl mb-4"
             />
             
             <textarea 
               value={timeCapsuleMessage}
               onChange={(e) => setTimeCapsuleMessage(e.target.value)}
               placeholder={language === 'tr' ? "2036 yılındaki çifte mühürlü notunuz..." : "Your note sealed until 2036..."}
-              className="w-full bg-transparent border-b border-white/10 text-white placeholder-white/30 p-4 min-h-[150px] focus:outline-none focus:border-[#d4af37] transition-colors resize-none font-serif italic text-lg"
+              className="w-full bg-transparent border-b border-white/10 text-white placeholder-white/30 p-4 min-h-[150px] focus:outline-none focus:border-[#C9A87C] transition-colors resize-none font-serif italic text-lg"
             ></textarea>
             
             <div className="mt-12 flex items-center justify-between">
@@ -288,7 +288,7 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
               <button 
                 onClick={handleSealTimeCapsule}
                 disabled={isSealing || timeCapsuleMessage.trim().length === 0 || timeCapsuleGuest.trim().length === 0}
-                className={`px-8 py-4 rounded-full text-[10px] tracking-[3px] uppercase font-bold transition-all duration-500 shadow-[0_0_30px_rgba(212,175,55,0.2)] hover:shadow-[0_0_50px_rgba(212,175,55,0.5)] ${(timeCapsuleMessage.trim().length > 0 && timeCapsuleGuest.trim().length > 0) ? 'bg-[#d4af37] text-black hover:bg-[#F5F2EB]' : 'bg-white/5 text-white/30 cursor-not-allowed'}`}
+                className={`px-8 py-4 rounded-full text-[10px] tracking-[3px] uppercase font-bold transition-all duration-500 shadow-[0_0_30px_rgba(201,168,124,0.2)] hover:shadow-[0_0_50px_rgba(201,168,124,0.5)] ${(timeCapsuleMessage.trim().length > 0 && timeCapsuleGuest.trim().length > 0) ? 'bg-[#C9A87C] text-black hover:bg-[#F5F2EB]' : 'bg-white/5 text-white/30 cursor-not-allowed'}`}
               >
                 {isSealing ? 'Mühürleniyor...' : t.sealBtn}
               </button>
@@ -299,24 +299,24 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
             initial={{ opacity: 0, scale: 0.8, rotateY: 90 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
             transition={{ type: "spring", damping: 12, stiffness: 50 }}
-            className="flex flex-col items-center justify-center p-16 border border-[#d4af37]/30 rounded-[2rem] bg-[#d4af37]/5 backdrop-blur-xl relative overflow-hidden shadow-2xl"
+            className="flex flex-col items-center justify-center p-16 border border-[#C9A87C]/30 rounded-[2rem] bg-[#C9A87C]/5 backdrop-blur-xl relative overflow-hidden shadow-2xl"
           >
             <motion.div 
               animate={{ rotateY: 360, rotateX: 360 }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               className="mb-8"
             >
-              <div className="w-24 h-24 rounded-full border-2 border-dashed border-[#d4af37] flex items-center justify-center bg-black/50 shadow-[0_0_100px_rgba(212,175,55,0.6)]">
-                <Lock className="w-10 h-10 text-[#d4af37]" />
+              <div className="w-24 h-24 rounded-full border-2 border-dashed border-[#C9A87C] flex items-center justify-center bg-black/50 shadow-[0_0_100px_rgba(201,168,124,0.6)]">
+                <Lock className="w-10 h-10 text-[#C9A87C]" />
               </div>
             </motion.div>
-            <h3 className="text-4xl font-serif italic text-[#d4af37] mb-4">Locked Until 2036</h3>
+            <h3 className="text-4xl font-serif italic text-[#C9A87C] mb-4">Locked Until 2036</h3>
             <p className="text-white/60 text-lg font-light tracking-wide">{t.sealedText}</p>
           </motion.div>
         )}
 
         <div className="mt-32 flex justify-center">
-          <button onClick={() => setActiveStage('today')} className="text-white/40 hover:text-[#d4af37] transition-colors text-[10px] tracking-[4px] uppercase border-b border-transparent hover:border-[#d4af37] pb-1">
+          <button onClick={() => setActiveStage('today')} className="text-white/40 hover:text-[#C9A87C] transition-colors text-[10px] tracking-[4px] uppercase border-b border-transparent hover:border-[#C9A87C] pb-1">
             Geri Dön
           </button>
         </div>
@@ -325,7 +325,7 @@ export const AeternaTemplate: React.FC<AeternaTemplateProps> = ({ onBack, langua
   );
 
   return (
-    <div className="fixed inset-0 w-full h-full bg-[#020202] text-white overflow-hidden font-sans select-none">
+    <div className="fixed inset-0 w-full h-full bg-[#0B0A09] text-white overflow-hidden font-sans select-none">
       <button 
         onClick={onBack}
         className="fixed top-8 left-8 z-[100] w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white hover:bg-white/10 transition-all backdrop-blur-md"

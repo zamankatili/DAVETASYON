@@ -672,7 +672,7 @@ const HostDashboard: React.FC = () => {
                               <td className="py-5 px-6 text-ivory/90 font-medium">{o.names}</td>
                               <td className="py-5 px-6 text-ivory/60">
                                 <span className="block">{o.eventType}</span>
-                                {o.concept && <span className="block text-xs text-ivory/35">{o.concept}</span>}
+                                {o.concept && <span className="block text-xs text-ivory/[0.35]">{o.concept}</span>}
                               </td>
                               <td className="py-5 px-6 text-[#C9A87C]/80">{o.contact}</td>
                               <td className="py-5 px-6 text-ivory/50">{o.date || '—'}</td>

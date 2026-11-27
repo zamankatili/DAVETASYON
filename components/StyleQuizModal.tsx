@@ -231,7 +231,7 @@ export const StyleQuizModal: React.FC<StyleQuizModalProps> = ({ isOpen, onClose,
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[300] bg-[#0F0E0C]/98 backdrop-blur-2xl flex items-center justify-center overflow-x-hidden overflow-y-auto"
+          className="fixed inset-0 z-[300] bg-[#0F0E0C]/[0.98] backdrop-blur-2xl flex items-center justify-center overflow-x-hidden overflow-y-auto"
         >
           {/* Background Ambient Glow */}
           <div className="fixed inset-0 pointer-events-none">

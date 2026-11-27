@@ -67,7 +67,7 @@ export const SavingsCalculator: React.FC<{ language: 'tr' | 'en' }> = ({ languag
             <div className="space-y-4">
               <label className="flex justify-between items-center gap-4">
                 <span className="text-[#B9B2A6] text-sm tracking-wide">{t.totalInvites}</span>
-                <span className="font-cinzel text-lg text-[#C9A87C] border border-[#C9A87C]/35 rounded-full px-4 py-1 min-w-[64px] text-center">
+                <span className="font-cinzel text-lg text-[#C9A87C] border border-[#C9A87C]/[0.35] rounded-full px-4 py-1 min-w-[64px] text-center">
                   {totalInvitations}
                 </span>
               </label>
@@ -89,7 +89,7 @@ export const SavingsCalculator: React.FC<{ language: 'tr' | 'en' }> = ({ languag
             <div className="space-y-4">
               <label className="flex justify-between items-center gap-4">
                 <span className="text-[#B9B2A6] text-sm tracking-wide">{t.cargoInvites}</span>
-                <span className="font-cinzel text-lg text-[#C9A87C] border border-[#C9A87C]/35 rounded-full px-4 py-1 min-w-[64px] text-center">
+                <span className="font-cinzel text-lg text-[#C9A87C] border border-[#C9A87C]/[0.35] rounded-full px-4 py-1 min-w-[64px] text-center">
                   {cargoCount}
                 </span>
               </label>

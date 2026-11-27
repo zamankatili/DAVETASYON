@@ -9,7 +9,10 @@ const LandingPage = React.lazy(() => import('./components/LandingPage'));
 const SunnetTemplate = React.lazy(() => import('./components/SunnetTemplate'));
 const BabyShowerTemplate = React.lazy(() => import('./components/BabyShowerTemplate'));
 const WeddingTemplate = React.lazy(() => import('./components/WeddingTemplate'));
+const GardenWeddingTemplate = React.lazy(() => import('./components/GardenWeddingTemplate'));
 const ModernEngagementTemplate = React.lazy(() => import('./components/ModernEngagementTemplate'));
+const SeasideEngagementTemplate = React.lazy(() => import('./components/SeasideEngagementTemplate'));
+const ModernKinaTemplate = React.lazy(() => import('./components/ModernKinaTemplate'));
 const BirthdayTemplate = React.lazy(() => import('./components/BirthdayTemplate'));
 const KinaTemplate = React.lazy(() => import('./components/KinaTemplate'));
 const MezuniyetTemplate = React.lazy(() => import('./components/MezuniyetTemplate'));
@@ -94,6 +97,21 @@ const App: React.FC = () => {
         return {
           title: "Aeterna | Zamanın Ötesinde Bir Şaheser",
           description: "Dün, bugün ve yarını birleştiren; anılarınızı geleceğe mühürleyen yapay zeka destekli interaktif bir şaheser.",
+        };
+      case 'gardenwedding':
+        return {
+          title: "Defne & Kerem | Bahçe Düğünü Davetiyesi",
+          description: "Yeşilin ve altının buluştuğu, açık havada geçen zarif bir bahçe düğünü davetiyesi.",
+        };
+      case 'modernkina':
+        return {
+          title: "Selin & Mert | Modern Kına Gecesi Davetiyesi",
+          description: "Geleneksel kına gecesini sade, bordo ve altın tonlarıyla yeniden yorumlayan modern davetiye.",
+        };
+      case 'seasideengagement':
+        return {
+          title: "Lara & Deniz | Sahil Nişanı Davetiyesi",
+          description: "Gün batımında, denize bakan bir koyda geçen ferah ve romantik nişan davetiyesi.",
         };
       case 'dashboard':
         return {
@@ -224,7 +242,7 @@ const App: React.FC = () => {
 
       {/* Global Ses Kontrol Butonu & Share Butonu */}
       {currentKey !== 'dashboard' && (
-        <div className="fixed bottom-6 left-6 sm:left-auto sm:bottom-6 sm:right-[100px] z-[200] flex flex-col sm:flex-row gap-3">
+        <div className="fixed bottom-6 left-6 z-[200] flex flex-col sm:flex-row gap-3">
           <ShareMenu 
             language={language}
             title={seoData.title}
@@ -288,9 +306,12 @@ const App: React.FC = () => {
           <Route path="/preview/sunnet" element={<SunnetTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('sunnet')} />} />
           <Route path="/preview/babyshower" element={<BabyShowerTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('babyshower')} />} />
           <Route path="/preview/wedding" element={<WeddingTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('wedding')} />} />
+          <Route path="/preview/gardenwedding" element={<GardenWeddingTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('gardenwedding')} />} />
           <Route path="/preview/engagement" element={<ModernEngagementTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('engagement')} />} />
+          <Route path="/preview/seasideengagement" element={<SeasideEngagementTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('seasideengagement')} />} />
           <Route path="/preview/birthday" element={<BirthdayTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('birthday')} />} />
           <Route path="/preview/kina" element={<KinaTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('kina')} />} />
+          <Route path="/preview/modernkina" element={<ModernKinaTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('modernkina')} />} />
           <Route path="/preview/graduation" element={<MezuniyetTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('graduation')} />} />
           <Route path="/preview/aurora" element={<AuroraTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('aurora')} />} />
           <Route path="/preview/darkluxury" element={<DarkLuxuryTemplate language={language} onBack={handleBack} onOrder={() => handleOrderOpen('darkluxury')} />} />

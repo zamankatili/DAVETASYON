@@ -287,6 +287,7 @@ const ModernEngagementTemplate: React.FC<ModernEngagementTemplateProps> = ({ lan
               venueName={eventContext?.venue?.name || t.location}
               address={eventContext?.venue?.address || t.address}
               googleMapsUrl={eventContext?.venue?.address ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(eventContext.venue.address)}` : "https://maps.google.com"}
+              theme="light"
             />
 
             {/* Dress Code Section */}
@@ -318,7 +319,7 @@ const ModernEngagementTemplate: React.FC<ModernEngagementTemplateProps> = ({ lan
 
             {/* RSVP Form */}
             <div className="mt-12">
-              <RSVPForm language={language} themeColor="#f2a6b0" eventId={eventId || 'engagement-demo'} />
+              <RSVPForm language={language} themeColor="#f2a6b0" eventId={eventId || 'engagement-demo'} theme="light" />
             </div>
 
             <Chatbot language={language} eventContext={eventContext} />
